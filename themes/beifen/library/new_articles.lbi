@@ -1,0 +1,9 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="notice">
+  <div class="notice-hd"><strong>最新商城公告</strong><span><a href="{$notice_url}" title="更多公告">更多>> </a></span></div>
+  <ul class="notice-list">
+  	<!--{foreach from=$new_articles item=article}-->
+    <li><a href="{$article.url}" title="{$article.title|escape:html}" target="_blank"><span>·</span>{$article.title|truncate:24:"...":true}</a></li>
+    <!--{/foreach}-->
+  </ul>
+</div>

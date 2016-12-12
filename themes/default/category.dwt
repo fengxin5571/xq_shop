@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<!-- {if $cat_style} -->
+<link href="{$cat_style}" rel="stylesheet" type="text/css" />
+<!-- {/if} -->
+{* 包含脚本文件 *}
+{insert_scripts files='common.js,global.js,compare.js'}
+</head>
+<body>
+
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+<div class="main">
+    <div class="mg-cate w1160px clearfix">
+    <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+    </div>
+    <div class="w1160px clearfix">
+    <!-- 热卖-->
+    <!-- {if $hot_goods} -->
+    <div class='mt20'>
+    <div class="hot-sales">
+    <div class="hot-sales-main">
+    <div class='hd'>热卖推荐</div>
+    <div class="bd">
+    <ul>
+     <!--{foreach from=$hot_goods item=goods}-->
+    <li>
+    <a class="p-img" target="_blank" href='{$goods.url}' title="{$goods.name|escape:html}"><img width='100' height="100" src="{$goods.thumb}" /></a>
+    <a class="p-name" target="_blank" href='{$goods.url}'title="{$goods.name|escape:html}"><em>{$goods.name|escape:html}</em></a>
+    <div class="p-price"><strong><em class='number'><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></em></strong></div>
+    <div class="p-btnbox"><a class="btn-default" href="javascript:addToCart({$goods.id})">立即抢购</a></div>
+    </li>
+    <!--{/foreach}-->
+    </ul>
+    </div>
+    </div>
+    <div class="hot-sales-act">
+    <div class='hd'>促销活动</div>
+    <div class="bd">
+    <ul class='market-adlist'>
+    <li class="item">{insert name='ads' id=11 num=1}</li>
+    <li class="item">{insert name='ads' id=12 num=1}</li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- {/if} -->
+      <!--面包屑导航-->
+      <div class="mg-subnav mt20">
+        <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+        <!--{if $current_categories }-->
+        <div class="menu-drop-main" style="display:none">
+        <ul class="menu-drop-list">
+            <!--{foreach from=$current_categories item=cat}-->
+            <li {if $cat.id==$category}class="cur"{/if}><a href="{$cat.url}">{$cat.name|escape:html}</a></li>
+            <!--{/foreach}--> 
+        </ul>
+        </div>
+      <!--{/if}-->
+      </div>
+      <!--面包屑导航END-->
+        <!-- 筛选 -->
+        <!--{if $brands.1 || $price_grade.1 || $filter_attr_list}-->
+        <div class="s-title mt10">
+        <h3><b>{$cat_name}</b><em>商品筛选</em></h3>
+        <div class="st-ext"> 共&nbsp;<span>{$pager.record_count}</span>个商品</div>
+        </div>
+        <div class="mg-filter ">
+          <dl class="clearfix">
+            <dt>{$lang.brand}：</dt>
+            <dd>
+              <!--{foreach from=$brands item=brand}-->
+                  <!-- {if $brand.selected} -->
+                  <span>{$brand.brand_name}</span>
+                  <!-- {else} -->
+                  <a href="{$brand.url}">{$brand.brand_name}</a>
+                  <!-- {/if} -->
+              <!--{/foreach}-->
+            </dd>
+          </dl>
+          <dl class="clearfix">
+            <dt>{$lang.price}：</dt>
+            <dd>
+              <!--{foreach from=$price_grade item=grade}-->
+              <!-- {if $grade.selected} -->
+              <span>{$grade.price_range}</span>
+              <!-- {else} -->
+              <a href="{$grade.url}">{$grade.price_range}</a>
+              <!-- {/if} -->
+            <!--{/foreach}-->
+            </dd>
+          </dl>
+          <!--{foreach from=$filter_attr_list item=filter_attr name=attr key=key}-->
+          <!--{if $smarty.foreach.attr.iteration>=5} -->
+          <!--{if $smarty.foreach.attr.iteration==5} -->
+          <div class="s-more">
+          <span1 class="sm-wrap">更多选项（
+          <!--{foreach from=$filter_attr_list item=filter_attrs name=attrs key=key}-->
+          <!--{if $smarty.foreach.attrs.iteration>=5 and $smarty.foreach.attrs.iteration < 8}   -->
+          {$filter_attrs.filter_attr_name|escape:html},
+          <!--{/if} -->
+          <!--{/foreach}-->
+                             等）<li></li></span1>
+          </div>
+          <!--{/if} -->
+          <!--{if $smarty.foreach.attr.iteration==5} -->
+          <div class="s-more-line" style="display:none">
+          <!--{/if} -->
+          <!--{/if} -->
+          <dl class="clearfix">
+            <dt>{$filter_attr.filter_attr_name|escape:html}：</dt>
+            <dd>
+              <!--{foreach from=$filter_attr.attr_list item=attr}-->
+              <!-- {if $attr.selected} -->
+              <span>{$attr.attr_value}</span>
+              <!-- {else} -->
+              <a href="{$attr.url}">{$attr.attr_value}</a>
+              <!-- {/if} -->
+            <!--{/foreach}-->
+            </dd>
+          </dl>
+          <!--{if $smarty.foreach.attr.iteration>=5} -->
+          <!--{if $smarty.foreach.attr.last} -->
+          </div>
+          <!--{/if} -->
+          <!--{/if} -->	
+          <!--{/foreach}-->
+          
+          <div class="s-more-open" style="display:none"><span1 class="sm-wrap-open">收起<li></li></span1></div>
+         
+        </div>
+        
+        <!-- {/if} -->
+      <!--侧栏-->
+      <div class="mg-sidebar mt20 fl">
+      <!--达人选购 -->
+      <!-- #BeginLibraryItem "/library/people_buy.lbi" --><!-- #EndLibraryItem -->
+      <!--达人选购 END-->
+      </div>
+      <!--侧栏END-->
+      <!--右主体-->
+      <div class="mg-container mt20 fr">
+        <!-- #BeginLibraryItem "/library/goods_list.lbi" --><!-- #EndLibraryItem -->
+        <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+      </div>
+      <!--右主体END-->
+    </div>
+  </div>
+  <!--商品精选 -->
+  <div class="w1160px clearfix mt10">
+  <!-- #BeginLibraryItem "/library/best_goods.lbi" --><!-- #EndLibraryItem -->
+  </div>
+  <!--商品精选  END-->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
+</body>
+</html>

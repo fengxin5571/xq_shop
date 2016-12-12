@@ -1,0 +1,98 @@
+{include file="pageheader.htm"}
+<div class="main-div">
+  <table width="98%">
+    <tr>
+      <td style="padding: 0px 20px">
+        <h3>人才姓名：<a href="../talent_show.php?id={$msg.talent_id}" target="_bank">{$msg.name}</a></h3>
+        <hr size="1" />
+       
+        <div>申请人姓名：{$msg.user_name}</div>
+        <div>手机：{$msg.user_phone}</div>
+        <div>电子邮件：{$msg.user_email}</div>
+        <div>公司名称：{$msg.user_company}</div>
+        <div>备注：{$msg.msg_content|escape:"html"|nl2br}</div>
+        
+        <div align="right"  nowrap="nowrap"><a href="mailto:{$msg.user_email}">{$msg.user_name}</a> {$msg.msg_time}</div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+{if $msg.reply neq ''}
+<div class="main-div">
+  <table width="98%">
+    <tr>
+      <td style="padding: 0px 20px">
+        <h3> {$lang.from} {$msg.reply_time} {$lang.reply}:</h3>
+        <hr size="1" />
+        <div>{$msg.reply|escape:"html"|nl2br}</div>
+      </td>
+    </tr>
+  </table>
+</div>
+{/if}
+
+{if $send_fail}
+<ul style="padding:0; margin: 0; list-style-type:none; color: #CC0000;">
+<li style="border: 1px solid #CC0000; background: #FFFFCC; padding: 10px; margin-bottom: 5px;" >{$lang.mail_send_fail}</li>
+</ul>
+{/if}
+
+<div class="main-div">
+<form method="post" action="talent_request.php?act=action" name="theForm"  onsubmit="return validate()">
+<table border="0" width="98%">
+  <tr>
+    <td>{$lang.reply_content}:</td>
+    <td rowspan="2"><textarea name="reply" cols="50" rows="4" wrap="VIRTUAL" id="msg_content">{$msg.reply}</textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><input name="send_email_notice" type="checkbox" value='1'/>{$lang.send_email_notice}</td>
+  </tr>
+  {if $msg.reply neq ''}
+  <tr>
+    <td>&nbsp;</td>
+    <td>{$lang.have_reply_content}</td>
+  </tr>
+  {/if}
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input type="hidden" name="msg_id" value="{$msg.msg_id}">      
+      <input name="Submit" value="{$lang.button_submit}" type="submit" class="button">
+      <input type="reset" value="{$lang.button_reset}" class="button">
+      {if $msg.reply neq ''}<input type="submit" name="remail" value="{$lang.remail}" class="button">{/if}
+    </td>
+  </tr>
+</table>
+</form>
+</div>
+{insert_scripts files="../js/utils.js,validator.js"}
+<script language="JavaScript">
+<!--
+{literal}
+document.forms['theForm'].elements['reply'].focus();
+
+/**
+ * 检查表单输入的数据
+ */
+function validate()
+{
+    validator = new Validator("theForm");
+    validator.required("reply",  no_reply_content);
+    return validator.passed();
+}
+
+onload = function()
+{
+    // 开始检查订单
+    startCheckOrder();
+}
+//-->
+{/literal}
+</script>
+{include file="pagefooter.htm"}

@@ -1,0 +1,13 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{if $user_info}
+<font style="position:relative;float:left ">
+{$lang.hello}! <font class="f4_b_top">{$user_info.username}</font>, {$lang.welcome_return}！|
+ 
+ <a href="user.php?act=logout">{$lang.user_logout}</a>
+</font>
+{else}
+<font style="position:relative;float:left ">
+<a href="login.html" >{$lang.label_login_top}</a>|
+<a href="register.html" >{$lang.label_regist_top}</a>
+</font>
+{/if}

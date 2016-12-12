@@ -1,0 +1,86 @@
+﻿<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<title>{$page_title}</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="./css/common.css" rel="stylesheet" type="text/css" />
+<link href="./css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="bgYellow">
+
+<div class="container">
+<!--header-->
+  <div class="s-header">
+    <div class="w930px clearfix">
+      <div class="l-title fl mt20 mb20">
+        <h1>机器人技术方案集成中心</h1>
+        <p> The IC of Robot technology solution</p>
+      </div>
+      <a href="technology.php"><div class="r-title fr mt40"></div></a>
+    </div>
+  </div>
+<!--header END-->
+
+<!--main-->
+  <div class="s-main">    
+    <div class="s-notice">
+      <div class="w930px"><!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem --></div>
+    </div>
+    <div class="white-bg">
+      <div class="w930px">
+          <div class="r-left2">
+                <!-- {foreach from=$subcat item=subcat name="cat_foreach"} -->
+                <!-- {if $subcat.level} -->
+                    <div class="r-left-btn2 "><a href="technology_cat.php?id={$subcat.id}" title="{$subcat.name}"  class="{if $subcat.id == $cat_id}current{/if}">{$subcat.name}</a></div>
+                <!-- {/if} -->    
+                <!--{/foreach}--> 
+          </div>
+          <div class="r-right2">
+              <div id="ny_dd">
+                  <ul>
+                    <!-- {foreach from=$artciles_list item=article} -->
+                      <li><div class="tp"><a href="{$article.url}" title="{$article.title|escape:html}">{$article.short_title}</a><div class="rf">{$article.add_time}</div></div>
+                        <div class="jjs"> </div></li>
+                    <!-- {/foreach} -->  
+                  </ul>
+              </div>
+              <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+          </div>
+
+
+          <div class="clr"></div>
+
+      </div>
+    </div>
+    
+  </div>
+<!--main END-->
+<!--footer-->
+  <div class="s-footer ">
+    <div class="w930px">
+      <div class="s-footer-nav">
+        <!-- {foreach from=$cat item=cat name="cat_foreach"} -->
+        <!-- {if $cat.level} -->
+            <a href="technology_cat.php?id={$cat.id}" title="">{$cat.name}</a>
+        <!-- {/if} -->    
+        <!--{/foreach}--> 
+      </div>
+      <div class="s-copyright fl mt20" style="font-size:14px;">
+        <p>客服电话：{$service_phone} 地址：{$shop_address}</p>
+        <p>{$copyright}  {$icp_number}</p>
+      </div>
+      <div class="bdsharebuttonbox fr mt20">
+        <a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+<!--footer END-->
+</div>
+</body>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"32"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+</html>

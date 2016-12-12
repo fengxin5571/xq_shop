@@ -1,0 +1,15 @@
+<div class="ab-goods mt20">
+      <div class="mt"><h2>达人选购</h2></div>
+      <div class="mc">
+      <ul>
+      <!--{foreach from=$top_goods item=good}-->
+      <li>
+      <div class="p-img"><a target="_blank" href="{$good.url}" title="{$good.name|escape:html}"><img src="{$good.thumb}" width="190" height="190"/></a></div>
+      <div class="p-price"><strong class="price"><!-- {if $good.promote_price neq ""} -->{$good.promote_price}<!-- {else}-->{$good.price}<!--{/if}--></strong></div>
+       <div class="p-name"><a target="_blank" href="{$good.url}" title="{$good.goods_name|escape:html}"><em>{$good.goods_name|escape:html}</em></a></div>
+      </li>
+      <!--{/foreach}-->
+      </ul>
+      </div>
+      </div> 
+      

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" class="page-home">
+<head>
+    <meta charset="utf-8">
+    <title>{$page_title}触屏版</title>
+    <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+    <meta name="imagemode" content="force">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="{$description}">
+    <meta name="keywords" content="{$keywords}">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="touch-icon.png">
+    <link rel="stylesheet" type="text/css" href="{$ecs_css_path}">
+    <link rel="stylesheet" type="text/css" href="{$home_css_path}">
+    {insert_scripts files='./web1/themes/js/banner-he.js,./web1/themes/js/banner.js,./web1/themes/js/jquery-1.9.1.min.js,./web1/themes/js/index.js}
+</head>
+<body>
+
+
+<header id="ui-header">
+    <div class="ui-centre">
+        <section id="slider">
+            <div class="demo-item">
+                <div class="demo-block">
+                    <div class="ui-slider" style="padding-top:49.25%">
+                        <ul class="ui-slider-content" style="width: 300%">
+                        <!-- {foreach name=playerdb from=$playerdb item=ad} -->
+                        <li><a href="{$ad.url}" title="{$ad.text}" target="_blank"><span style="background-image:url(../{$ad.src})"></span></a></li>
+                         <!-- {/foreach} -->
+                          
+                        </ul>
+                    </div>
+                </div>
+                <script class="demo-script">
+                    $(window).scroll(function () {
+                    	
+                        if ($(window).scrollTop() > 0) {
+                            $("#headsearch").addClass("ui-form-color-nav");
+                        }else if($(window).scrollTop() == 0){
+                            $("#headsearch").removeClass("ui-form-color-nav");
+                        }
+                        
+                    });
+                    (function (){
+                        var slider = new fz.Scroll('.ui-slider', {
+                            role: 'slider',
+                            indicator: true,
+                            autoplay: true,
+                            interval: 5000
+                        });
+
+                        slider.on('beforeScrollStart', function(fromIndex, toIndex) {
+                            console.log(fromIndex,toIndex)
+                        });
+
+                        slider.on('scrollEnd', function(cruPage) {
+                            console.log(cruPage)
+                        });
+                        
+                    })();
+                </script>
+            </div>
+        </section>
+        <section id="ui-form">
+            <div class="ui-form-color " id="headsearch">
+                <div class="ui-form-logo fl">
+                    <a href="#"><span class="" data-src="" style="background-image: url({$wap_logo|default:web1/themes/icon/logo1.png}); background-size: contain; opacity: 1;    width: 56px;"></span></a>
+                </div>
+                <div class="ui-form-input fl">
+                <form name="searchForm" method="get" action="search.php">
+                <input type="text" placeholder="搜索商品名称" name="keywords">
+                </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</header>
+
+
+
+
+
+<section class="category ui-border-b" style="padding-top:.6rem;background: #f5f5f5;">
+    <ul class="clearfix">
+        
+    </ul>
+    
+<div class="jd-express-news">
+<a class="J_ping jd-news-tit"><img src="web1/themes/img/web1/jd-news-tit.png"/></a>
+<div class="news-list-wrapper" id="scroll-news">
+<ul class="news-list" style="transform: translate3d(0px, 0px, 0px);">
+<!--  {foreach from=$new_articles item=news} -->
+<li class="news-item"><a href="{$news.url}">{$news.title}</a></li>
+<!-- {/foreach} -->
+</ul>
+</div>
+<a href="article.php?cat_id=12" class="J_ping jd-news-more"><i class="line"></i>更多</a>
+</div>
+</section>
+<div class="bdr-bottom">
+<div class="floor-container  seckill-floor bdr-bottom">
+<div class="title-wrap">
+<span class="seckill-icon"></span>
+ <h2 class="seckill-title">馨清秒杀</h2>
+ <div class="seckill-timer" id="seckill_time">
+<span class="seckill-time seckill-time-left">0</span>
+
+<span class="seckill-time-separator">:</span>
+<span class="seckill-time seckill-time-left">5</span>
+
+<span class="seckill-time-separator">:</span>
+<span class="seckill-time seckill-time-left">2</span>
+
+</div>
+<span id="seckill_loading"></span>
+</div>
+<div class="seckill-new-container">
+<ul class="seckill-new-list" style="width: 3983.33px;">
+<!--  {foreach from=$promotion_goods item=goods} -->
+<!--  {assign var='promote_end_time' value=$goods.promote_end_time}-->
+<li class="seckill-new-item" style="width: 196.667px;">
+<div class="seckill-item-img bdr-r"style="padding: 0 11px"><a class="seckill-new-link J_ping" href="goods.php?id={$goods.id}"><img src="{$goods.goods_img}" style="height: 174px;" border="0" class="seckill-photo opa1" ></a></div>
+<div class="seckill-item-price"><span class="seckill-new-price">{$goods.shop_price}</span><span class="seckill-original-price">{$goods.market_price}</span></div>
+</li>
+<!--  {/foreach} -->
+</ul>
+</div>
+</div>
+</div>
+
+<section id="V" class="ui-header-cr" style="margin-bottom:0; padding-bottom:0;">
+    <header class="ui-header-ti">
+        <a href="#" >
+        <div class="floor-title floor-tit-img"><img src="web1/themes/img/web1/floor-tit.png" class="floor-tit-bgimg">
+        <span class="tit-img"><img src="web1/themes/img/web1/xq_good_new.png"></span>
+        </div>
+        </a>
+    </header>
+    <section class="clearfix around-other">
+        <ul>
+        <!--  {foreach from=$new_goods item=goods} -->
+            <li class="ui-border-b clearfix">
+                <a href="goods.php?id={$goods.id}">
+                    <div class="around-other-image fl">
+                        <div class="around-other-thumbnail" style="background-size:cover; background-image:url({$goods.goods_img}); opacity:1;"></div>
+                    </div>
+                    <div class="around-other-info ">
+                        <h3>{$goods.name}</h3>
+                        <div><span>{$goods.brief}</span> <p class="around-other-price price"><strong>{$goods.shop_price}</strong></p></div>
+                    </div>
+                </a>
+            </li>
+  		<!-- {/foreach}  -->
+        </ul>
+    </section>
+</section>
+
+<section id="c" class="ui-header-cr ui-border-b">
+    <main class="ui-main-br" style="margin-top:1rem">
+        <div class="ui-img">
+           {insert  name='ads' id=16 num=1 mobile=1}
+        </div>
+    </main>
+</section>
+<section id="V" class="ui-header-cr" style="margin-bottom:0; padding-bottom:0;">
+    <header class="ui-header-ti">
+        <a href="#" >
+        <div class="floor-title floor-tit-img"><img src="web1/themes/img/web1/floor-tit.png" class="floor-tit-bgimg">
+        <span class="tit-img"><img src="web1/themes/img/web1/xq_good_best.png"></span>
+        </div>
+        </a>
+    </header>
+    <section class="clearfix around-other">
+        <ul>
+        <!--  {foreach from=$best_goods item=goods} -->
+            <li class="ui-border-b clearfix">
+                <a href="goods.php?id={$goods.id}">
+                    <div class="around-other-image fl">
+                        <div class="around-other-thumbnail" style="background-size:cover; background-image:url({$goods.goods_img}); opacity:1;"></div>
+                    </div>
+                    <div class="around-other-info ">
+                        <h3>{$goods.name}</h3>
+                        <div><span>{$goods.brief}</span> <p class="around-other-price price"><strong>{$goods.shop_price}</strong></p></div>
+                    </div>
+                </a>
+            </li>
+  		<!-- {/foreach}  -->
+        </ul>
+    </section>
+</section>
+<section id="c" class="ui-header-cr ui-border-b">
+    <main class="ui-main-br" style="margin-top:1rem">
+        <div class="ui-img">
+           {insert  name='ads' id=16 num=1 mobile=1}
+        </div>
+    </main>
+</section>
+
+<section id="Cs" class="ui-header-cr  clearfix" style="background-color: #f0f2f5;padding-bottom:0">
+<div class="gray-text"><span class="gray-layout"><span class="gray-text-img"></span>为您推荐</span></div>
+<ul class="find-similar-ul cf">
+<!--  {foreach from=$get_guess_you_like item=goods} -->
+  <li class="similar-li"><a href="goods.php?id={$goods.goods_id}">
+<div class="similar-product">
+<img  style='height:200px' src="{$goods.goods_img}" style="" alt="{$goods.goods_name}" />
+<span class="similar-product-text">{$goods.goods_name}</span>
+<span class="similar-product-price"><span class="big-price">{$goods.shop_price}</span></span>
+</div>
+</a></li>
+<!--{/foreach} -->
+</ul>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!--  <section id="Cs" class="ui-header-cr  clearfix">
+    <header class="ui-header-ti">
+        <h2>促销活动</h2>
+        <a class="more" href="#">更多&nbsp;&nbsp;&nbsp;<i class="ui-icon-arrow"></i></a>
+    </header>
+    <section class="destination">
+        <ul class="clearfix">
+            <li>
+                <a href="#">
+                    <div class="destination-image"><span class="" data-src="" style="background-image: url(web1/themes/img/pd/a1.jpg); opacity: 1;"></span></div>
+                    <div class="destination-title">
+                        <h3>索尼特价专区</h3>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="destination-image"><span class="" data-src="" style="background-image: url(web1/themes/img/pd/a2.jpg); opacity: 1;"></span></div>
+                    <div class="destination-title">
+                        <h3>双核旗舰机</h3>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="destination-image"><span class="" data-src="" style="background-image: url(web1/themes/img/pd/a3.jpg); opacity: 1;"></span></div>
+                    <div class="destination-title">
+                        <h3>蚂蚁花呗免息</h3>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="destination-image"><span class="" data-src="" style="background-image: url(web1/themes/img/pd/a4.jpg); opacity: 1;"></span></div>
+                    <div class="destination-title">
+                        <h3>360旗舰机</h3>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </section>
+</section>
+
+-->
+
+
+<div class="" style="height:3.4rem; width:100%; overflow:hidden;"></div>
+<footer id="" class="ui-footer ui-border-t">
+    <ul class="clearfix">
+        <li>
+            <a href="javascript:alert('正在开发中');" class="on"><i class="ui-icon-home"></i><p>首页</p></a>
+        </li>
+        <li>
+            <a href="javascript:alert('正在开发中');"><i class="ui-icon-search" style="font-size:42px;"></i><p>搜索</p></a>
+        </li>
+
+        <li>
+            <a href="javascript:alert('正在开发中');"><i class="ui-icon-cart"></i><p>购物车</p></a>
+        </li>
+        <li>
+            <a href="javascript:alert('正在开发中');"><i class="ui-icon-personal"></i><p>我的</p></a>
+        </li>
+    </ul>
+</footer>
+
+<script>
+var interval = 1000; 
+function ShowCountDown(year,month,day,divname) 
+{ 
+var now = new Date(); 
+var endDate = new Date(year, month-1, day); 
+var leftTime=endDate.getTime()-now.getTime(); 
+var leftsecond = parseInt(leftTime/1000); 
+//var day1=parseInt(leftsecond/(24*60*60*6)); 
+var day1=Math.floor(leftsecond/(60*60*24)); 
+var hour=Math.floor((leftsecond-day1*24*60*60)/3600); 
+var minute=Math.floor((leftsecond-day1*24*60*60-hour*3600)/60); 
+var second=Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60); 
+var cc = document.getElementById(divname);
+if(day1>999){
+	day1=999;
+}
+
+cc.innerHTML='<span class="seckill-time seckill-time-left">'+day1+'</span>'+
+             '<span class="seckill-time-separator">:</span>'+
+             '<span class="seckill-time seckill-time-left">'+minute+'</span>'+
+             '<span class="seckill-time-separator">:</span>'+
+             '<span class="seckill-time seckill-time-left">'+second+'</span>';
+} 
+window.setInterval(function(){ShowCountDown({$promote_end_time.year},{$promote_end_time.mon},{$promote_end_time.mday},'seckill_time');}, interval); 
+
+</script>
+</body>
+</html>

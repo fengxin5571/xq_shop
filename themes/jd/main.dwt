@@ -1,0 +1,119 @@
+﻿<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<title>{$page_title}</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="./css/common.css" rel="stylesheet" type="text/css" />
+<link href="./css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="bgYellow">
+
+<!--header-->
+  <div class="s-headerM">
+    <div class="w1042px clearfix" style="background-image: linear-gradient(#fff,#f7f6f5);">
+      <div class="i-logo fl"><img src="../images/robot/cirlogo.png" width="480" height="60" alt="{$shop_name}"></div>
+     <!--old <div class="i-subtitle fl">{$shop_name}</div>-->
+      <div class="i-header-right fr mt15">
+        <div class="tel">{$service_phone}</div>
+        <p>
+        {if $user_info}
+            <font style="position:relative; ">
+            {$lang.hello}，<font class="f4_b">{$user_info.username}</font>, {$lang.welcome_return}！
+             <a href="user.php">{$lang.user_center}</a>|
+             <a href="user.php?act=logout">{$lang.user_logout}</a>
+            </font>
+        {else}
+            <a href="user.php" >{$lang.label_login}</a>
+            <a href="user.php?act=register" >{$lang.label_regist}</a>
+        {/if}
+        </p>
+        
+      </div>
+    </div>
+  </div>
+<!--header END-->
+
+<!--main-->
+  <div class="s-main">
+    <div class="w1042px">
+      <div class="new_banner">
+          <ul class="rslides f426x240">
+              {insert name='ads' id=5 num=6}
+          </ul>
+          <ul class="big-menu clearfix">
+          <li>
+            <a href="index.php" title="" target="_blank" >
+              <h2>机器人商城</h2>
+              <p>权威的机器人交易平台</p>
+            </a>
+          </li>
+          <li>
+            <a href="service.php" title="" target="_blank">
+              <h2>4S售后服务</h2>
+              <p>专业的一站式售后保养服务</p>
+            </a>
+          </li>
+          <li>
+            <a href="talent.php" title="" target="_blank">
+              <h2>人才输送</h2>
+              <p>各类精锐人才中心</p>
+            </a>
+          </li>
+          <li>
+            <a href="technology.php" title="" target="_blank">
+              <h2>技术支持</h2>
+              <p>提供个性化解决方案</p>
+            </a>
+          </li>
+        </ul>
+        <div class="brand">
+          <div class="brand-hd">战略合作伙伴</div>
+          <div class="brand-bd">
+            <div id="MyMarqueeY">
+              <!--开始图片类型的友情链接{foreach from=$img_links item=link}-->
+              <a href="{$link.url}" target="_blank" title="{$link.name}"><img src="{$link.logo}" alt="{$link.name}" border="0" /></a><br />
+    <!--结束图片类型的友情链接{/foreach}-->
+             </div>
+          </div>  
+        </div>
+        <div class="robot-link"><a href="video_cat.php" title="" target="_blank"><img src="./images/other/robot-video.png" alt=""></a></div>
+      </div>
+    </div>
+  </div>
+<!--main END-->
+<!--footer-->
+
+<!--footer END-->
+  <div class="w1042px">
+    <div style="background:#ff7300;">
+      <div class="s-copyright fl mt20" style="color:#fff;font-size:14px;">
+        <p>客服电话：{$service_phone} 地址：{$shop_address}</p>
+        <p>{$copyright}  {$icp_number}
+{if $stats_code}
+         <divsh>{$stats_code}</div>
+      {/if}
+</p>
+      </div>
+      <div class="bdsharebuttonbox fr mt20">
+        <a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+
+</body>
+{insert_scripts files='scroll.js'}
+<script type="text/javascript">
+  new Marquee({
+    obj : 'MyMarqueeY',
+    mode : 'y'
+  });
+</script>
+{insert_scripts files='jquery-1.9.1.min.js'}
+{insert_scripts files='focus2.js'}
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"32"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+</html>

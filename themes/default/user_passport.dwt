@@ -1,0 +1,849 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{* 包含脚本文件 *}
+{insert_scripts files='common.js,user.js,transport.js'}
+
+<body>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<!-- {if $action eq 'login'} -->
+<div class="main login_main">
+<!-- {else} -->
+<div class="main1">
+<!-- {/if} -->
+    <!--菜单列表-->
+    <!--{ if $action != 'login'}-->
+    <div class="mg-cate w1160px clearfix">
+    <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+    </div>
+    <!--{/if}-->
+    <!--菜单列表 END-->
+
+<!--#登录界面 start-->
+<!-- {if $action eq 'login'} -->
+    {insert_scripts files='jquery.kinMaxShow-1.1.src.js'}
+    <script type="text/javascript">
+      $(function(){
+        $("#kinMaxShow").kinMaxShow();
+      });
+    </script>
+    <div class="w1160px login_w">
+      <div class="robert fl">
+         <div id="kinMaxShow">
+              {insert name='ads' id=4 num=4}
+        </div>
+      </div>
+      <div class="login fr mt30">
+      <div class="m31">
+      <span class="s1">馨清会员</span>
+      <span class="s2">
+      <a href="user.php?act=register"><img src="./images/robot/tp2.jpg">立即注册</a>
+      </span>
+      </div>
+      <div class="msg-wrap">
+      <div class="msg-warn" id='msg-warn'><b></b> 公共场所不建议自动登录，以防账号丢失</div>
+      <div class="msg-error" id='msg-error' style="display:none;"></div>
+      <div class="msg-error hide" style="display: none;"><b></b></div>
+      </div>
+        <form name="formLogin" action="javascript:ajuserLogin()" method="post" >
+        <div class='item item-fore1'>
+        <label for="loginname" class="login-label name-label"></label>
+        <input type="text" name="username" class="login-input" placeholder="用户名{if $_CFG['ihuyi_sms_mobile_log']==1}/已验证手机{/if}"></p>
+        </div>
+        <div class='item item-fore2'>
+        <label class="login-label pwd-label" for="nloginpwd"></label>
+        <input type="password" name="password" class="login-input"  placeholder="密码"></p>
+        </div>
+        <div class="item item-vcode item-fore4  hide item-error" id="captchadiv">
+        <!-- 判断是否启用验证码{if $enabled_captcha} -->
+        <input type="text" size="8" name="captcha" class="itxt itxt02" />
+        <img src="captcha.php?is_login=1&{$rand}" alt="captcha" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?is_login=1&'+Math.random()" />
+        <span>看不清点击图片换一张</span>
+        <!--{/if}-->
+        </div>
+        <input type="hidden" name="act" value="act_login" />
+        <input type="hidden" name="back_act" value="{$back_act}" />
+        <div class='item item-fore3'>
+        <input type="checkbox" value="1" name="remember" id="remember"> {$lang.auto_login}
+        <span class="forget-pw-safe"><a href="user.php?act=get_password" title="">{$lang.get_password}</a></span>
+        </div>
+        <!--<p class="talignC"><a href="user.php?act=qpassword_name" title="">{$lang.get_password_by_question}</a></p>-->
+        <div class="item item-fore4" style="width: 306px;">
+        <div class="login-btn1">
+        <input type="submit" name="submit" class="jdbtn" value="登&nbsp;&nbsp;&nbsp;&nbsp;录" id="jdbtn">
+        </div>
+        </div>
+        </form>
+        <span>使用合作网站账号登录馨清</span>
+        <div class="coagent">
+        <ul>
+        <li><a href="javascript:void(0)" onclick="window.location='user.php?act=oath&type=weixin'"><img src="./images/robot/wxlogo.gif" width='35' height="35" style="vertical-align: middle;" title="微信登录"/></a><span class="lline">|</span></li>
+        <li><a href="javascript:void(0)" onclick="window.location='user.php?act=oath&type=alipay'"><img src="./images/robot/zfb.gif" width='35' height="35" style="vertical-align: middle;" title="支付宝登录"/></a></li>
+        </ul>
+        </div>
+      </div>
+      <div class="clr"></div>
+      
+    </div>
+<!--{/if}-->
+<!--#登录界面 end-->
+<!--#微信新建用户绑定界面 start-->
+<!-- {if $action eq 'wechat_ready'} -->
+<div class="w1160px clearfix">
+<div class="wxbmain clearfix">
+<div class="register-tabNav clearfix">
+<div class="r-tab r-tab-cur" id='bindtab'><span class="icon i-bind"></span><span>{$lang.existing_account}</span></div>
+<div class="r-tab" id='registertab'><span class="icon i-reg"></span><span>{$lang.no_account}</span></div>
+</div>
+<div class="reg-tab-con">
+<!-- 绑定 -->
+<div class="r-tabCon bind-login-content" style="display: block;">
+<div class="account-login-panle">
+<div class="wellcome-tip"><img src="{$headimg}" width='28' height='28'/>Hi,{$wx_name}&nbsp;欢迎来到馨清</div>
+<form action="user.php" method="post" name="formLogin" onsubmit="return userLogin()">
+<div class="form-item form-item-account">
+<label>{$lang.label_username}</label>
+<txt id='usernametxtbind' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">您的账户名和登录名</txt>
+<input type="text" class="register-input" name="username"  id="usernamebind" onblur="hidden_txt(this.value,this.name)" onfocus="show_bindtxt(this.name)">
+</div>
+<div class="input-tip"><span id="username_notice1" class=" color06"></span></div>
+<div class="form-item">
+<label>输&nbsp;入&nbsp;密&nbsp;码</label>
+<txt id='passwordtxtbind' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">密码</txt>
+<input name="password" type="password" id="passwordbind" onblur="hidden_txt(this.value,this.name)"  class="register-input" onfocus="show_bindtxt(this.name)">
+</div>
+<div class="input-tip"><span id="password_notice1" class=" color06"> <i class="i-def"></i></span></div>
+<div class='item item-fore3'>
+        <span class="forget-pw-safe" style="float: right;padding: 10px;"><a href="user.php?act=get_password" title="">{$lang.get_password}</a></span>
+</div>
+<input type="hidden" name="act" value="weixinbind"/>
+<input type="hidden" name="wechatid" value="{$wechatid}" />
+<input type="hidden" name="openid" value="{$openid}" />
+<input type="hidden" name="headimg" value="{$headimg}" />
+<input type="hidden" name="wx_name" value="{$wx_name}" />
+<input type="submit" class="reg-btn" id="form-register" value="立即绑定">
+</form>
+</div>
+</div>
+<!-- 绑定 end -->
+<!-- 新用户注册start-->
+<div class="r-tabCon reg-form" style="display: none;">
+<div class="wellcome-tip"><img src="{$headimg}" width='28' height='28'/>Hi,{$wx_name}&nbsp;欢迎来到馨清</div>
+<form action="user.php" method="post" name="formUser" onsubmit="return register();">
+            <ul class="register-list mt20">
+            <div class="form-item form-item-account">
+            <label>{$lang.label_username}</label>
+            <txt id='usernametxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">您的账户名和登录名</txt>
+            <input type="text" class="register-input" name="username"  id="username" onblur="is_registered(this.value);" onfocus="show_txt(this.name)">
+            </div>
+            <div class="input-tip"><span id="username_notice" class=" color06"></span></div>
+            <div class="form-item">
+            <label>{$lang.label_email}</label>
+            <txt id='emailtxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">您的常用邮箱</txt>
+            <input name="email" type="text" id="email" onblur="checkEmail(this.value);" class="register-input" onfocus="show_txt(this.name)">
+            </div>
+            <div class="input-tip"><span id="email_notice" class=" color06"> <i class="i-def"></i></span></div>
+            <div class="form-item">
+            <label>{$lang.label_password}</label>
+            <txt id='passwordtxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">建议至少使用两种字符组合</txt>
+            <input name="password" type="password" id="password1" onblur="check_password(this.value);" onkeyup="checkIntensityup(this.value)"  class="register-input" onfocus="show_txt(this.name)">
+            </div>
+            <div class="input-tip"><span id="password_notice" class=" color06"> <i class="i-def"></i></span></div>
+            <div class="form-item">
+            <label>{$lang.label_confirm_password}</label>
+            <txt id='confirm_passwordtxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">请再次输入密码</txt>
+            <input name="confirm_password" type="password" id="conform_password" onblur="check_conform_password(this.value);"  class="register-input"  onfocus="show_txt(this.name)"/>
+            </div>
+            <div class="input-tip"><span id="conform_password_notice" class=" color06"> <i class="i-def"></i></span></div>
+             
+              <!-- {foreach from=$extend_info_list item=field} -->
+              <!-- {if $field.id eq 6} -->
+              <div class="form-item"><label>{$lang.passwd_question}</label>
+                <select name='sel_question' class="register-input">
+                <option value='0'>{$lang.sel_question}</option>
+                {html_options options=$passwd_questions}
+                </select>
+              </div>
+              <div class="input-tip"><span id="" class=" color06"> <i class="i-def"></i></span></div>
+              <div class="form-item"><label>{$lang.passwd_answer}</label>
+                <input name="passwd_answer" type="text" class="register-input" >
+                <!-- {if $field.is_need} --><span class="prompt color06" id="passwd_quesetion"> *</span><!-- {/if} -->
+              </div>
+              <div class="input-tip"><span id="" class=" color06"> <i class="i-def"></i></span></div>
+              <!-- {elseif $field.reg_field_name=='手机'} -->
+		      <!-- {if $_CFG['ihuyi_sms_mobile_reg']=='1'} -->
+        
+              <input type="hidden" id="ztime" value="{$ztime}">
+              <input type="hidden" id="smsyy" value="{$smsyy}">
+             
+              <input type="hidden" id="sms_code" name="sms_code" value="{$sms_code}">
+			  {insert_scripts files='global.js'}
+			  {insert_scripts files='transport.js'}
+			  {insert_scripts files='sms.js'}
+			  <div class="form-item"><label>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机</label>
+			  <txt id='moblie_phonetxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">建议使用常用手机</txt>
+			  <input type="text" class="register-input" onblur="check_mobile_phone(this.value);" name="extend_field{$field.id}" onfocus="show_txt(this.name)">
+             
+              </div>
+              <div class="input-tip"><span id="mobile_phone_notice" class=" color06"> <i class="i-def"></i></span></div>
+              <div class="form-item"><label>手机验证码</label> 
+              <txt id='moblie_phonecodetxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">请输入手机验证码</txt>
+              <input name="sms_verifycode" id="sms_verifycode" type="text" size="25" class="register-input" style="width:150px" maxlength="6" onfocus="show_txt(this.name)" onblur="check_sms_verifycode(this.value)"/>
+              <input type="button" id="zphone" class="btn-phonecode"    value="<!-- {if $smsyy==0} -->获取语音验证码<!--{else}-->获取验证码<!-- {/if} -->"  onclick="getverifycode1('extend_field{$field.id}', '{$field.reg_field_name}');">
+              </div>
+              <div class="input-tip"><span id="" class=" color06"> <i class="i-def"></i></span></div>
+			  <!-- {else} -->
+			  <div class="form-item"><label>{$field.reg_field_name}</label><input type="text" class="register-input" name="extend_field{$field.id}">
+                <!-- {if $field.is_need} --><span class="prompt color06"> *</span><!-- {/if} -->
+              </div>
+            <!-- {/if} -->
+              <!-- {else} -->
+              <div class="form-item"><label>{$field.reg_field_name}</label>
+              <input type="text" class="register-input" name="extend_field{$field.id}">
+                <!-- {if $field.is_need} --><span class="prompt color06"> *</span><!-- {/if} -->
+              </div>
+              <div class="input-tip"><span id="" class=" color06"> <i class="i-def"></i></span></div>
+            <!-- {/if} -->
+            <!-- {/foreach} -->
+             
+              <!-- 判断是否启用验证码{if $enabled_captcha} -->
+              <div class="form-item"><label>验&nbsp;&nbsp;&nbsp;证&nbsp;&nbsp;&nbsp;码</label>
+              <txt id='captchatxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">请输入验证码</txt>
+              <input type="text" name="captcha" class="register-input" style="width: 150px;" onfocus='show_captcha_message()' onblur="hidden_captcha_message(this.value)"><img src="captcha.php?{$rand}" alt="captcha" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?'+Math.random()" /></div>
+              <div class="input-tip"><span id="captcha_notice" class=" color06"> <i class="i-def"></i></span></div>
+              <!--{/if}-->
+              <div><strong></strong><input name="agreement" type="checkbox" value="1" checked="checked" />
+            {$lang.agreement}</div>
+            <div class="input-tip"><span id="" class=" color06"> <i class="i-def"></i></span></div>
+            <div>
+                  <input name="act" type="hidden" value="act_register" >
+                  <input type="hidden" name="back_act" value="{$back_act}" />
+                  <input type="hidden" name="wechatid" value="{$wechatid}" />
+                  <input type="hidden" name="openid" value="{$openid}" />
+                  <input type="hidden" name="headimg" value="{$headimg}" />
+                  <input type="hidden" name="wx_name" value="{$wx_name}" />
+                  <input name="Submit" type="submit" value="立即注册" class="reg-btn">
+            </div>
+              
+            </ul>
+          </form>
+</div>
+<!-- 新用户注册end-->
+</div>
+</div>
+</div>
+<!--{/if}-->
+<!--#微信新建用户绑定界面 end-->
+
+<!--#支付宝新建用户绑定界面 start-->
+<!-- {if $action eq 'zfb_ready'} -->
+<div class="w1160px clearfix">
+<div class="wxbmain clearfix">
+<div class="register-tabNav clearfix">
+<div class="r-tab r-tab-cur" id='bindtab'><span class="icon i-bind"></span><span>{$lang.existing_account}</span></div>
+<div class="r-tab" id='registertab'><span class="icon i-reg"></span><span>{$lang.no_account}</span></div>
+</div>
+<div class="reg-tab-con">
+<!-- 绑定 -->
+<div class="r-tabCon bind-login-content" style="display: block;">
+<div class="account-login-panle">
+<div class="wellcome-tip"><img src="{$headimg}" width='28' height='28'/>Hi,{$nickname}&nbsp;欢迎来到馨清</div>
+<form action="user.php" method="post" name="formLogin" onsubmit="return userLogin()">
+<div class="form-item form-item-account">
+<label>{$lang.label_username}</label>
+<txt id='usernametxtbind' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">您的账户名和登录名</txt>
+<input type="text" class="register-input" name="username"  id="usernamebind" onblur="hidden_txt(this.value,this.name)" onfocus="show_bindtxt(this.name)">
+</div>
+<div class="input-tip"><span id="username_notice1" class=" color06"></span></div>
+<div class="form-item">
+<label>输&nbsp;入&nbsp;密&nbsp;码</label>
+<txt id='passwordtxtbind' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">密码</txt>
+<input name="password" type="password" id="passwordbind" onblur="hidden_txt(this.value,this.name)"  class="register-input" onfocus="show_bindtxt(this.name)">
+</div>
+<div class="input-tip"><span id="password_notice1" class=" color06"> <i class="i-def"></i></span></div>
+<div class='item item-fore3'>
+        <span class="forget-pw-safe" style="float: right;padding: 10px;"><a href="user.php?act=get_password" title="">{$lang.get_password}</a></span>
+</div>
+<input type="hidden" name="act" value="zfbbind"/>
+<input type="hidden" name="zfbid" value="{$zfbid}" />
+<input type="hidden" name="openid" value="{$openid}" />
+<input type="hidden" name="headimg" value="{$headimg}" />
+<input type="hidden" name="nickname" value="{$nickname}" />
+<input type="submit" class="reg-btn" id="form-register" value="立即绑定">
+</form>
+</div>
+</div>
+<!-- 绑定 end -->
+<!-- 新用户注册start-->
+<div class="r-tabCon reg-form" style="display: none;">
+<div class="wellcome-tip"><img src="{$headimg}" width='28' height='28'/>Hi,{$nickname}&nbsp;欢迎来到馨清</div>
+<form action="user.php" method="post" name="formUser" onsubmit="return register();">
+            <ul class="register-list mt20">
+            <div class="form-item form-item-account">
+            <label>{$lang.label_username}</label>
+            <txt id='usernametxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">您的账户名和登录名</txt>
+            <input type="text" class="register-input" name="username"  id="username" onblur="is_registered(this.value);" onfocus="show_txt(this.name)">
+            </div>
+            <div class="input-tip"><span id="username_notice" class=" color06"></span></div>
+            <div class="form-item">
+            <label>{$lang.label_email}</label>
+            <txt id='emailtxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">您的常用邮箱</txt>
+            <input name="email" type="text" id="email" onblur="checkEmail(this.value);" class="register-input" onfocus="show_txt(this.name)">
+            </div>
+            <div class="input-tip"><span id="email_notice" class=" color06"> <i class="i-def"></i></span></div>
+            <div class="form-item">
+            <label>{$lang.label_password}</label>
+            <txt id='passwordtxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">建议至少使用两种字符组合</txt>
+            <input name="password" type="password" id="password1" onblur="check_password(this.value);" onkeyup="checkIntensityup(this.value)"  class="register-input" onfocus="show_txt(this.name)">
+            </div>
+            <div class="input-tip"><span id="password_notice" class=" color06"> <i class="i-def"></i></span></div>
+            <div class="form-item">
+            <label>{$lang.label_confirm_password}</label>
+            <txt id='confirm_passwordtxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">请再次输入密码</txt>
+            <input name="confirm_password" type="password" id="conform_password" onblur="check_conform_password(this.value);"  class="register-input"  onfocus="show_txt(this.name)"/>
+            </div>
+            <div class="input-tip"><span id="conform_password_notice" class=" color06"> <i class="i-def"></i></span></div>
+             
+              <!-- {foreach from=$extend_info_list item=field} -->
+              <!-- {if $field.id eq 6} -->
+              <div class="form-item"><label>{$lang.passwd_question}</label>
+                <select name='sel_question' class="register-input">
+                <option value='0'>{$lang.sel_question}</option>
+                {html_options options=$passwd_questions}
+                </select>
+              </div>
+              <div class="input-tip"><span id="" class=" color06"> <i class="i-def"></i></span></div>
+              <div class="form-item"><label>{$lang.passwd_answer}</label>
+                <input name="passwd_answer" type="text" class="register-input" >
+                <!-- {if $field.is_need} --><span class="prompt color06" id="passwd_quesetion"> *</span><!-- {/if} -->
+              </div>
+              <div class="input-tip"><span id="" class=" color06"> <i class="i-def"></i></span></div>
+              <!-- {elseif $field.reg_field_name=='手机'} -->
+		      <!-- {if $_CFG['ihuyi_sms_mobile_reg']=='1'} -->
+        
+              <input type="hidden" id="ztime" value="{$ztime}">
+              <input type="hidden" id="smsyy" value="{$smsyy}">
+             
+              <input type="hidden" id="sms_code" name="sms_code" value="{$sms_code}">
+			  {insert_scripts files='global.js'}
+			  {insert_scripts files='transport.js'}
+			  {insert_scripts files='sms.js'}
+			  <div class="form-item"><label>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机</label>
+			  <txt id='moblie_phonetxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">建议使用常用手机</txt>
+			  <input type="text" class="register-input" onblur="check_mobile_phone(this.value);" name="extend_field{$field.id}" onfocus="show_txt(this.name)">
+             
+              </div>
+              <div class="input-tip"><span id="mobile_phone_notice" class=" color06"> <i class="i-def"></i></span></div>
+              <div class="form-item"><label>手机验证码</label> 
+              <txt id='moblie_phonecodetxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">请输入手机验证码</txt>
+              <input name="sms_verifycode" id="sms_verifycode" type="text" size="25" class="register-input" style="width:150px" maxlength="6" onfocus="show_txt(this.name)" onblur="check_sms_verifycode(this.value)"/>
+              <input type="button" id="zphone" class="btn-phonecode"    value="<!-- {if $smsyy==0} -->获取语音验证码<!--{else}-->获取验证码<!-- {/if} -->"  onclick="getverifycode1('extend_field{$field.id}', '{$field.reg_field_name}');">
+              </div>
+              <div class="input-tip"><span id="" class=" color06"> <i class="i-def"></i></span></div>
+			  <!-- {else} -->
+			  <div class="form-item"><label>{$field.reg_field_name}</label><input type="text" class="register-input" name="extend_field{$field.id}">
+                <!-- {if $field.is_need} --><span class="prompt color06"> *</span><!-- {/if} -->
+              </div>
+            <!-- {/if} -->
+              <!-- {else} -->
+              <div class="form-item"><label>{$field.reg_field_name}</label>
+              <input type="text" class="register-input" name="extend_field{$field.id}">
+                <!-- {if $field.is_need} --><span class="prompt color06"> *</span><!-- {/if} -->
+              </div>
+              <div class="input-tip"><span id="" class=" color06"> <i class="i-def"></i></span></div>
+            <!-- {/if} -->
+            <!-- {/foreach} -->
+             
+              <!-- 判断是否启用验证码{if $enabled_captcha} -->
+              <div class="form-item"><label>验&nbsp;&nbsp;&nbsp;证&nbsp;&nbsp;&nbsp;码</label>
+              <txt id='captchatxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">请输入验证码</txt>
+              <input type="text" name="captcha" class="register-input" style="width: 150px;" onfocus='show_captcha_message()' onblur="hidden_captcha_message(this.value)"><img src="captcha.php?{$rand}" alt="captcha" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?'+Math.random()" /></div>
+              <div class="input-tip"><span id="captcha_notice" class=" color06"> <i class="i-def"></i></span></div>
+              <!--{/if}-->
+              <div><strong></strong><input name="agreement" type="checkbox" value="1" checked="checked" />
+            {$lang.agreement}</div>
+            <div class="input-tip"><span id="" class=" color06"> <i class="i-def"></i></span></div>
+            <div>
+                  <input name="act" type="hidden" value="act_register" >
+                  <input type="hidden" name="back_act" value="{$back_act}" />
+                  <input type="hidden" name="zfbid" value="{$zfbid}" />
+                  <input type="hidden" name="headimg" value="{$headimg}" />
+                  <input type="hidden" name="nickname" value="{$nickname}" />
+                  <input name="Submit" type="submit" value="立即注册" class="reg-btn">
+            </div>
+              
+            </ul>
+          </form>
+</div>
+<!-- 新用户注册end-->
+</div>
+</div>
+</div>
+<!--{/if}-->
+<!--#支付宝新建用户绑定界面 end-->
+
+<!--*会员注册界面 start-->
+    <!--{if $action eq 'register'}-->
+    <!-- {if $shop_reg_closed eq 1} -->
+    <div class="usBox">
+      <div class="usBox_2 clearfix">
+        <div class="f1 f5" align="center">{$lang.shop_register_closed}</div>
+      </div>
+    </div>
+    <!-- {else} -->
+    {insert_scripts files='utils.js'}
+    <div class="w1160px">
+      <div class="pos mt30">
+        <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+      </div>
+      <div class="border mt10">
+        <div class="register mt30 mb30">
+          
+           <form action="user.php" method="post" name="formUser" onsubmit="return register();">
+            <ul class="register-list mt20">
+            <div class="form-item form-item-account">
+            <label>{$lang.label_username}</label>
+            <txt id='usernametxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">您的账户名和登录名</txt>
+            <input type="text" class="register-input" name="username"  id="username" onblur="is_registered(this.value);" onfocus="show_txt(this.name)">
+            </div>
+            <div class="input-tip"><span id="username_notice" class=" color06"></span></div>
+            <div class="form-item">
+            <label>{$lang.label_email}</label>
+            <txt id='emailtxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">您的常用邮箱</txt>
+            <input name="email" type="text" id="email" onblur="checkEmail(this.value);" class="register-input" onfocus="show_txt(this.name)">
+            </div>
+            <div class="input-tip"><span id="email_notice" class=" color06"> <i class="i-def"></i></span></div>
+            <div class="form-item">
+            <label>{$lang.label_password}</label>
+            <txt id='passwordtxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">建议至少使用两种字符组合</txt>
+            <input name="password" type="password" id="password1" onblur="check_password(this.value);" onkeyup="checkIntensityup(this.value)"  class="register-input" onfocus="show_txt(this.name)">
+            </div>
+            <div class="input-tip"><span id="password_notice" class=" color06"> <i class="i-def"></i></span></div>
+            <div class="form-item">
+            <label>{$lang.label_confirm_password}</label>
+            <txt id='confirm_passwordtxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">请再次输入密码</txt>
+            <input name="confirm_password" type="password" id="conform_password" onblur="check_conform_password(this.value);"  class="register-input"  onfocus="show_txt(this.name)"/>
+            </div>
+            <div class="input-tip"><span id="conform_password_notice" class=" color06"> <i class="i-def"></i></span></div>
+             
+              <!-- {foreach from=$extend_info_list item=field} -->
+              <!-- {if $field.id eq 6} -->
+              <div class="form-item"><label>{$lang.passwd_question}</label>
+                <select name='sel_question' class="register-input">
+                <option value='0'>{$lang.sel_question}</option>
+                {html_options options=$passwd_questions}
+                </select>
+              </div>
+              <div class="input-tip"><span id="" class=" color06"> <i class="i-def"></i></span></div>
+              <div class="form-item"><label>{$lang.passwd_answer}</label>
+                <input name="passwd_answer" type="text" class="register-input" >
+                <!-- {if $field.is_need} --><span class="prompt color06" id="passwd_quesetion"> *</span><!-- {/if} -->
+              </div>
+              <div class="input-tip"><span id="" class=" color06"> <i class="i-def"></i></span></div>
+              <!-- {elseif $field.reg_field_name=='手机'} -->
+		      <!-- {if $_CFG['ihuyi_sms_mobile_reg']=='1'} -->
+        
+              <input type="hidden" id="ztime" value="{$ztime}">
+              <input type="hidden" id="smsyy" value="{$smsyy}">
+             
+              <input type="hidden" id="sms_code" name="sms_code" value="{$sms_code}">
+			  {insert_scripts files='global.js'}
+			  {insert_scripts files='transport.js'}
+			  {insert_scripts files='sms.js'}
+			  <div class="form-item"><label>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机</label>
+			  <txt id='moblie_phonetxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">建议使用常用手机</txt>
+			  <input type="text" class="register-input" onblur="check_mobile_phone(this.value);" name="extend_field{$field.id}" onfocus="show_txt(this.name)">
+             
+              </div>
+              <div class="input-tip"><span id="mobile_phone_notice" class=" color06"> <i class="i-def"></i></span></div>
+               <!-- 判断是否启用验证码{if $enabled_captcha} -->
+              <div class="form-item"><label>验&nbsp;&nbsp;&nbsp;证&nbsp;&nbsp;&nbsp;码</label>
+              <txt id='captchatxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">请输入验证码</txt>
+              <input type="text" name="captcha" class="register-input" style="width: 150px;" onfocus='show_captcha_message()' onblur="hidden_captcha_message(this.value)"><img src="captcha.php?{$rand}" alt="captcha" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?'+Math.random()" /></div>
+              <div class="input-tip"><span id="captcha_notice" class=" color06"> <i class="i-def"></i></span></div>
+              <!--{/if}-->
+              
+              <div class="form-item"><label>手机验证码</label> 
+              <txt id='moblie_phonecodetxt' style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: 'Microsoft YaHei', 'Hiragino Sans GB'; color: rgb(204, 204, 204); display: inline;">请输入手机验证码</txt>
+              <input name="sms_verifycode" id="sms_verifycode" type="text" size="25" class="register-input" style="width:150px" maxlength="6" onfocus="show_txt(this.name)" onblur="check_sms_verifycode(this.value)"/>
+              <input type="button" id="zphone" class="btn-phonecode"    value="<!-- {if $smsyy==0} -->获取语音验证码<!--{else}-->获取验证码<!-- {/if} -->"  onclick="getverifycode1('extend_field{$field.id}', '{$field.reg_field_name}');">
+              </div>
+              <div class="input-tip"><span id="" class=" color06"> <i class="i-def"></i></span></div>
+			  <!-- {else} -->
+			  <div class="form-item"><label>{$field.reg_field_name}</label><input type="text" class="register-input" name="extend_field{$field.id}">
+                <!-- {if $field.is_need} --><span class="prompt color06"> *</span><!-- {/if} -->
+              </div>
+            <!-- {/if} -->
+              <!-- {else} -->
+              <div class="form-item"><label>{$field.reg_field_name}</label>
+              <input type="text" class="register-input" name="extend_field{$field.id}">
+                <!-- {if $field.is_need} --><span class="prompt color06"> *</span><!-- {/if} -->
+              </div>
+              <div class="input-tip"><span id="" class=" color06"> <i class="i-def"></i></span></div>
+            <!-- {/if} -->
+            <!-- {/foreach} -->
+             
+             
+              <div><strong></strong><input name="agreement" type="checkbox" value="1" checked="checked" />
+            {$lang.agreement}</div>
+            <div class="input-tip"><span id="" class=" color06"> <i class="i-def"></i></span></div>
+            <div>
+                  <input name="act" type="hidden" value="act_register" >
+                  <input type="hidden" name="back_act" value="{$back_act}" />
+                  <input name="Submit" type="submit" value="立即注册" class="reg-btn">
+            </div>
+              
+            </ul>
+          </form>
+        </div>
+      </div>
+    </div>
+
+<!--{/if}-->
+<!--{/if}-->
+<!--#会员注册界面 end-->
+
+<!--*找回密码界面 -->
+    <!--{if $action eq 'get_password'} -->
+    {insert_scripts files='utils.js'}
+    <script type="text/javascript">
+    {foreach from=$lang.password_js item=item key=key}
+      var {$key} = "{$item}";
+    {/foreach}
+    </script>
+<div class="w1160px">
+  <div class="pos mt30">
+    <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+  </div>
+  <div class="border usBox mt10" style="min-height:0">
+    <div class="usBox_2 clearfix" style="padding:0 0 0 0;width:950px;margin: 0 auto;">
+    <div class="stepflex">
+    <dl class="first done">
+    <dt class="s-num">1</dt>
+    <dd class="s-text">填写账户名</dd>
+    </dl>
+    <dl class="normal">
+    <dt class="s-num">2</dt>
+    <dd class="s-text">验证身份</dd>
+    </dl>
+    <dl class="normal">
+    <dt class="s-num">3</dt>
+    <dd class="s-text">设置新密码</dd>
+    </dl>
+    <dl class="last">
+    <dt class="s-num">√</dt>
+    <dd class="s-text">完成</dd>
+    </dl>
+    </div>
+      <form action="javascript:submitPwdInfo()" method="post" name="getPassword" >
+          <br />
+          <table width="350" border="0" align="center" style="margin: 0 auto;">
+            
+            <tr>
+              <td  align="left" height="60">{$lang.username}:</td>
+              <td ><input name="user_name" type="text" size="30" class="get_passwordinput"  /><br>
+              <label id="username_error"  class="msg-error"></label>
+              </td>
+            </tr>
+            <tr>
+              <td align="left" height="60">{$lang.comment_captcha}:</td>
+              <td><input type="text" size="8" name="captcha" class="get_passwordinput" />
+              <img src="captcha.php?is_login=1&{$rand}" alt="captcha" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?is_login=1&'+Math.random()" /> <br>
+              <label id="captcha_error"  class="msg-error"></label>
+              </td>
+            </tr>
+            
+            <tr>
+              <td></td>
+              <td height='60'><input type="hidden" name="act" value="get_password_ui" />
+                <input type="submit" name="submit1" value="{$lang.submit}" class="get_passbtn"  />
+                <input name="button" type="button" onclick="history.back()" value="{$lang.back_page_up}"  class="get_passbtn" />
+  	    </td>
+            </tr>
+          </table>
+          <br />
+        </form>
+    </div>
+  </div>
+</div>
+<!--{/if}-->
+<!--*验证身份界面 -->
+<!--{if $action eq 'get_password_method'} -->
+{insert_scripts files='utils.js'}
+    <script type="text/javascript">
+    {foreach from=$lang.password_js item=item key=key}
+      var {$key} = "{$item}";
+    {/foreach}
+    </script>
+<div class="w1160px">
+  <div class="pos mt30">
+    <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+  </div>
+  <div class="border usBox mt10" style="min-height:0">
+    <div class="usBox_2 clearfix" style="padding:0 0 0 0;width:950px;margin: 0 auto;">
+    
+    <div class="stepflex">
+    <dl class="first ">
+    <dt class="s-num">1</dt>
+    <dd class="s-text">填写账户名</dd>
+    </dl>
+    <dl class="normal done">
+    <dt class="s-num">2</dt>
+    <dd class="s-text">验证身份</dd>
+    </dl>
+    <dl class="normal">
+    <dt class="s-num">3</dt>
+    <dd class="s-text">设置新密码</dd>
+    </dl>
+    <dl class="last">
+    <dt class="s-num">√</dt>
+    <dd class="s-text">完成</dd>
+    </dl>
+    </div>
+      <form action="user.php" method="post" name="getPassword" autocomplete="off" onsubmit="return submitPwdInfonoa();">
+          <br />
+          <table width="350" border="0" align="center" style="margin: 0 auto;">
+            <tr>
+              <td  align="left" height="60">请选择验证身份方式:</td>
+              <td >
+              <select name="password_method" class="selt" onchange="selectVerifyType();">
+              {if $getp_user_info.is_validated eq 1}
+              <option value="email">已验证邮箱</option>
+              {/if}
+              {if $getp_user_info.mobile_phone}
+              <option value="mobile">已验证手机</option>
+              {/if}
+              </select>
+              </td>
+            </tr>
+            <tr>
+              <td  align="left" height="60">{$lang.username}:</td>
+              <td >
+              <strong style="font-size: 16px;">{$getp_user_info.user_name}</strong>
+              <input type="hidden" name='user_name' value="{$getp_user_info.user_name}"/>
+              </td>
+            </tr>
+            
+            <tr id="emaildiv" {if $getp_user_info.is_validated eq 1}style="display:''"{else}style="display:none"{/if}>
+              <td align="left" height="60">{$lang.email}:</td>
+              <td><input name="email" type="text" size="30" class="get_passwordinput" /></td>
+              {if $getp_user_info.is_validated eq 1}<input type="hidden" name="act" value="send_pwd_email"/>
+              {else}
+              <input type="hidden" name="act" value="send_pwd_mobile"/>
+              {/if}
+            </tr>
+            
+            
+            <tr id="mobilediv" {if $getp_user_info.is_validated eq 1}style="display:none"{else}style="display:''"{/if}>
+               <td align="left" height="60">已验证手机:</td>
+               <td><strong style="font-size: 16px;">{$getp_user_info.mobile_phone}</strong>
+               </td>
+            
+            </tr>
+            <tr id="mobilediv1" {if $getp_user_info.is_validated eq 1}style="display:none"{else}style="display:''"{/if}>
+               <td align="left" height="60">输入已验证手机:</td>
+               <td>
+               <input name="mobile" type="text" size="30" class="get_passwordinput" />
+               </td>
+             
+            </tr>
+           
+            <tr>
+              <td></td>
+              <td height='60'>
+              
+                <input type="submit" name="submit" value="{$lang.submit}" class="get_passbtn"  />
+                <input name="button" type="button" onclick="history.back()" value="{$lang.back_page_up}" class="get_passbtn" />
+  	    </td>
+            </tr>
+          </table>
+          <br />
+        </form>
+    </div>
+  </div>
+</div>
+<!--{/if}-->
+<!--*验证身份界面 end-->
+<!--*密码修改完成界面 -->
+<!--{if $action eq 'reset_password_done'} -->
+{insert_scripts files='utils.js'}
+    <script type="text/javascript">
+    {foreach from=$lang.password_js item=item key=key}
+      var {$key} = "{$item}";
+    {/foreach}
+    </script>
+<div class="w1160px">
+  <div class="pos mt30">
+    <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+  </div>
+  <div class="border usBox mt10" style="min-height:0">
+    <div class="usBox_2 clearfix" style="padding:0 0 0 0;width:950px;margin: 0 auto;">
+    
+    <div class="stepflex">
+    <dl class="first ">
+    <dt class="s-num">1</dt>
+    <dd class="s-text">填写账户名</dd>
+    </dl>
+    <dl class="normal ">
+    <dt class="s-num">2</dt>
+    <dd class="s-text">验证身份</dd>
+    </dl>
+    <dl class="normal">
+    <dt class="s-num">3</dt>
+    <dd class="s-text">设置新密码</dd>
+    </dl>
+    <dl class="last done">
+    <dt class="s-num">√</dt>
+    <dd class="s-text">完成</dd>
+    </dl>
+    </div>
+    <div class="reset_password_done">{$lang.send_pwd_mobile_success}&nbsp;&nbsp;<a href="{$relogin_lnk}" style="color: #005ea7;">请重新登录</a></div>
+    </div>
+  </div>
+</div>
+<!--{/if}-->
+<!--*密码修改完成界面 end-->
+<!--*通过问题找回密码的确认找回账号界面 -->
+    <!--{if $action eq 'qpassword_name'} -->
+<div class="w1160px">
+  <div class="pos mt30">
+    <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+  </div>
+  <div class="border usBox mt10">
+    <div class="usBox_2 clearfix">
+      <form action="user.php" method="post">
+          <br />
+          <table width="70%" border="0" align="center">
+            <tr>
+              <td colspan="2" align="center"><strong>{$lang.get_question_username}</strong></td>
+            </tr>
+            <tr>
+              <td width="29%" align="right" height="50">{$lang.username}</td>
+              <td width="61%"><input name="user_name" type="text" size="30" class="login-input" /></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><input type="hidden" name="act" value="get_passwd_question" class="login-input"/>
+                <input type="submit" name="submit" value="{$lang.submit}" class="btning" style="border:none;" />
+                <input name="button" type="button" onclick="history.back()" value="{$lang.back_page_up}" style="border:none;"class="btning" />
+  	         </td>
+            </tr>
+          </table>
+          <br />
+        </form>
+    </div>
+  </div>
+</div>
+<!--{/if}-->
+
+<!--*根据输入账号显示密码问题界面 -->
+    <!--{if $action eq 'get_passwd_question'} -->
+<div class="usBox">
+  <div class="usBox_2 clearfix">
+    <form action="user.php" method="post">
+        <br />
+        <table width="70%" border="0" align="center">
+          <tr>
+            <td colspan="2" align="center"><strong>{$lang.input_answer}</strong></td>
+          </tr>
+          <tr>
+            <td width="29%" align="right">{$lang.passwd_question}：</td>
+            <td width="61%">{$passwd_question}</td>
+          </tr>
+          <tr>
+            <td align="right">{$lang.passwd_answer}：</td>
+            <td><input name="passwd_answer" type="text" size="20" class="inputBg" /></td>
+          </tr>
+          <!-- 判断是否启用验证码{if $enabled_captcha} -->
+          <tr>
+            <td align="right">{$lang.comment_captcha}</td>
+            <td><input type="text" size="8" name="captcha" class="inputBg" />
+            <img src="captcha.php?is_login=1&{$rand}" alt="captcha" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?is_login=1&'+Math.random()" /> </td>
+          </tr>
+          <!--{/if}-->
+          <tr>
+            <td></td>
+            <td><input type="hidden" name="act" value="check_answer" />
+              <input type="submit" name="submit" value="{$lang.submit}" class="get_passbtn"  />
+              <input name="button" type="button" onclick="history.back()" value="{$lang.back_page_up}"  class="get_passbtn" />
+	    </td>
+          </tr>
+        </table>
+        <br />
+      </form>
+  </div>
+</div>
+<!--{/if}-->
+
+<!-- {if $action eq 'reset_password'} -->
+    <script type="text/javascript">
+    {foreach from=$lang.password_js item=item key=key}
+      var {$key} = "{$item}";
+    {/foreach}
+    </script>
+<div class="usBox">
+  <div class="usBox_2 clearfix">
+     <div class="stepflex">
+    <dl class="first ">
+    <dt class="s-num">1</dt>
+    <dd class="s-text">填写账户名</dd>
+    </dl>
+    <dl class="normal ">
+    <dt class="s-num">2</dt>
+    <dd class="s-text">验证身份</dd>
+    </dl>
+    <dl class="normal done">
+    <dt class="s-num">3</dt>
+    <dd class="s-text">设置新密码</dd>
+    </dl>
+    <dl class="last">
+    <dt class="s-num">√</dt>
+    <dd class="s-text">完成</dd>
+    </dl>
+    </div>
+    <form action="user.php" method="post" name="getPassword2" onSubmit="return submitPwd()">
+      <br />
+      <table width="350" border="0" align="center" style="margin: 0 auto;">
+        <tr>
+          <td height="50">{$lang.new_password}:</td>
+          <td><input name="new_password" type="password" size="25" class="get_passwordinput" /></td>
+        </tr>
+        <tr>
+          <td height='50'>{$lang.confirm_password}:</td>
+          <td><input name="confirm_password" type="password" size="25"  class="get_passwordinput"/></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <input type="hidden" name="act" value="act_edit_password" />
+            <input type="hidden" name="uid" value="{$uid}" />
+            <input type="hidden" name="code" value="{$code}" />
+            <input type="submit" name="submit" value="{$lang.confirm_submit}" class='get_passbtn'/>
+          </td>
+        </tr>
+      </table>
+      <br />
+    </form>
+  </div>
+</div>
+<!--{/if}-->
+<!--#找回密码界面 end-->
+</div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+{foreach from=$lang.passport_js item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+var username_exist = "{$lang.username_exist}";
+</script>
+</html>

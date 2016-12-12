@@ -1,0 +1,11 @@
+<div class="jd-express-news">
+<a class="J_ping jd-news-tit"><img src="../images/jd-news-tit.png"/></a>
+<div class="news-list-wrapper" id="scroll-news">
+<ul class="news-list" style="transform: translate3d(0px, 0px, 0px);">
+<!--  {foreach from=$new_articles.12.article item=news} -->
+<li class="news-item"><a href="{$news.url}">{$news.title}</a></li>
+<!-- {/foreach} -->
+</ul>
+</div>
+<a href="index.php?m=default&c=article&a=art_list&id=12" class="J_ping jd-news-more"><i class="line"></i>更多</a>
+</div>

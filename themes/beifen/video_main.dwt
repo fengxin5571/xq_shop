@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+<div class="main">
+    <div class="mg-cate w1160px clearfix">
+    <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+    </div>
+    <div class="w1160px mt20 clearfix">
+      <div class="hot-video clearfix">
+         {foreach from=$top_video item=top_video}
+        <div class="hot1-video fl">
+           <a class="play" href="{$top_video.url}">
+              <img src="{$top_video.video_img}">
+              <span></span>
+            </a>
+          <p><a href="{$top_video.url}">{$top_video.title|truncate:20:"...":true}</a></p>
+            <p>{$top_video.description|truncate:40:"...":true}</p>
+        </div>
+        {/foreach}
+
+        <div class="hot2-video clearfix fl">
+
+          {foreach from=$rom_video item=rom_video}
+          <div class="hot2-list">
+            <a class="play" href="{$rom_video.url}">
+              <img src="{$rom_video.video_img}">
+              <span></span>
+            </a>
+            <p><a href="{$rom_video.url}">{$rom_video.title|truncate:20:"...":true}</a></p>
+            <p>{$rom_video.description|truncate:20:"...":true}</p>
+          </div>
+          {/foreach}
+        </div>
+      </div>
+      {foreach from=$video_data item=video_data}
+      <div class="mg-videolist mt20">
+        <h2 class="clearfix"><span>{$video_data.cat_name}</span><a href="{$video_data.cat_url}">更多>></a></h2>
+        <div class="video-grid clearfix">
+          {foreach from=$video_data.products item=product}
+          <div class="mg-vlist">
+            <a class="play" href="{$product.url}">
+              <img src="{$product.video_img}">
+              <span></span>
+            </a>
+            <p><a href="{$product.url}">{$product.title|truncate:20:"...":true}</a></p>
+            <p>{$product.description|truncate:40:"...":true}</p>
+          </div>
+          {/foreach}
+          
+        </div>
+      </div>
+      {/foreach}
+
+
+
+
+
+    </div>
+    
+    
+  </div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+<script type="text/javascript">
+document.getElementById('cur_url').value = window.location.href;
+</script>
+</html>

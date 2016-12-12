@@ -1,0 +1,108 @@
+﻿<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<title>CIR40技术方案集成中心_{$page_title}</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="./css/common.css" rel="stylesheet" type="text/css" />
+<link href="./css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="bgYellow">
+
+<div class="container">
+<!--top-->
+ <div class="top">
+    <div class="w1160px clearfix">
+      <div class="welcome fl">欢迎光临{$shop_name}</div>
+      <div class="topnav fr">
+       {insert_scripts files='transport.js,utils.js,json2.js'}
+       {insert name='member_info'}
+
+       
+      </div>
+    </div>
+  </div>
+<!--top end-->
+
+<!--header-->
+  <div class="s-header">
+    <div class="w930px clearfix">
+      <div class="l-title fl mt20 mb20">
+        <h1>机器人技术方案集成中心</h1>
+        <p> The IC of Robot technology solution</p>
+      </div>
+      <a href="technology.php"><div class="r-title fr mt40"></div></a>
+    </div>
+  </div>
+<!--header END-->
+
+<!--main-->
+  <div class="s-main">    
+    <div class="white-bg" style="padding-bottom:0;">
+      <div class="w930px">
+        <div class="hang talignC" style="color:#ff7300;">
+          <marquee onMouseOut="this.start()" onMouseOver="this.stop()">
+          {insert name='ads' id=7 num=6}
+          </marquee> 
+        </div>
+        <div class="s-plan mt10 fl">
+          <div class="s-plan-block"><a href="technology_form.php" title=""><img src="images/other/plan.gif" alt=""></a>
+          </div>
+          <div class="s-plan-block mt10"><a href="technology_cat.php?id=23" title=""><img src="images/other/case.gif" alt=""></a>
+            <div class="subnav">
+              <!-- {foreach from=$scat item=scat name="cat_foreach"} -->
+              <!-- {if $scat.level  == 2} -->
+                  <a href="technology_cat.php?id={$scat.id}" title="">{$scat.name}</a>
+              <!-- {/if} -->    
+              <!--{/foreach}--> 
+              <div class="conner"><img src="images/other/conner.png" alt=""></div>
+            </div>
+            <div class="di"></div>
+          </div>
+        </div>
+        <div class="adv fr mt10">
+          <ul class="rslides f426x240">
+               {insert name='ads' id=6 num=6}
+            </ul>
+        </div>
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+<!--main END-->
+<!--footer-->
+  <div class="s-footer">
+    <div class="w930px">
+      <div class="s-footer-nav">
+        <!-- {foreach from=$cat item=cat name="cat_foreach"} -->
+        <!-- {if $cat.level} -->
+            <a href="technology_cat.php?id={$cat.id}" title="">{$cat.name}</a>
+        <!-- {/if} -->    
+        <!--{/foreach}--> 
+      </div>
+    </div>
+  </div>
+<!--footer END-->
+  <div class="w930px">
+    <div style="background:#ff7300;">
+     <div class="s-copyright fl mt20" style="color:#fff;font-size:14px;">
+        <p>客服电话：{$service_phone} 地址：{$shop_address}</p>
+        <p>{$copyright}  {$icp_number}</p>
+      </div>
+
+      <div class="bdsharebuttonbox fr mt20">
+        <a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+</div>
+</body>
+{insert_scripts files='jquery-1.9.1.min.js'}
+{insert_scripts files='focus2.js'}
+{insert_scripts files='mousevent2.js'}
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"32"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+</html>

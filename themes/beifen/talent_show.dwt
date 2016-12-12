@@ -1,0 +1,241 @@
+﻿<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<title>{$page_title}</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="./css/common.css" rel="stylesheet" type="text/css" />
+<link href="./css/style.css" rel="stylesheet" type="text/css" />
+{insert_scripts files='transport.js'}
+</head>
+<body style="background: #F7F7F7;">
+
+<div class="container">
+<!--top-->
+ <div class="top talenttop">
+    <div class="w1160px clearfix">
+      <div class="welcome fl">欢迎光临{$shop_name}</div>
+      <div class="topnav fr">
+       {insert_scripts files='transport.js,utils.js,json2.js'}
+       {insert name='member_info'}
+
+       
+      </div>
+    </div>
+  </div>
+<!--top end-->
+<!--header-->
+  <div class="s-header" style="margin-top:5px">
+    <div class="w1042px clearfix" style="position:relative;">
+      <a href="talent.php"><div class="r-logo fl"></div></a>
+      <div class="r-subtitle fl"></div>
+      <div class="r-nav">
+        <ul>
+          <!-- {foreach from=$cat item=cat} -->
+          <li><a href="talent.php?id={$cat.cat_id}" title="{$cat.cat_name}" target="_blank" {if $cat.cat_id eq $cat_id}class="cur" {/if}>
+            <span>{$cat.cat_name}</span></a></li>
+          <!--{/foreach}--> 
+          <div class="clr"></div>
+        </ul>
+      </div>
+      <div class="r-area">
+
+        {if $user_info}
+        <div class="user-region clearfix">
+            <p>Hi,<font class="f4_b">{$user_info.username}</font></p>
+            <p><a href="user.php" class="login-btn" title="{$lang.user_center}">{$lang.user_center}</a></p>
+            <p><a href="user.php?act=logout" class="register-btn ml10" title="{$lang.user_logout}">{$lang.user_logout}</a></p>
+          </div>
+        </div>
+      {else}
+        <p><a href="user.php?act=register" title="" target="_blank">·注册</a></p>
+        <p><a href="user.php" title="" target="_blank">·登录</a></p>
+        
+        {/if}
+        
+      </div>
+    </div>
+  </div>
+<!--header END-->
+
+<!--main-->
+  <div class="s-main">    
+     <div class="w1042px" style="background: #fc770e;">
+      <div class="banner"><a href="#" title=""><img src="images/other/banner.jpg" width="1042" height="348" alt=""></a></div>
+      <div class="r-left">
+        <h2>人才输送中心</h2>
+        <p>Talent Delivery Center</p>
+        <!--<div class="r-detail">CIR40 TDC系统采用会员等级制，为您提供不同等级人才供您选择。</div>-->
+        <!-- {foreach from=$ranks item=rank} -->
+        <div class="r-left-btn"><a href="talent.php?rank={$rank.rank_id}" title="{$rank.rank_name}" >{$rank.rank_name}</a></div>
+        <!-- {/foreach} -->
+      </div>
+      <div class="r-right">
+        <!-- <div class="r-right-hd"><a href="#" title="更多人才">更多人才</a></div> -->
+        <div class="r-right-bd2">
+          <table cellpadding="6" cellspacing="1" width="100%" bgcolor="#E3EEF5" align="center">
+            <tbody><tr>
+            <td colspan="5" bgcolor="#F1F7FC" align="center"><strong>{$talent.name}个人简历</strong></td>
+            </tr>
+            <tr bgcolor="#FFFFFF">
+            <td align="center" width="120">姓名</td>
+            <td width="240">{$talent.name}</td>
+            <td align="center" width="120">性别</td>
+            <td width="240">{$talent.sex}</td>
+            <td rowspan="6" align="center" valign="top"><a href="{$talent.img_url}" target="_blank"><img src="{$talent.img_url}" width="100" height="140" alt="" ></a></td>
+            </tr>
+            <tr bgcolor="#FFFFFF">
+            <td align="center">年龄</td>
+            <td>{$talent.age}</td>
+            <td align="center">婚姻状况</td>
+            <td>{$talent.mariage}</td>
+            </tr>
+            
+            <tr bgcolor="#FFFFFF">
+            <td align="center">居 住 地</td>
+            <td>{$talent.address}</td>
+            <td align="center">学历</td>
+            <td>{$talent.education}</td>
+            </tr>
+            <tr bgcolor="#FFFFFF">
+            <td align="center">毕业院校</td>
+            <td>{$talent.school}</td>
+            <td align="center">专业</td>
+            <td>{$talent.major}</td>
+            </tr>
+            <tr bgcolor="#FFFFFF">
+              <td align="center">工作经验</td>
+              <td>{$talent.experience}</td>
+              <td align="center">职位意向</td>
+              <td>{$talent.purpose}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          {if isset($canSend) && $canSend}
+          <table cellpadding="6" cellspacing="1" width="100%" bgcolor="#E3EEF5" align="center">
+            <tbody><tr>
+            <td colspan="4" bgcolor="#F1F7FC" align="center"><strong>联系方式</strong></td>
+            </tr>
+            <tr bgcolor="#FFFFFF">
+            <td align="center" width="120">联系电话</td>
+            <td width="240">{$talent.phone}</td>
+            <td align="center" width="120">Email</td>
+            <td width="240">{$talent.email}</td>
+            </tr>
+            </tbody>
+          </table>
+          {/if}
+
+          <table cellpadding="6" cellspacing="1" width="100%" bgcolor="#E3EEF5" align="center">
+            <tbody><tr>
+            <td  bgcolor="#F1F7FC" align="center"><strong>详细描述</strong></td>
+            </tr>
+            <tr bgcolor="#FFFFFF">
+            <td >{$talent.content}</td>
+            </tr>
+            
+            </tbody>
+          </table>
+
+        {if isset($canSend) && $canSend}
+          {if $talent.file_url neq ''}
+          <table cellpadding="6" cellspacing="1" width="100%" bgcolor="#E3EEF5" align="center">
+            <tbody><tr>
+            <td  bgcolor="#F1F7FC" align="center"><strong>附件下载</strong></td>
+            </tr>
+            <tr bgcolor="#FFFFFF">
+            <td ><a href="{$talent.file_url}" target="_blank">点击下载</a></td>
+            </tr>
+            </tbody>
+          </table>
+          {/if}
+        {/if}
+
+          
+            <div align="center" class="mt30 opt mb20">
+                {if isset($canSend) && $canSend}
+                <a href="javascript:void(0)"  class="susong" id="susong">我要输送</a>
+                {/if}
+                <a href="javascript:void(0)"  onclick="addTalent({$talent.talent_id});" class="susong" >收藏</a>
+                <a href="talent.php"  class="susong" >返回</a>
+            </div>
+
+
+            <table cellpadding="6" cellspacing="1" width="100%" bgcolor="#E3EEF5" align="center" style="display:none" id="susong_form" class="mt30">
+            <tbody><tr>
+            <td  bgcolor="#F1F7FC" align="center"><strong>我要输送</strong></td>
+            </tr>
+            <tr bgcolor="#FFFFFF">
+            <td >
+
+                <form action="talent_show.php" method="post" enctype="multipart/form-data" name="formMsg" onsubmit="return submitMsg()">
+                <table width="95%" border="0" cellpadding="3">
+                  <tbody>
+                  <tr>
+                    <td align="right">您的姓名：</td>
+                    <td><input name="user_name" type="text" size="30" class="inputBg"> <font color="red">*</font></td>
+                  </tr>
+                  <tr>
+                    <td align="right">您的手机：</td>
+                    <td><input name="user_phone" type="text" value="{$user_info.mobile_phone}" size="30" class="inputBg"> <font color="red">*</font></td>
+                  </tr>
+                  <tr>
+                    <td align="right">电子邮件：</td>
+                    <td><input name="user_email" type="text" value="{$user_info.email}" size="30" class="inputBg"></td>
+                  </tr>
+                   <tr>
+                    <td align="right">公司名称：</td>
+                    <td><input name="user_company" type="text" value="" size="30" class="inputBg"></td>
+                  </tr>
+                  <tr>
+                    <td align="right" valign="top">备注：</td>
+                    <td><textarea name="msg_content" cols="50" rows="8" wrap="virtual" class="B_blue"></textarea> <font color="red">*</font></td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                      <input type="hidden" name="talent_id" value="{$talent.talent_id}">
+                      <input type="hidden" name="act" value="add_msg">
+                      <input type="submit" value="提 交" class="bnt_bonus">
+                    </td>
+                  </tr>
+                </tbody></table>
+              </form>
+            </td>
+            </tr>
+            </tbody>
+          </table>
+          
+           
+        </div>
+        
+      </div>
+      <div class="clr"></div>
+     </div>
+  </div>
+<!--main END-->
+<!--footer-->
+
+<!--footer END-->
+  <div class="w1042px talentfooter">
+    <div style="width: 1042px;margin: 0 auto;">
+      <div class="s-copyright fl mt20" style="font-size:14px;color:#b0b0b0;">
+        <p>客服电话：{$service_phone} 地址：{$shop_address}</p>
+        <p>{$copyright}  {$icp_number}</p>
+      </div>
+      <div class="bdsharebuttonbox fr mt20">
+        <a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+</div>
+</body>
+{insert_scripts files='jquery-1.9.1.min.js'}
+{insert_scripts files='talent_show.js'}
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"32"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+</html>

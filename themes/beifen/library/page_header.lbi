@@ -1,0 +1,87 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{insert_scripts files='jquery-1.9.1.min.js'}
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+</script>
+<div class="container">
+<!--topbar-->
+  <div class="top">
+    <div class="w1160px clearfix">
+      <div class="welcome fl">欢迎光临{$shop_name}</div>
+      <div class="topnav fr">
+       {insert_scripts files='transport.js,utils.js,json2.js'}
+       {insert name='member_info'}
+
+       <!-- {foreach name=nav_top_list from=$navigator_list.top item=nav} -->
+            <a href="{$nav.url}" <!-- {if $nav.opennew eq 1} --> target="_blank" <!-- {/if} -->>{$nav.name}</a>
+       <!-- {/foreach} -->
+
+      </div>
+    </div>
+  </div>
+<!--topbar END-->
+<!--header-->
+  <div class="header">
+    <div class="w1160px clearfix">
+      <!--logo-->
+      <h1 class="logo fl mt40"><a href="../index.php" name="top" title="{$shop_name}"><img src="../images/robot/cirlogo.png" width="480" height="60" alt="{$shop_name}"></a></h1>
+      <!--logo END-->
+      <!--search-->
+
+      <script type="text/javascript">
+      {literal}
+      <!--
+      function checkSearchForm()
+      {
+          if(document.getElementById('keyword').value)
+          {
+              return true;
+          }
+          else
+          {
+              alert("{$lang.no_keywords}");
+              return false;
+          }
+      }
+      -->
+      {/literal}
+      </script>
+      <div class="soso clearfix fl mt30">
+        <form id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()">
+        <input name="keywords" type="text" id="keyword" class="soso-input fl" value="{$search_keywords|escape}">
+        <input type="submit" class="soso-btn" value="">
+        </form>
+        <p>
+        {if $searchkeywords}
+        {foreach from=$searchkeywords item=val key=key}
+        {if $key>0}|{/if}<a href="search.php?keywords={$val|escape:url}">{$val}</a>
+        {/foreach}
+        {/if}
+        </p>
+      </div>
+      <!--search END-->
+      <div class="settle fr mt30">
+        <div class="settleup">购物车<span>({insert name='cart_num'})</span>件</div>
+        <div class="settledown">{insert name='cart_info'}<br><button onclick="location.href='flow.php'">查看我的购物车</button></div>
+      </div>
+    </div>
+  </div>
+<!--header END-->
+
+<!--navigation-->
+  <div class="nav mt20">
+    <div class="w1160px clearfix">
+      <div class="category fl hand" id="cate-bg">
+        <div class="cate-ico" id="cate-ico-hover"></div>全部商品分类<span class="cateup"></span>
+      </div>
+      <div class="navitems fl">
+        <ul>
+          <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav} -->
+          <li><a href="{$nav.url}" {if $nav.opennew eq 1}target="_blank" {/if} {if $nav.active eq 1} class="cur "{/if}>{$nav.name}<span></span></a><span class="nav-hover"></span></li>
+          <!-- {/foreach} -->
+          <div class="clr"></div>
+        </ul>
+      </div>
+    </div>
+  </div>
+<!--navigation END-->

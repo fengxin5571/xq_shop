@@ -1,0 +1,100 @@
+{include file="pageheader.htm"}
+<div class="main-div">
+  <table width="98%">
+    <tr>
+      <td style="padding: 0px 20px">
+        <h3>{$msg.msg_title|escape:"html"}</h3>
+        <hr size="1" />
+        <div>类型：{$msg.service_type}</div>		<!-- {foreach from=$msg.good_list item=good} -->
+        <div>产品：{$good.goods_name}</div>        <!-- {/foreach} -->        <!-- {if $msg.msg_type eq 1} -->
+        <div>故障类型：{$msg.guz}</div>        <!-- {elseif $msg.msg_type eq 2} -->        <div>换货理由：{$msg.guz}</div>        {if $msg.guzhang eq 11 }        <div>支付状态：{if $msg.is_payment eq 0}未付款{else}已付款{/if}</div>        {/if}        <!-- {else} -->        <div>退货理由：{$msg.guz}</div>        {if $msg.guzhang eq 13}        <div>支付状态：{if $msg.is_payment eq 0}未付款{else}已付款{/if}</div>        {/if}        <!-- {/if} -->        <div>申请状态：{if $msg.msg_status eq 0}{$lang.unreplyed}{elseif $msg.msg_status eq 1 }{$lang.replyed} {$lang.replyed_time_text}{elseif $msg.msg_status eq 2 }{$lang.replyed_time}{else}{$lang.done_service}{/if}</div>
+                <div>姓名：{$msg.user_name}</div>
+        <div>手机：{$msg.user_phone}</div>
+        <div>电子邮件：{$msg.user_email}</div>
+        <div>故障现象：{$msg.msg_content|escape:"html"|nl2br}</div>                {if $msg.service_img}        <div>故障图片：<img src="../{$msg.service_img}" width="200"/></div>        {/if}
+        {if $msg.msg_file}
+        <div align="right">
+          <a href="../data/service_repair/{$msg.msg_file}" target="_bank" width="300" height="400">{$lang.view_upload_file}</a>
+          <a href="service_repair.php?act=drop_file&id={$msg.msg_id}&file={$msg.msg_file}">{$lang.drop}</a>
+        </div>
+        {/if}
+        <div align="right"  nowrap="nowrap"><a href="mailto:{$msg.user_email}">{$msg.user_name}</a> {$msg.msg_time}</div>
+      </td>
+    </tr>    <tr>    <td align="center">    {if $msg.msg_status neq 2 and $msg.msg_status neq 3}    {if $msg.msg_status eq "0"}         <input type="button" onclick="location.href='service_repair.php?act=check&amp;check=allow&amp;id={$msg.msg_id}'" value="确认申请" class="button">        {else}        <input type="button" onclick="location.href='service_repair.php?act=check&check=forbid&id={$msg.msg_id}'" value="拒绝申请" class="button" />        {/if}   {/if}    </td>    </tr>
+  </table>
+</div>
+{if $msg.msg_status neq 0 and $msg.msg_status neq 3}
+{if $msg.reply neq ''}
+<div class="main-div">
+  <table width="98%">
+    <tr>
+      <td style="padding: 0px 20px">
+        <h3> {$lang.from} {$msg.reply_time} {$lang.reply}:</h3>
+        <hr size="1" />
+        <div>{$msg.reply|escape:"html"|nl2br}</div>
+      </td>
+    </tr>
+  </table>
+</div>
+{/if}
+
+{if $send_fail}
+<ul style="padding:0; margin: 0; list-style-type:none; color: #CC0000;">
+<li style="border: 1px solid #CC0000; background: #FFFFCC; padding: 10px; margin-bottom: 5px;" >{$lang.mail_send_fail}</li>
+</ul>
+{/if}
+{if $msg.msg_status neq 2}
+<div class="main-div">
+<form method="post" action="service_repair.php?act=action" name="theForm"  onsubmit="return validate()">
+<table border="0" width="98%"><input type="hidden" name='msg_type' value={$msg.msg_type}>        <!-- {if $msg.msg_type eq 1} -->       <tr>	    <td width=200>确认上门维修时间后，回复给用户:</td>	    <td >已确认维修时间，预计在<input name="start_time" size='5'/>时——<input name="end_time" size='5'/>时之间等候维修人员上门维修</td>       </tr>        <!-- {elseif $msg.msg_type eq 2} -->        <tr>	    <td width=200>确认上门换货时间后，回复给用户:</td>		    <td >已确认换货时间，预计在<input name="start_time" size='5'/>时——<input name="end_time" size='5'/>时之间等候维修人员上门换货</td>       </tr>        <!-- {else} -->        <tr>	    <td width=200>确认上门退货时间后，回复给用户:</td>		    <td >已确认退货时间，预计在<input name="start_time" size='5'/>时——<input name="end_time" size='5'/>时之间等候维修人员上门退货</td>       </tr>        <!-- {/if} -->
+  
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><input name="send_email_notice" type="checkbox" value='1'/>{$lang.send_email_notice}</td>
+  </tr>
+  {if $msg.reply neq ''}
+  <tr>
+    <td>&nbsp;</td>
+    <td>{$lang.have_reply_content}</td>
+  </tr>
+  {/if}
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input type="hidden" name="msg_id" value="{$msg.msg_id}">      
+      <input name="Submit" value="{$lang.button_submit}" type="submit" class="button">
+      <input type="reset" value="{$lang.button_reset}" class="button">
+      {if $msg.reply neq ''}<input type="submit" name="remail" value="{$lang.remail}" class="button">{/if}
+    </td>
+  </tr>
+</table>
+</form>
+</div>{/if}{/if}{if $msg.msg_status eq 2}<div class="main-div" style="text-align: center;"><input type="button" value="{$lang.submit_service_button.$msg.msg_type}" onclick="location.href='service_repair.php?act=confirm_service&id={$msg.msg_id}'" class="button"/><span>{$lang.confirm_service_span}</span></div>{/if}
+{insert_scripts files="../js/utils.js,validator.js"}
+<script language="JavaScript">
+<!--
+{literal}
+
+
+/**
+ * 检查表单输入的数据
+ */
+function validate()
+{
+    validator = new Validator("theForm");        validator.required("start_time",  no_start_time);    validator.required("end_time",  no_end_time);    validator.isNumber("start_time",  isn_start_time);    validator.isNumber("end_time",  isn_end_time);
+    return validator.passed();
+}
+
+onload = function()
+{
+    // 开始检查订单
+    startCheckOrder();
+}
+//-->
+{/literal}
+</script>
+{include file="pagefooter.htm"}

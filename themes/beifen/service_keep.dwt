@@ -1,0 +1,163 @@
+﻿<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<title>{$page_title}</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="./css/common.css" rel="stylesheet" type="text/css" />
+<link href="./css/style.css" rel="stylesheet" type="text/css" />
+{insert_scripts files="transport.js,utils.js,selectzone2.js"}
+</head>
+<body class="bgYellow">
+
+<div class="container">
+<!--header-->
+  <div class="s-header">
+    <div class="w930px clearfix">
+      <div class="l-title fl mt20 mb20">
+        <h1>机器人4S售后服务中心</h1>
+        <p>4S Center For Robot</p>
+      </div>
+      <a href="service.php"><div class="r-title fr mt40"></div></a>
+    </div>
+  </div>
+<!--header END-->
+
+<!--main-->
+  <div class="s-main">    
+    <div class="s-notice">
+      <div class="w930px"><!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem --></div>
+    </div>
+    <div class="white-bg">
+      <div class="w930px">
+          <div class="r-left2">
+                    <div class="r-left-btn2 "><a href="#" title="保养"  class="current"> {$type_name}</a></div>
+          </div>
+          <div class="r-right2">
+              <div id="ny_dd">
+                  <form action="service_keep.php" method="post" enctype="multipart/form-data" name="formMsg" onsubmit="return submitMsg()">
+                                  <table width="100%" border="0" cellpadding="3">
+                                    <tbody>
+                                    <tr>
+                                      <td align="right">保养类型：</td>
+                                      <td>
+                                          {$type_name}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td align="right">产品类型：</td>
+                                      <td>
+                                          <select name="cat_id" onchange="searchGoods()" style="width:200px;">
+                                            <option value="0">所有分类</option>
+                                            {$goods_cat_list}
+                                          </select>
+                                      </td>
+                                    </tr>
+
+                                    <tr>
+                                      <td align="right">选择产品：</td>
+                                      <td>
+                                          <select name="goods_id" style="width:200px;" >
+                                          </select> <font color="red">*</font>
+                                      </td>
+                                    </tr>
+
+                                    <tr>
+                                      <td align="right">保养类别：</td>
+                                      <td>
+                                          <select name="guzhang" style="width:200px;">
+                                              <!-- {foreach from=$guzhang item=guzhang name="guzhang_foreach"} -->
+                                              <option value="{$guzhang.cat_id}">{$guzhang.cat_name}</option>
+                                              <!--{/foreach}--> 
+                                          </select> <font color="red">*</font>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td align="right">姓名：</td>
+                                      <td><input name="user_name" type="text" size="30" class="inputBg"> <font color="red">*</font></td>
+                                    </tr>
+                                    <tr>
+                                      <td align="right">手机：</td>
+                                      <td><input name="user_phone" type="text" value="{$user_info.mobile_phone}" size="30" class="inputBg"> <font color="red">*</font></td>
+                                    </tr>
+                                    <tr>
+                                      <td align="right">电子邮件：</td>
+                                      <td><input name="user_email" type="text" value="{$user_info.email}" size="30" class="inputBg"></td>
+                                    </tr>
+                                     <tr>
+                                      <td align="right">公司名称：</td>
+                                      <td><input name="user_company" type="text" value="" size="30" class="inputBg"></td>
+                                    </tr>
+                                    <tr>
+                                      <td align="right">保养标题：</td>
+                                      <td><input name="msg_title" type="text" value="" size="30" class="inputBg"></td>
+                                    </tr>
+                                    <tr>
+                                      <td align="right" valign="top">保养说明：</td>
+                                      <td><textarea name="msg_content" cols="50" rows="8" wrap="virtual" class="B_blue"></textarea> <font color="red">*</font></td>
+                                    </tr>
+                                    <tr>
+                                      <td>&nbsp;</td>
+                                      <td>
+                                        <input type="hidden" name="msg_type" value="{$msg_type}">
+                                        <input type="hidden" name="act" value="add_msg">
+                                        <input type="submit" value="提 交" class="bnt_bonus">
+                                      </td>
+                                    </tr>
+                                  </tbody></table>
+                                </form>
+              </div>
+          </div>
+
+          <div class="clr"></div>
+
+      </div>
+    </div>
+    
+  </div>
+<!--main END-->
+<!--footer-->
+  <div class="s-footer ">
+    <div class="w930px">
+      <div class="s-footer-nav">
+        <!-- {foreach from=$cat item=cat name="cat_foreach"} -->
+        <!-- {if $cat.level} -->
+            <a href="service_cat.php?id={$cat.id}" title="">{$cat.name}</a>
+        <!-- {/if} -->    
+        <!--{/foreach}--> 
+      </div>
+      <div class="s-copyright fl mt20" style="font-size:14px;">
+        <p>客服电话：{$service_phone} 地址：{$shop_address}</p>
+        <p>{$copyright}  {$icp_number}</p>
+      </div>
+      <div class="bdsharebuttonbox fr mt20">
+        <a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+<!--footer END-->
+</div>
+
+<script language="JavaScript">
+var elements  = document.forms['formMsg'].elements;
+var sz        = new SelectZone(1, elements['goods_id'], elements['cat_id'], '');
+
+function searchGoods()
+{ 
+    var elements  = document.forms['formMsg'].elements;
+    var filters   = new Object;
+    filters.cat_id = elements['cat_id'].value;
+    filters.keyword = '';
+    sz.loadOptions('get_goods_list', filters);
+}
+
+
+</script>
+</body>
+{insert_scripts files='service.js'}
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"32"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+</html>

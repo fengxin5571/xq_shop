@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{* 包含脚本文件 *}
+{insert_scripts files='utils.js,common.js,global.js,compare.js'}
+</head>
+<body>
+
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+<div class="main">
+    <div class="mg-cate w1160px clearfix">
+    <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+    </div>
+    <div class="w1160px clearfix">
+      <!--面包屑导航-->
+      <div class="mg-subnav mt20">
+        <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+      </div>
+      <!--面包屑导航END-->
+      
+      <!--侧栏-->
+      <div class="mg-sidebar  fl">
+        
+        
+        <!--达人选购-->
+        <!-- #BeginLibraryItem "/library/people_buy.lbi" --><!-- #EndLibraryItem -->
+
+      </div>
+      <!--侧栏END-->
+      
+      <!--右主体-->
+      <div class="mg-container mt20 fr">
+        <!--{if $goods_list}-->
+
+                <div class="mg-sortbar">
+                    <a name='goods_list'></a>
+                     <form action="search.php" method="post" class="sort" name="listform" id="form">
+                      <div class="sorts fl">
+                          <b>{$lang.btn_display}：</b>
+                          <a  {if $pager.search.sort == 'goods_id' && $pager.search.order == 'DESC'} class="up"{elseif  $pager.search.sort == 'goods_id' && $pager.search.order == 'ASC'}class="down"{/if} href="javascript:void(0)" onclick="selectSortOrder('goods_id', '<!-- {if $pager.search.sort == 'goods_id' && $pager.search.order == 'ASC'} -->DESC<!-- {else} -->ASC<!-- {/if} -->');"><span>上架时间</span></a>
+
+                          <a  {if $pager.search.sort == 'shop_price' && $pager.search.order == 'DESC'} class="up" {elseif  $pager.search.sort == 'shop_price' && $pager.search.order == 'ASC'}class="down"{/if} href="javascript:void(0)" onclick="selectSortOrder('shop_price', '<!-- {if $pager.search.sort == 'shop_price' && $pager.search.order == 'ASC'} -->DESC<!-- {else} -->ASC<!-- {/if} -->');"><span>价格</span></a>
+
+                          <a {if $pager.search.sort == 'last_update' && $pager.search.order == 'DESC'} class="up"{elseif  $pager.search.sort == 'last_update' && $pager.search.order == 'ASC'}class="down"{/if} href="javascript:void(0)" onclick="selectSortOrder('last_update', '<!-- {if $pager.search.sort == 'last_update' && $pager.search.order == 'ASC'} -->DESC<!-- {else} -->ASC<!-- {/if} -->');"><span>更新时间</span></a>
+                      </div>
+                      <div class="mg-items fr">
+                          <b class="fl">显示方式：</b>
+                          <ul class="fl clearfix">    
+                              <li class="mg-listcon {if $pager.display == 'list'}listhover{/if}" onClick="javascript:display_mode('list')"></li>
+                              <li class="mg-blockcon {if $pager.display == 'grid'}listhover{/if}" onClick="javascript:display_mode('grid')"></li>
+                          </ul>
+                          <div class="mg-pages fl">
+                          <div class="f-pager fr"> 
+                         <span class="fp-text">
+                         <b>{$pager.page}</b><em>/</em><i>{$pager.page_count}</i>
+                         </span>
+                         <!-- {if $pager.page_prev} -->
+                         <a href="{$pager.page_prev}" class="fp-prev">&lt;</a>
+                         <!--{else}-->
+                         <a href="javascript:;" class="fp-prev disabled">&lt;</a>
+                         <!-- {/if} -->
+                         <!-- {if $pager.page_next} -->
+                         <a href="{$pager.page_next}" class="fp-next">&gt;</a>
+                         <!-- {else}-->
+                         <a href="javascript:;" class="fp-next disabled">&gt;</a>
+                         <!-- {/if} -->
+                         </div>   
+                            <div class="f-result-sum">总共<span class="f40">{$pager.record_count}</span>件商品</div>
+                              
+                          </div>
+                      </div>
+                    <input type="hidden" name="sort" id="sort" value="{$pager.search.sort}">
+                    <input type="hidden" name="order" id="order" value="{$pager.search.order}">
+                    <input type="hidden" name="page" value="{$pager.page}" />
+                    <input type="hidden" name="display" value="{$pager.display}" id="display" />
+                    <!--{foreach from=$pager.search key=key item=item}-->
+                    {if $key neq "sort" and $key neq "order"}
+                      {if $key eq 'keywords'}
+                        <input type="hidden" name="{$key}" value="{$item|escape:decode_url}" />
+                      {else}
+                        <input type="hidden" name="{$key}" value="{$item}" />
+                      {/if}
+                    {/if}
+                    <!--{/foreach}-->
+                  </form>
+                </div>
+                <!-- {if $pager.display == 'list'} -->
+                <div id="splist" class="mg-splist">
+                    <div class="mg-grid mt20 clearfix">
+                        <ul class="list-x">
+                          <!--{foreach name=goods_list from=$goods_list item=goods}-->
+                          <li>
+                            <div class="list-img"><a href="{$goods.url}"><img src="{$goods.goods_img}" alt="{$goods.goods_name}" width="77" height="77"/></a></div>
+                            <div class="list-title">
+                            <a href="{$goods.url}" title="{$goods.goods_name}" target="_blank">
+                              <!-- {if $goods.goods_style_name} -->
+                              {$goods.goods_style_name}
+                              <!-- {else} -->
+                              {$goods.goods_name}
+                              <!-- {/if} -->
+                            </a>
+                            </div>
+                            <div class="list-price">
+                            <b>
+                                <!--{if $goods.promote_price neq "" } -->
+                                {$goods.promote_price}
+                                <!--{else}-->
+                                {$goods.shop_price}
+                                <!--{/if}-->
+                            </b>
+                            </div>
+                            <div class="list-collect"><a href="javascript:collect({$goods.goods_id});" title="" target="_self">{$lang.favourable_goods}</a></div>
+                            <div class="list-buy"><a href="javascript:addToCart({$goods.goods_id})" title="" target="_blank"><img src="images/robot/list-buy.gif"></a></div>
+                            <div class="clr"></div>
+                          </li>
+                           <!--{/foreach}-->
+                        </ul>
+                    </div>
+                </div>
+                <!-- {elseif $pager.display == 'grid'} -->
+                <div id="splist" class="mg-splist">
+                    <div class="mg-grid clearfix">
+
+                        <!--{foreach name=goods_list from=$goods_list item=goods}-->
+                        <div class="itemlist">
+                            <div class="pic">
+                                <a href="{$goods.url}" title="{$goods.goods_name}"><img src="{$goods.goods_img}" alt="{$goods.goods_name}"></a>
+                            </div>
+                            <div class="title">
+                                <div style="height: 44px;">
+                                <a href="{$goods.url}">
+                                  <!-- {if $goods.goods_style_name} -->
+                                  {$goods.goods_style_name}
+                                  <!-- {else} -->
+                                  {$goods.goods_name}
+                                  <!-- {/if} -->
+                                </a>
+                                </div>
+                                <!--{if $goods.goods_brief} -->
+                    {$goods.goods_brief|truncate:15}
+                    <!--{else}-->
+                    <em class="u-jd" style="margin-right: 10px;">{$shop_name}</em>馨清自营，品质保障
+                    <!--{/if} -->
+                            </div>
+                            <div class="p-operate">
+                 <a href="javascript:;" onclick="Compare.add({$goods.goods_id},'{$goods.goods_name}','{$goods.goods_img}','{$goods.type}','{$goods.shop_price}')" class="p-o-btn contrast J_contrast">{$lang.compare}</a>
+                 <a class="p-o-btn lfocus J_focus" href="javascript:collect({$goods.goods_id});"><i></i>收藏</a>
+                 <a class="p-o-btn addcart" href="javascript:addToCart({$goods.goods_id})"><i></i>加入购物车</a>
+                </div>
+                        </div>
+                         <!--{/foreach}-->
+                    </div>
+                </div>
+                <!--{/if}-->
+        <!--{else}-->
+          <div class="mg-sortbar">{$lang.no_search_result}</div>
+        <!--{/if}-->
+
+        <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+
+      </div>
+      <!--右主体END-->
+    </div>
+  </div>
+  <!--商品精选 -->
+  <div class="w1160px clearfix mt10">
+  <!-- #BeginLibraryItem "/library/best_goods.lbi" --><!-- #EndLibraryItem -->
+  </div>
+  <!--商品精选  END-->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
+ <script type="text/javascript">
+  function selectSortOrder(sort, order) {
+      document.getElementById('sort').value = sort;
+      document.getElementById('order').value = order;
+      document.forms['listform'].submit();
+  }
+ </script>
+</body>
+</html>
+<script type="text/javascript">
+window.onload = function()
+{
+  Compare.init();
+  fixpng();
+}
+{foreach from=$lang.compare_js item=item key=key}
+{if $key neq 'button_compare'}
+var {$key} = "{$item}";
+{else}
+var button_compare = '';
+{/if}
+{/foreach}
+var compare_no_goods = "{$lang.compare_no_goods}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>

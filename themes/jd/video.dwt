@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+<div class="main">
+    <div class="mg-cate w1160px clearfix">
+    <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+    </div>
+    <div class="w1160px mt20 clearfix">
+
+
+       <!-- #BeginLibraryItem "/library/hot_video.lbi" --><!-- #EndLibraryItem -->
+      <!--面包屑导航-->
+      <div class="mg-subnav mt20" >
+         <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+      </div>
+      <!--面包屑导航END-->
+      <div class="video">
+        <h2>{$video.title|escape:html}</h2>
+        <div class="video-box">
+          {if $video.file_url != ''}
+              <object type="application/x-shockwave-flash" data="data/flash/vcastr3.swf" width="856" height="480" id="vcastr3">
+              <!--<embed></embed>-->
+              <param name="movie" value="data/flash/vcastr3.swf"/>
+              <param name="allowFullScreen" value="true"/>
+              <param name="FlashVars" value="xml=
+                <vcastr>
+                  <channel>
+                    <item>
+                      <source>../../{$video.file_url}</source>
+                      <duration></duration>
+                      <title></title>
+                    </item>
+                  </channel>
+                  <config>
+                    <isAutoPlay>true</isAutoPlay>
+                    <controlPanelBgColor>0x333333</controlPanelBgColor>
+                    <isShowAbout>false</isShowAbout>
+                  </config>
+                </vcastr>"/>
+              </object>
+          {else}
+              {$video.link}
+          {/if}
+        </div>
+        <div class="video-des">
+          {$video.content}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

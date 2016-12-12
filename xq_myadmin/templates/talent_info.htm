@@ -1,0 +1,275 @@
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,selectzone.js,validator.js"}
+<script type="text/javascript" src="../js/calendar.php?lang={$cfg_lang}"></script>
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+<!-- start goods form -->
+<div class="tab-div">
+  <div id="tabbar-div">
+    <p>
+      <span class="tab-front" id="general-tab">{$lang.tab_general}</span><span
+      class="tab-back" id="detail-tab">{$lang.tab_content}</span>
+    </p>
+  </div>
+
+  <div id="tabbody-div">
+    <form  action="talent.php" method="post" enctype="multipart/form-data" name="theForm" onsubmit="return validate();">
+    <table width="90%" id="general-table">
+      <tr>
+        <td class="narrow-label">查看等级</td>
+        <td>
+            <!-- {foreach from=$ranks item=rank} -->
+            <input type="radio" name="level" value="{$rank.rank_id}" {if isset($talent.level) && $rank.rank_id eq $talent.level}checked{/if}>{$rank.rank_name}  
+            <!-- {/foreach} -->
+        </td>
+      </tr>
+      <tr>
+        <td class="narrow-label">{$lang.name}</td>
+        <td><input type="text" name="name" size ="40" maxlength="60" value="{$talent.name|escape}" />{$lang.require_field}</td>
+      </tr>          
+      <!-- {if $talent.cat_id >= 0} -->
+      <tr>
+        <td class="narrow-label">{$lang.cat} </td>
+        <td>
+          <select name="cat_id" >
+            <option value="0">{$lang.select_plz}</option>
+            {$cat_select}
+          </select>
+         {$lang.require_field}</td>
+      </tr>
+      <!-- {else} -->
+      <input type="hidden" name="cat_id" value="-1" />
+      <!-- {/if} -->
+
+      <tr>
+        <td class="narrow-label">{$lang.is_open}</td>
+        <td>
+        <input type="radio" name="is_open" value="1" {if $talent.is_open eq 1}checked{/if}> {$lang.isopen}
+      <input type="radio" name="is_open" value="0" {if $talent.is_open eq 0}checked{/if}> {$lang.isclose}{$lang.require_field}        </td>
+      </tr>
+
+      <tr>
+        <td class="narrow-label">推荐</td>
+        <td>
+        <input type="radio" name="is_home" value="1" {if $talent.is_home eq 1}checked{/if}> 是
+      <input type="radio" name="is_home" value="0" {if $talent.is_home eq 0}checked{/if}> 否        </td>
+      </tr>
+
+      <tr>
+        <td class="narrow-label">性别</td>
+        <td><input type="radio" name="sex" value="1" {if $talent.sex eq 1}checked{/if}> 男
+            <input type="radio" name="sex" value="2" {if $talent.sex eq 2}checked{/if}> 女
+        </td>
+      </tr>
+      <tr>
+        <td class="narrow-label">出生日期</td>
+        <td>
+            <input name="birthday" type="text" id="birthday" size="22" value="{$talent.birthday}" readonly="readonly"><input name="selbtn3" type="button" id="selbtn3" onclick="return showCalendar('birthday', '%Y-%m-%d', false, false, 'selbtn3');" value="选择" class="button"></td>
+      </tr>
+
+      <tr>
+        <td class="narrow-label">婚姻状况</td>
+        <td><input type="text" name="mariage" maxlength="60" value="{$talent.mariage|escape}" /></td>
+      </tr>
+      <tr>
+        <td class="narrow-label">居住地</td>
+        <td><input type="text" name="address" maxlength="60" value="{$talent.address|escape}" /></td>
+      </tr>
+      <tr>
+        <td class="narrow-label">学历</td>
+        <td>
+            <select id="education" name="education">
+              <option value="1" {if $talent.education eq 1}selected{/if}>初中</option>
+              <option value="2" {if $talent.education eq 2}selected{/if}>高中</option>
+              <option value="3" {if $talent.education eq 3}selected{/if}>中技</option>
+              <option value="4" {if $talent.education eq 4}selected{/if}>中专</option>
+              <option value="5" {if $talent.education eq 5}selected{/if}>大专</option>
+              <option value="6" {if $talent.education eq 6}selected{/if}>本科</option>
+              <option value="7" {if $talent.education eq 7}selected{/if}>硕士</option>
+              <option value="8" {if $talent.education eq 8}selected{/if}>博士</option>
+              <option value="9" {if $talent.education eq 9}selected{/if}>其他</option>
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="narrow-label">毕业院校</td>
+        <td><input type="text" name="school" maxlength="60" value="{$talent.school|escape}" /></td>
+      </tr>
+      <tr>
+        <td class="narrow-label">专业</td>
+        <td><input type="text" name="major" maxlength="60" value="{$talent.major|escape}" /></td>
+      </tr>
+      <tr>
+        <td class="narrow-label">工作经验</td>
+        <td>
+            <select id="experience" name="experience">
+              <option value="1" {if $talent.experience eq 1}selected{/if}>在读学生</option>
+              <option value="2" {if $talent.experience eq 2}selected{/if}>应届毕业生</option>
+              <option value="3" {if $talent.experience eq 3}selected{/if}>1年</option>
+              <option value="4" {if $talent.experience eq 4}selected{/if}>2年</option>
+              <option value="5" {if $talent.experience eq 5}selected{/if}>3-4年</option>
+              <option value="6" {if $talent.experience eq 6}selected{/if}>5-7年</option>
+              <option value="7" {if $talent.experience eq 7}selected{/if}>8-9年</option>
+              <option value="8" {if $talent.experience eq 8}selected{/if}>10年以上</option>
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="narrow-label">职位意向</td>
+        <td><input type="text" name="purpose" maxlength="60" value="{$talent.purpose|escape}" /></td>
+      </tr>
+      <tr>
+        <td class="narrow-label">联系电话</td>
+        <td><input type="text" name="phone" maxlength="60" value="{$talent.phone|escape}" /></td>
+      </tr>
+      <tr>
+        <td class="narrow-label">EMAIL</td>
+        <td><input type="text" name="email" maxlength="60" value="{$talent.email|escape}" /></td>
+      </tr>
+      <tr>
+        <td class="narrow-label">形象照片</td>
+        <td><input type="file" name="photo">
+          <span class="narrow-label">{$lang.file_url}
+          <input name="img_url" type="text" value="{$talent.img_url|escape}" size="30" maxlength="255" />
+          </span></td>
+      </tr>
+      <tr>
+        <td class="narrow-label">简历文档</td>
+        <td><input type="file" name="file">
+          <span class="narrow-label">{$lang.file_url}
+          <input name="file_url" type="text" value="{$talent.file_url|escape}" size="30" maxlength="255" />
+          </span></td>
+      </tr>
+    </table>
+
+    <table width="90%" id="detail-table" style="display:none">
+     <tr><td>{$FCKeditor}</td></tr>
+    </table>
+    <div class="button-div">
+      <input type="hidden" name="act" value="{$form_action}" />
+      <input type="hidden" name="old_name" value="{$talent.name}"/>
+      <input type="hidden" name="id" value="{$talent.talent_id}" />
+      <input type="submit" value="{$lang.button_submit}" class="button"  />
+      <input type="reset" value="{$lang.button_reset}" class="button" />
+    </div>
+    </form>
+  </div>
+
+</div>
+<!-- end goods form -->
+<script language="JavaScript">
+
+var articleId = {$article.article_id|default:0};
+var elements  = document.forms['theForm'].elements;
+var sz        = new SelectZone(1, elements['source_select'], elements['target_select'], '');
+
+{literal}
+onload = function()
+{
+  // 开始检查订单
+  startCheckOrder();
+}
+
+function validate()
+{
+  var validator = new Validator('theForm');
+  validator.required('name', no_name);
+{/literal}
+{if $article.cat_id >= 0}
+  validator.isNullOption('article_cat',no_cat);
+{/if}
+{literal}
+
+  return validator.passed();
+}
+
+document.getElementById("tabbar-div").onmouseover = function(e)
+{
+    var obj = Utils.srcElement(e);
+
+    if (obj.className == "tab-back")
+    {
+        obj.className = "tab-hover";
+    }
+}
+
+document.getElementById("tabbar-div").onmouseout = function(e)
+{
+    var obj = Utils.srcElement(e);
+
+    if (obj.className == "tab-hover")
+    {
+        obj.className = "tab-back";
+    }
+}
+
+document.getElementById("tabbar-div").onclick = function(e)
+{
+    var obj = Utils.srcElement(e);
+
+    if (obj.className == "tab-front")
+    {
+        return;
+    }
+    else
+    {
+        objTable = obj.id.substring(0, obj.id.lastIndexOf("-")) + "-table";
+
+        var tables = document.getElementsByTagName("table");
+        var spans  = document.getElementsByTagName("span");
+
+        for (i = 0; i < tables.length; i++)
+        {
+            if (tables[i].id == objTable)
+            {
+                tables[i].style.display = (Browser.isIE) ? "block" : "table";
+            }
+            else
+            {
+                tables[i].style.display = "none";
+            }
+        }
+        for (i = 0; spans.length; i++)
+        {
+            if (spans[i].className == "tab-front")
+            {
+                spans[i].className = "tab-back";
+                obj.className = "tab-front";
+                break;
+            }
+        }
+    }
+}
+
+function showNotice(objId)
+{
+    var obj = document.getElementById(objId);
+
+    if (obj)
+    {
+        if (obj.style.display != "block")
+        {
+            obj.style.display = "block";
+        }
+        else
+        {
+            obj.style.display = "none";
+        }
+    }
+}
+
+function searchGoods()
+{
+    var elements  = document.forms['theForm'].elements;
+    var filters   = new Object;
+
+    filters.cat_id = elements['cat_id'].value;
+    filters.brand_id = elements['brand_id'].value;
+    filters.keyword = Utils.trim(elements['keyword'].value);
+    console.log(sz);
+    sz.loadOptions('get_goods_list', filters);
+}
+{/literal}
+
+
+</script>
+{include file="pagefooter.htm"}

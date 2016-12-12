@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+</head>
+<body>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+<div class="main">
+    <div class="mg-cate w1160px clearfix">
+    <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+    </div>
+    <div class="w1160px clearfix">
+      <!-- #BeginLibraryItem "/library/hot_video.lbi" --><!-- #EndLibraryItem -->
+      <!--面包屑导航-->
+      <div class="mg-subnav mt20" style="border-bottom:1px dotted #5b5b5b; padding-bottom:10px;">
+        <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
+      </div>
+      <!--面包屑导航END-->
+
+    <div class="mg-videolist mt20">
+        <h2 class="clearfix"><span>{$name|escape:html}</span></h2>
+        <div id="cydt_dd">
+           <ul>
+              <!-- {foreach from=$artciles_list item=article} -->
+              <li>
+              <div class="tp"><a href="{$article.url}" title="{$article.title|escape:html}">{$article.title}</a><div class="rf">{$article.add_time}</div></div>
+                <div class="jjs">
+                   {$article.description|truncate:400:"...":true}
+                </div>
+              </li>
+              <!-- {/foreach} -->
+             </ul>
+          </div>
+    </div>
+    <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+
+    </div>
+    
+    
+  </div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+<script type="text/javascript">
+document.getElementById('cur_url').value = window.location.href;
+</script>
+</html>

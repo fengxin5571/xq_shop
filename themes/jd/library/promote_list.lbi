@@ -1,0 +1,141 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+
+
+
+<div class="mg-sortbar mt20">
+  <a name='goods_list'></a>
+  <form method="GET" class="sort" name="listform">
+    <div class="sorts fl">
+        <b>{$lang.btn_display}：</b>
+        <a  {if $pager.sort == 'goods_id' && $pager.order == 'DESC'} class="up"{elseif  $pager.sort == 'goods_id' && $pager.order == 'ASC'}class="down"{/if} href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=goods_id&order=<!-- {if $pager.sort == 'goods_id' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><span>上架时间</span></a>
+
+        <a  {if $pager.sort == 'shop_price' && $pager.order == 'DESC'} class="up" {elseif  $pager.sort == 'shop_price' && $pager.order == 'ASC'}class="down"{/if} href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=shop_price&order=<!-- {if $pager.sort == 'shop_price' && $pager.order == 'ASC'} -->DESC<!-- {else} -->ASC<!-- {/if} -->#goods_list"><span>价格</span></a>
+
+        <a {if $pager.sort == 'last_update' && $pager.order == 'DESC'} class="up"{elseif  $pager.sort == 'last_update' && $pager.order == 'ASC'}class="down"{/if} href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=last_update&order=<!-- {if $pager.sort == 'last_update' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><span>更新时间</span></a>
+    </div>
+    <div class="mg-items fr">
+        <b class="fl">显示方式：</b>
+        <ul class="fl clearfix">    
+            <li class="mg-listcon {if $pager.display == 'list'}listhover{/if}" onClick="javascript:display_mode('list')"></li>
+            <li class="mg-blockcon {if $pager.display == 'grid'}listhover{/if}" onClick="javascript:display_mode('grid')"></li>
+        </ul>
+        <div class="mg-pages fl">
+            总共找到<span class="f40">{$pager.record_count}</span>件商品
+            <!-- {if $pager.page_prev} -->
+                <a href="{$pager.page_prev}" class="lpages"><span>{$lang.page_prev}</span></a>
+            <!-- {/if} -->
+            <!-- {if $pager.page_next} -->
+              <a href="{$pager.page_next}" class="rpages"><span>{$lang.page_next}</span></a>
+            <!-- {/if} -->
+        </div>
+    </div>
+  <input type="hidden" name="category" value="{$category}" />
+  <input type="hidden" name="display" value="{$pager.display}" id="display" />
+  <input type="hidden" name="brand" value="{$brand_id}" />
+  <input type="hidden" name="price_min" value="{$price_min}" />
+  <input type="hidden" name="price_max" value="{$price_max}" />
+  <input type="hidden" name="filter_attr" value="{$filter_attr}" />
+  <input type="hidden" name="page" value="{$pager.page}" />
+  <input type="hidden" name="sort" value="{$pager.sort}" />
+  <input type="hidden" name="order" value="{$pager.order}" />
+</form>
+</div>
+
+
+ <!--商品列表-->
+<!-- {if $pager.display == 'list'} -->
+    <div id="splist" class="mg-splist">
+        <div class="mg-grid mt20 clearfix">
+            <ul class="list-x">
+              <!--{foreach name=goods_list from=$goods_list item=goods}-->
+              <li>
+                <div class="list-img"><a href="{$goods.url}"><img src="{$goods.goods_img}" alt="{$goods.goods_name}" width="77" height="77"/></a></div>
+                <div class="list-title">
+                <a href="{$goods.url}" title="{$goods.goods_name}" target="_blank">
+                  <!-- {if $goods.goods_style_name} -->
+                  {$goods.goods_style_name}
+                  <!-- {else} -->
+                  {$goods.goods_name}
+                  <!-- {/if} -->
+                </a>
+                </div>
+                <div class="list-price">
+                <b>
+                    <!--{if $goods.promote_price neq "" } -->
+                    {$goods.promote_price}
+                    <!--{else}-->
+                    {$goods.shop_price}
+                    <!--{/if}-->
+                </b>
+                </div>
+                <div class="list-collect"><a href="javascript:collect({$goods.goods_id});" title="" target="_self">{$lang.favourable_goods}</a></div>
+                <div class="list-buy"><a href="javascript:addToCart({$goods.goods_id})" title="" target="_blank"><img src="images/robot/list-buy.gif"></a></div>
+                <div class="clr"></div>
+              </li>
+               <!--{/foreach}-->
+            </ul>
+        </div>
+    </div>
+
+<!-- {elseif $pager.display == 'grid'} -->
+    
+    <div id="splist" class="mg-splist">
+      <div class="mg-grid clearfix">
+
+          <!--{foreach name=goods_list from=$goods_list item=goods}-->
+          <div class="itemlist">
+              <div class="pic">
+                  <a href="{$goods.url}"><img src="{$goods.goods_img}" alt="{$goods.goods_name}"></a>
+              </div>
+              <div class="title">
+                  <a href="{$goods.url}">
+                      <!-- {if $goods.goods_style_name} -->
+                      {$goods.goods_style_name}
+                      <!-- {else} -->
+                      {$goods.goods_name}
+                      <!-- {/if} -->
+                    </a>
+              </div>
+              <div class="similars">
+                  <a href="{$goods.url}"><span>{$goods.promote_price}</span></a>
+              </div>
+          </div>
+          <!--{/foreach}-->
+
+      </div>
+    </div>
+    
+<!--{/if}-->
+<!-- 商品列表End -->
+
+
+<script type="Text/Javascript" language="JavaScript">
+<!--
+{literal}
+function selectPage(sel)
+{
+  sel.form.submit();
+}
+{/literal}
+//-->
+</script>
+<script type="text/javascript">
+window.onload = function()
+{
+  Compare.init();
+  fixpng();
+}
+{foreach from=$lang.compare_js item=item key=key}
+{if $key neq 'button_compare'}
+var {$key} = "{$item}";
+{else}
+var button_compare = '';
+{/if}
+{/foreach}
+var compare_no_goods = "{$lang.compare_no_goods}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>

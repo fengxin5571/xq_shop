@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}商城</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link href="{$jd_css_path}" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+{insert_scripts files='jquery-1.9.1.min.js'}
+{insert_scripts files='focus.js,common.js}
+</head>
+<body>
+<style type="text/css">
+#indexheadpopup{ width:600px; height:600px; overflow:hidden;position:absolute;display:none; margin:0 auto;z-Index:999}
+</style>
+<script>
+jQuery(function() {
+/*首页弹窗广告*/
+    //Set the popup window to center
+	var COOKIE_NAME = "mode1";
+	if( $.cookie(COOKIE_NAME)){
+		$("#indexheadpopup").hide();
+	}else{
+	   var winH = $(window).height();
+	   var winW = $(window).width();
+	   
+	  $("#indexheadpopup").css({position:'absolute','top': (winH - $('#indexheadpopup').outerHeight())/2 + $(document).scrollTop() ,'left': winW/2-$("#indexheadpopup").width()/2 });
+        $("#indexheadpopup").slideDown(1000, function() {
+        setTimeout("ClearIndexHeadPopup()", '25000');
+        });
+      $.cookie(COOKIE_NAME,"mode1", {path: '/', expires: 1});
+	}});
+	function ClearIndexHeadPopup() {
+	     $('#indexheadpopup').hide();  
+   }
+   jQuery(window).click(function(){
+      $('#indexheadpopup').hide();  
+   });
+</script>
+<div id="indexheadpopup">
+{insert name='ads' id=17 num=1}
+<i style="background: url(../images/robot/delete_blue.png) no-repeat ;width: 30px;height: 28px;display: block;margin: 0 auto;position: absolute;right: 10px;top: 100px;z-index: 10;"></i>
+</div>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/jd_toolbar.lbi" --><!-- #EndLibraryItem -->
+{insert_scripts files='jdscro.js'}
+<!-- #BeginLibraryItem "/library/jdscro.lbi" --><!-- #EndLibraryItem -->
+<div class="main">
+    <div id="indexheadpopup">
+{insert name='ads' id=17 num=1}
+</div>
+
+    <!--1F-->
+    <div class="w1160px clearfix">
+      <!--菜单列表-->
+      <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+      <div class="left_img">{insert name='ads' id=15 num=1}</div>
+      <!--菜单列表 END-->
+      <!--焦点图切换-->
+      <!-- #BeginLibraryItem "/library/index_ad.lbi" --><!-- #EndLibraryItem -->
+      <!--焦点图切换 END-->
+      <div class="home-news fr">
+        <!-- #BeginLibraryItem "/library/new_articles.lbi" --><!-- #EndLibraryItem -->
+        <div class="user-region clearfix">
+          {insert name='ads' id=10 num=1}
+        </div>
+      </div>
+    </div>
+    <!--1F END-->
+    <!--猜你喜欢 -->
+    <!-- #BeginLibraryItem "/library/guess_you_like.lbi" --><!-- #EndLibraryItem -->
+    <!--猜你喜欢END -->
+    <!--健康生活 -->
+    
+    <!--健康生活END -->
+    <!--2F -->
+    <!-- #BeginLibraryItem "/library/old_show_good.lbi" --><!-- #EndLibraryItem --> 
+    <!--2F END-->
+    <!--3,4,5F-->
+    <!--{if $factory_goods} -->
+    
+    <div class="w1160px f1">
+      <!--3f-->
+      <div class="mol mt5">
+      <div class="mt"> 
+      <div class='mtTop'><span class="h2_text">1F</span><h2>净水器</h2></div>
+      <ul class="tab">
+      <!--{foreach from=$onef_categories item=cat name=catchild} --> 
+        <!--{if $smarty.foreach.catchild.iteration<=6} -->
+        <li class="tab-item {if $smarty.foreach.catchild.iteration eq 1}tab-selected{/if}" ><a href="{$cat.url}">{$cat.name}</a></li>
+        <!--{/if}-->
+        <!--{/foreach}-->
+        <li class="tab-item" style="float:right"><a href="{$factory_url}">查看更多</a></li>
+      <ul>
+      </div>
+        
+        <div class="mol-bd clearfix">
+          <div class="big fl">
+             {insert name='ads' id=13 num=1}
+          </div>
+          <div class="img-list fl">
+            <ul>
+              <!--{foreach from=$factory_goods item=goods key=key}-->
+                  <li class="con">
+                  <div class="p-img">
+                  <a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><img  src="{$goods.goods_img}" width="170" height="160" alt="{$goods.name|escape:html}" class='err-product brand_rec_img'></a>
+                  </div>
+                  {if $is_show_presell_icn}
+                  {if $goods.is_presell}
+                  <i class="zc_icon"></i>
+                  {/if}
+                  {/if}
+                  <div class="txt"><a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank">{$goods.name|escape:html|}</a></div>
+                  <div class="txt-price"><span class="mod_price sk_item_price_new"><!-- {if $goods.promote_price neq ""} -->
+                                {$goods.promote_price}
+                                <!-- {else}-->
+                                {$goods.shop_price}
+                                <!--{/if}--></span> 
+                                <span class="mod_price sk_item_price_origin">{$goods.market_price}</span>
+                                </div>
+                  </li>
+              <!--{/foreach}-->
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+      <!--3f END-->
+      </div>
+      <div class="w1160px">
+      <div class="adv mt10">
+        {insert name='ads' id=1 num=1}
+      </div>
+      </div>
+      <!--{/if}-->
+      <!--{if $life_goods} -->
+      <!--4f-->
+      
+      <div class="w1160px">
+      <div class="mol mt20">
+      <div class="mt"> 
+      <div class='mtTop'><span class="h2_text">2F</span><h2>空气净化器</h2></div>
+      <ul class="tab">
+      <!--{foreach from=$twof_categories item=cat name=catchild} --> 
+        <!--{if $smarty.foreach.catchild.iteration<=6} -->
+        <li class="tab-item {if $smarty.foreach.catchild.iteration eq 1}tab-selected{/if}" ><a href="{$cat.url}">{$cat.name}</a></li>
+        <!--{/if}-->
+        <!--{/foreach}-->
+        <li class="tab-item" style="float:right"><a href="{$life_url}">查看更多</a></li>
+      <ul>
+      </div>
+        
+       
+        <div class="mol-bd clearfix">
+          <div class="big fl">
+            {insert name='ads' id=14 num=1}
+          </div>
+          <div class="img-list fl">
+            <ul>
+              <!--{foreach from=$life_goods item=goods key=key}-->
+                  <li class="con"><a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><img  src="{$goods.goods_img}" width="145" height="145" alt="{$goods.name|escape:html}" class='err-product brand_rec_img'></a>
+                  {if $is_show_presell_icn}
+                  {if $goods.is_presell}
+                  <i class="zc_icon"></i>
+                  {/if}
+                  {/if}
+                  <div class="txt"><a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank">{$goods.name|escape:html|}</a></div>
+                  <div class="txt-price"><span class="mod_price sk_item_price_new"><!-- {if $goods.promote_price neq ""} -->
+                                {$goods.promote_price}
+                                <!-- {else}-->
+                                {$goods.shop_price}
+                                <!--{/if}--></span> 
+                                <span class="mod_price sk_item_price_origin">{$goods.market_price}</span>
+                                </div>
+                  </li>
+              <!--{/foreach}-->
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+      <!--4f END-->
+      </div>
+      <div class="w1160px">
+      <div class="adv mt10">
+        {insert name='ads' id=2 num=1}
+      </div>
+	  </div>
+	  <!--{/if}-->
+	  <!--{if $parts_goods} -->
+      <!--5f-->
+      
+      <div class="w1160px">
+      <div class="mol mt20">
+      <div class="mt"> 
+      <div class='mtTop'><span class="h2_text">3F</span><h2>防护器具</h2></div>
+      <ul class="tab">
+      <!--{foreach from=$threef_categories item=cat name=catchild} --> 
+        <!--{if $smarty.foreach.catchild.iteration<=6} -->
+        <li class="tab-item {if $smarty.foreach.catchild.iteration eq 1}tab-selected{/if}" ><a href="{$cat.url}">{$cat.name}</a></li>
+        <!--{/if}-->
+        <!--{/foreach}-->
+        <li class="tab-item" style="float:right"><a href="{$parts_url}">查看更多</a></li>
+      <ul>
+      </div>
+        <div class="mol-bd clearfix">
+          <div class="big fl">
+            <div class="big-img"><a href="{$parts_url}" title=""><img src="../images/robot/big2.jpg" width="201" height="398" alt=""></a></div>
+          </div>
+          <div class="img-list fl">
+            <ul>
+               <!--{foreach from=$parts_goods item=goods key=key}-->
+                  <li class="con"><a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><img  src="{$goods.goods_img}" width="145" height="145" alt="{$goods.name|escape:html}" class='err-product brand_rec_img'></a>
+                  {if $is_show_presell_icn}
+                  {if $goods.is_presell}
+                  <i class="zc_icon"></i>
+                  {/if}
+                  {/if}
+                  <div class="txt"><a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank">{$goods.name|escape:html|}</a></div>
+                  <div class="txt-price"><span class="mod_price sk_item_price_new"><!-- {if $goods.promote_price neq ""} -->
+                                {$goods.promote_price}
+                                <!-- {else}-->
+                                {$goods.shop_price}
+                                <!--{/if}--></span> 
+                                <span class="mod_price sk_item_price_origin">{$goods.market_price}</span>
+                                </div>
+                  </li>
+              <!--{/foreach}-->
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+      <!--5f END-->
+      </div>
+      <div class="w1160px">
+      <div class="adv mt10">
+          {insert name='ads' id=3 num=1}
+      </div>
+      </div>
+      <!--{/if}-->
+    <!--3,4,5F END-->
+    <!--友情链接-->
+    <!--{if  $txt_links }-->
+    <div class="w1160px">
+      <div class="friendlink mt50"><strong>友情链接：</strong>
+        <!--开始文字类型的友情链接{foreach from=$txt_links item=link}-->
+        <a href="{$link.url}" target="_blank" title="{$link.name}">{$link.name}</a>
+        <!--结束文字类型的友情链接{/foreach}-->
+      </div>
+    </div>
+    <!-- {/if} -->
+    <!--友情链接 END-->
+  </div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
+</body>
+</html>
+<script>
+var interval = 1000; 
+function ShowCountDown(year,month,day,divname) 
+{ 
+var now = new Date(); 
+var endDate = new Date(year, month-1, day); 
+var leftTime=endDate.getTime()-now.getTime(); 
+var leftsecond = parseInt(leftTime/1000); 
+//var day1=parseInt(leftsecond/(24*60*60*6)); 
+var day1=Math.floor(leftsecond/(60*60*24)); 
+var hour=Math.floor((leftsecond-day1*24*60*60)/3600); 
+var minute=Math.floor((leftsecond-day1*24*60*60-hour*3600)/60); 
+var second=Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60); 
+var cc = document.getElementById(divname);
+if(day1>999){
+	day1=999;
+}
+cc.innerHTML='<div class="cd_item cd_hour"><span class="cd_item_txt">'+day1+'</span></div>'+
+             '<div class="cd_split"><i class="cd_split_dot cd_split_top"></i><i class="cd_split_dot cd_split_bottom"></i></div>'+
+             '<div class="cd_item cd_minute"><span class="cd_item_txt">'+minute+'</span></div>'+
+             '<div class="cd_split"><i class="cd_split_dot cd_split_top"></i><i class="cd_split_dot cd_split_bottom"></i></div>'+
+             '<div class="cd_item cd_second"><span class="cd_item_txt">'+second+'</span></div>';
+} 
+window.setInterval(function(){ShowCountDown({$promote_end_time.year},{$promote_end_time.mon},{$promote_end_time.mday},'index_time');}, interval); 
+</script>

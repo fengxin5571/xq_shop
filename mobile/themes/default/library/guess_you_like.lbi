@@ -1,0 +1,14 @@
+<div class="ect-margin-tb ect-pro-list1 ect-margin-bottom0" style="border-bottom:none;background-color: #f7f7f7;;" >
+<div class="gray-text"><span class="gray-layout"><span class="gray-text-img"></span>为您推荐</span></div>
+<ul class="find-similar-ul cf" style="overflow: hidden;">
+<!--  {foreach from=$get_guess_you_like item=goods} -->
+  <li class="similar-li"><a href="{$goods.goods_url}">
+<div class="similar-product">
+<img  style='height:200px' src="{$goods.goods_img}" style="" alt="{$goods.goods_name}" />
+<span class="similar-product-text">{$goods.goods_name}</span>
+<span class="similar-product-price"><span class="big-price">{$goods.shop_price}</span></span>
+</div>
+</a></li>
+<!--{/foreach} -->
+</ul>
+</div>

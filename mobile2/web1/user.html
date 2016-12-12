@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" class="page-home">
+<head>
+    <meta charset="utf-8">
+    <title>歪秀商城-个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="imagemode" content="force">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="歪秀商城、歪1手机，歪2手机。">
+    <meta name="keywords" content="歪秀商城,歪秀手机,歪1手机,歪2手机,歪3手机,歪4手机">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="touch-icon.png">
+
+    <link rel="stylesheet" type="text/css" href="themes/css/base.css">
+    <link rel="stylesheet" type="text/css" href="themes/css/home.css">
+    <link rel="stylesheet" type="text/css" href="themes/css/user.css">
+
+    <script type="text/javascript" src="themes/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="themes/js/banner-he.js"></script>
+    <script type="text/javascript" src="themes/js/banner.js"></script>
+
+</head>
+<body>
+
+
+
+
+
+<header>
+    <div class="user">
+        <a href="#">
+            <img src="themes/icon/user.png" class="ui-border-tb">
+        </a>
+    </div>
+
+    <div class="userinfo">
+        <h1>李嘉桦同学</h1>
+        <h2><i class="ui-icon-tag-svip fl" style="line-height:12px;"></i>超级会员</h2>
+    </div>
+
+    <div class="right_icon">
+        <a href="javascript:;" class="fr "><i class="ui-icon-comment"></i></a>
+        <a href="#" class="fr ui-p-text">设置</a>
+
+    </div>
+</header>
+
+<section class="ui-f-title ui-border-b">
+    <a href="javascript:;"><i class="ui-icon-file"></i>待支付</a>
+    <a href="javascript:;"><i class="ui-icon-history" style="background: #e25b5b;"></i>待发货</a>
+    <a href="javascript:;"><i class="ui-icon-refresh" style="background: #62d07a;"></i>待收货</a>
+    <a href="javascript:;"><i class="ui-icon-comment" style="background: #d6c46a;"></i>待评价</a>
+    <a href="javascript:;"><i class="ui-icon-add-group" style="background: #ca6abe;"></i>待维权</a>
+</section>
+
+<aside>
+    <ul>
+        <li class="ui-border-b"><i class="ui-icon-history fl"></i><a href="#" class="fl">全部订单</a><i class="ui-icon-next fr"></i></li>
+        <li class="ui-border-b"><i class="ui-icon-like fl"></i><a href="#" class="fl">我的优惠</a><i class="ui-icon-next fr"></i></li>
+        <li class="ui-border-b"><i class="ui-icon-wallet fl"></i><a href="#" class="fl">我的红包</a><i class="ui-icon-next fr"></i></li>
+        <li class="ui-border-b"><i class="ui-icon-scan fl"></i><a href="#" class="fl">我的会员</a><i class="ui-icon-next fr"></i></li>
+        <li class="ui-border-b"><i class="ui-icon-collect fl"></i><a href="#" class="fl">我的收藏</a><i class="ui-icon-next fr"></i></li>
+        <li class="ui-border-b"><i class="ui-icon-cart fl"></i><a href="#" class="fl">我的购物</a><i class="ui-icon-next fr"></i></li>
+    </ul>
+</aside>
+<div style="height:3rem;"></div>
+
+<script src="js/jquery.js"></script>
+<script>
+    $('footer a').click(function(){
+        $(this).addClass('on').siblings().removeClass('on');
+    });
+    $('a').click(function(){
+        alert('暂时开发中,敬请期待!');
+    })
+</script>
+
+
+
+<footer id="" class="ui-footer ui-border-t">
+    <ul class="clearfix">
+        <li>
+            <a href="index.html"><i class="ui-icon-home"></i><p>首页</p></a>
+        </li>
+        <li>
+            <a href="search.html"><i class="ui-icon-search" style="font-size:42px;"></i><p>搜索</p></a>
+        </li>
+
+        <li>
+            <a href="cart.html"><i class="ui-icon-cart"></i><p>购物车</p></a>
+        </li>
+        <li>
+            <a href="user.html"  class="on"><i class="ui-icon-personal"></i><p>我的</p></a>
+        </li>
+    </ul>
+</footer>
+</body>
+</html>

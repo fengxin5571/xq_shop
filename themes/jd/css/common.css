@@ -1,0 +1,130 @@
+﻿/*
+	datetime: 2015-03-31
+	Filename: common.css(通用文件)
+	Version: 1.0
+	Website: 中国工业机器人智能网
+	Author: tianjing
+*/
+
+
+/************************************************************************************
+RESET
+*************************************************************************************/
+html, body, address, section ,article, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,strong, sub, sup, tt, var, legend, fieldset {margin: 0;padding: 0; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;}
+img, fieldset {border: 0;}
+/* set html5 elements to block */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {  display: block;}
+
+/************************************************************************************
+GENERAL STYLING
+*************************************************************************************/
+body {font-size:12px; color: #676767; font-family:"微软雅黑";background:#fff; overflow-x:hidden;}
+a {text-decoration: none; color:#666; outline: none;}
+a:hover {text-decoration:none; color: #fe7200;}
+/* list */
+ul, ol ,li{ list-style:none;}
+/* headings */
+h1, h2, h3, h4, h5, h6 { font-weight:normal;}
+/* reset webkit search input styles */
+input{ margin:0px; padding:0px;  margin:0px; font:100% Arial, Helvetica, clean, sans-serif; font-size-adjust:none; font-stretch:normal; }
+textarea{ margin:0px; padding:0px;  margin:0px; font:100% Arial, Helvetica, clean, sans-serif; font-size-adjust:none; font-stretch:normal;}
+select{margin:0px; padding:0px; font:100% Arial, Helvetica, clean, sans-serif;  font-size-adjust:none; font-stretch:normal;}
+table { border-collapse:collapse; border-spacing:0;}
+/************************************************************************************
+CLEARFIX
+*************************************************************************************/
+.clearfix:after{content:"."; display:block; height:0; clear:both;visibility:hidden;}
+*html .clearfix{ height:1%;}
+*+html .clearfix{ height:1%;}
+.clr{ clear:both;}
+.top{height: 30px;line-height: 30px;box-shadow: inset 0 1px #fff, 0 1px 3px rgba(34, 25, 25, 0.4);-moz-box-shadow: inset 0 1px #fff, 0 1px 2px rgba(34, 25, 25, 0.4);
+-webkit-box-shadow: inset 0 1px #fff, 0 1px 3px rgba(34, 25, 25, 0.4);border-bottom: 1px solid #e0dede;background-image: linear-gradient(#fff,#f7f6f5);}
+/*public*/
+.yaHei{ font-family:"\5FAE\8F6F\96C5\9ED1";}
+.fl{ float:left;}
+.fr{ float:right;}
+.mt5{ margin-top:5px;}
+.mt7{ margin-top:7px;}
+.mt10{ margin-top:10px;}
+.mt15{ margin-top:15px;}
+.mt20{ margin-top:20px;}
+.mt25{ margin-top:25px;}
+.mt30{ margin-top:30px;}
+.mt40{ margin-top:40px;}
+.mt50{ margin-top:50px;}
+
+.ml5{ margin-left:5px;}
+.ml10{ margin-left:10px;}
+.ml15{ margin-left:15px;}
+.ml20{ margin-left:20px;}
+.ml25{ margin-left:25px;}
+.ml30{ margin-left:30px;}
+.ml40{ margin-left:40px;}
+.ml50{ margin-left:50px;}
+
+.mr0{ margin-right:0px;}
+.mr5{ margin-right:5px;}
+.mr10{ margin-right:10px;}
+.mr15{ margin-right:15px;}
+.mr20{ margin-right:20px;}
+.mr25{ margin-right:25px;}
+.mr30{ margin-right:30px;}
+.mr50{ margin-right:50px;}
+
+.mb0{ margin-bottom:0px;}
+.mb5{ margin-bottom:5px;}
+.mb10{ margin-bottom:10px;}
+.mb15{ margin-bottom:15px;}
+.mb20{ margin-bottom:20px;}
+.mb25{ margin-bottom:25px;}
+.mb30{ margin-bottom:30px;}
+
+.pl10{ padding-left:10px;}
+.pl20{ padding-left:20px;}
+.pr10{ padding-right:10px;}
+.pr20{ padding-right:20px;}
+.pt10{ padding-top:10px;}
+.pt20{ padding-top:20px;}
+.pb10{ padding-bottom:10px;}
+.pb20{ padding-bottom:20px;}
+
+/*form*/
+.input30{ width:30px; border:1px solid #ccc; height:20px; line-height:20px; padding-left:5px;}
+.input50{ width:50px; border:1px solid #ccc; height:24px; line-height:24px; padding-left:5px;}
+.input80{ width:80px; border:1px solid #ccc; height:20px; line-height:20px; padding-left:5px;}
+.input100{ width:100px; border:1px solid #ccc; height:24px; line-height:24px; padding-left:5px;}
+.input120{ width:120px; border:1px solid #ccc; height:20px; line-height:20px; padding-left:5px;}
+.input150{ width:150px; border:1px solid #ccc; height:24px; line-height:24px; padding-left:5px;}
+.input180{ width:180px; border:1px solid #ccc; height:20px; line-height:20px; padding-left:5px;}
+.input200{ width:200px; border:1px solid #ccc; height:20px; line-height:20px; padding-left:5px;}
+.input250{ width:250px; border:1px solid #ccc; height:20px; line-height:20px; padding-left:5px;}
+.input300{ width:300px; border:1px solid #ccc; height:20px; line-height:20px; padding-left:5px;}
+.textarea300{ width:300px; height:60px; border:1px solid #ddd;}
+.textarea400{ width:400px; height:100px;}
+.textarea70{ width:70%; height:150px; }
+
+/* color */
+.color01{ color:#fc6c02;}
+.color02{ color:#444;}
+.color03{color: #006bcd;}
+.color04{color: #0000fd;}
+.color05{color: #b1b1b1;}
+.color06{color: #fd0002;}
+
+/* align */
+.talignC{text-align: center;}
+.talignR{text-align: right;}
+
+/* font-size */
+.fontsimsun12{font-size: 12px; font-family: "Simsun";}
+
+/* font-weight */
+.fontwgN{font-weight:normal; }
+
+/* font-family */
+.fontArial{ font-family: "Arial";}
+
+.bgYellow{background:#fc770e;font-family: "微软雅黑";}
+
+/* mycir */
+.s-headerM{box-shadow: inset 0 1px #fff, 0 1px 3px rgba(34, 25, 25, 0.4);-moz-box-shadow: inset 0 1px #fff, 0 1px 2px rgba(34, 25, 25, 0.4);-webkit-box-shadow: inset 0 1px #fff, 0 1px 3px rgba(34, 25, 25, 0.4);border-bottom: 1px solid #e0dede;background-image: linear-gradient(#fff,#f7f6f5);margin-bottom: 10px;}

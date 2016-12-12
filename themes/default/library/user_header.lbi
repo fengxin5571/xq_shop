@@ -1,0 +1,87 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{insert_scripts files='jquery-1.9.1.min.js'}
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+</script>
+<div class="container">
+<!--topbar-->
+  <div class="user-top top">
+    <div class="w1160px clearfix">
+      
+       {insert_scripts files='transport.js,utils.js,json2.js,jquery.dialog.js'}
+       <font class="user-f">
+       {insert name='member_info'}
+	   </font>
+      <div class="topnav fr">
+      <a href="user_center.html" style="color:#666">{$lang.user_center}</a>|
+      <img src="./images/robot/u37.png"/><a href="order_list.html" style="color:#666">{$lang.label_order}</a>|
+       <!-- {foreach name=nav_top_list from=$navigator_list.top item=nav key=key} -->
+            {if $key>0}|{/if}<a href="{$nav.url}" <!-- {if $nav.opennew eq 1} --> target="_blank" <!-- {/if} --> style="color:#666">{$nav.name}</a>
+       <!-- {/foreach} -->
+
+      </div>
+    </div>
+  </div>
+<!--topbar END-->
+<!--header-->
+  <div class="user-header">
+    <div class="w1160px clearfix">
+      <!--logo-->
+      <div class="logo fl "><a href="../index.html" name="top" title="{$shop_name}" class="fore1"></a>
+      <a  href="user_center.html" class="fore2">{$lang.user_center}</a>
+      <a  href="index.html" class="fore3">返回馨清首页</a>
+      </div>
+      <!--logo END-->
+      <!--search-->
+
+      <script type="text/javascript">
+      {literal}
+      <!--
+      function checkSearchForm()
+      {
+          if(document.getElementById('keyword').value)
+          {
+              return true;
+          }
+          else
+          {
+              jAlert("{$lang.no_keywords}",null,"馨清网");
+              return false;
+          }
+      }
+      -->
+      {/literal}
+      </script>
+      <div class="navitems">
+      <ul>
+      <li class="fore-1"><a href="user_center.html">首页</a></li>
+      <li class="fore-3"><div class="dl " id='user-dl'>
+      <div class="dt" ><span class="myjd-set">账户设置</span><b></b></div>
+      <div class="dd">
+      <a href="user_info.html" id="u-a"><span>{$lang.label_profile}</span></a>
+      <a href="safety_center.html" id="u-a"><span>账户安全</span></a>
+      <a href="account_union.html" id="u-a"><span>账户绑定</span></a>
+      <a href="address_list.html" id="u-a"><span>{$lang.label_address}</span></a>
+      </div>
+      </div></li>
+      <li class="fore-5"><a href="message_list.html">消息</a></li>
+      </ul>
+      </div>
+      <div class="nav-r">
+      <div class="soso clearfix fl mt60 search-2014">
+        <form id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()">
+        <input name="keywords" type="text" id="keyword" class="user-soso-input fl" value="{$search_keywords|escape}">
+        <input type="submit" class="user-soso-btn" value="搜索">
+        </form>
+        
+      </div>
+      <!--search END-->
+      <div class="user-settle fr mt25">
+        <div class="user-settleup"><ul><li class="u-ci-left"></li><li class='ci-right'></li><li class="u-ci-count">{insert name='cart_num'}</li></ul><a href='flow.php'class='ml20'>我的购物车</a></div>
+        <div class="settledown">{insert name='cart_info'}<br><button onclick="location.href='flow.php'">查看我的购物车</button></div>
+      </div>
+      </div>
+    </div>
+  </div>
+<!--header END-->
+

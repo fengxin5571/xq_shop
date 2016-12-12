@@ -1,0 +1,11 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="mg-video mt20">
+	<ul class="clearfix">
+		<!-- {foreach from=$video_cats item=hot} -->
+		<li>
+			<a href="{$hot.url}"><img src="{$hot.cat_img}"  width="127" height="62" ></a>
+			<p><a href="{$hot.url}">{$hot.cat_name}</a></p>
+		</li>
+		<!-- {/foreach} -->
+	</ul>
+</div>

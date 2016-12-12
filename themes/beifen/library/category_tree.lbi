@@ -1,0 +1,29 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <ul class="catelist fl">
+      <!--{foreach from=$categories item=cat}-->
+      <li>
+        <h2><a href="{$cat.url}">{$cat.name|escape:html}</a></h2>
+        <p>
+        <!--{foreach from=$cat.cat_id item=child name=catchild}-->
+          <!--{if $smarty.foreach.catchild.iteration<=2}-->
+          <a href="{$child.url}">{$child.name|escape:html}</a>
+          <!--{/if}-->
+        <!--{/foreach}-->
+        </p>
+        <div class="catebox">
+          <strong><a href="{$cat.url}">{$cat.name|escape:html}</a></strong>
+          <!--{foreach from=$cat.cat_id item=child name=catchild}-->
+          <a href="{$child.url}">{$child.name|escape:html}</a>
+          <!--{foreach from=$child.cat_id item=childs name=catchilds}-->
+          <!--{if $smarty.foreach.catchilds.iteration<=3}-->
+          <a href="{$childs.url}">|{$childs.name|escape:html}</a>
+          <!--{/if}-->
+           <!--{/foreach}-->
+          <!--{/foreach}-->
+          
+        </div>
+      </li>
+      <!--{/foreach}--> 
+
+    </ul>

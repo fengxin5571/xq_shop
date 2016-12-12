@@ -1,0 +1,37 @@
+/*other public*/
+input,select,button{outline:none;font-family: "Microsoft YaHei";}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+img{vertical-align:middle;}
+.iconfont{font-family:'adminthemesregular';}
+.add_icon:before{content:"a";margin:0 5px;font-family:'adminthemesregular';}
+.money_icon:before{content:"$";margin:0 5px;font-family:'adminthemesregular';font-size:20px;}
+.rmb_icon{color:#19a97b;}
+.rmb_icon:before{content:"￥";margin-right:2px;}
+.ellipsis{text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+.center{text-align:center;}
+.fl{float:left;}
+.fr{float:right;}
+.mtb{margin:5px 0;overflow:hidden;}
+.mlr{margin:0 5px;overflow:hidden;}
+.admin_login{width:300px;height:auto;overflow:hidden;margin:10% auto 0 auto;padding:40px;box-shadow:0 -15px 30px #045AA7;border-radius:5px;}
+.admin_login dt{font-size:20px;font-weight:bold;text-align:center;color:#fff;text-shadow:0 0 1px #0e947a;margin-bottom:15px;}
+.admin_login dt strong{display:block;}
+.admin_login dt em{display:block;font-size:12px;margin-top:8px;}
+.admin_login dd{margin:5px 0;height:42px;overflow:hidden;position:relative;}
+.admin_login dd .login_txtbx{font-size:14px;height:26px;line-height:26px;padding:8px 5%;width:90%;text-indent:2em;border:none;background:#419AE8;color:white;}
+.admin_login dd .login_txtbx::-webkit-input-placeholder {color:#f4f4f4;line-height:inherit;} 
+.admin_login dd .login_txtbx:-moz-placeholder {color:#f4f4f4;line-height:inherit;} 
+.admin_login dd .login_txtbx::-moz-placeholder {color:#f4f4f4;line-height:inherit;}
+.admin_login dd .login_txtbx:focus{background:#0658A0;}
+.admin_login dd:before{font-family:'adminthemesregular';position:absolute;top:0;left:10px;height:42px;line-height:42px;font-size:20px;color:#0374D9;}
+.admin_login dd.user_icon:before{content:"U";}
+.admin_login dd.pwd_icon:before{content:"P";}
+.admin_login dd.val_icon:before{content:"N";}
+.admin_login dd.em_icon:before{content:"E";}
+.admin_login dd .ver_btn{text-align:right;border:none;color:#f4f4f4;height:42px;line-height:42px;margin:0;z-index:1;position:relative;float:right;background:#48bca5;}
+.admin_login dd .checkcode{float:left;height:42px;background:#419AE8}
+.admin_login dd .checkcode input{width:142px;height:36px;line-height:36px;padding:3px;color:white;outline:none;border:none;text-indent:2.8em;}
+.admin_login dd .checkcode canvas{width:85px;height:36px;padding:3px;z-index:0;background:#5cbdaa;}
+.admin_login dd .submit_btn{width:100%;height:42px;border:none;font-size:16px;background:#0658A0;color:#f8f8f8;}
+.admin_login dd .submit_btn:hover{color:#419AE8;}
+.admin_login dd p{color:#64A9E6;font-size:12px;text-align:center;margin:5px 0;}

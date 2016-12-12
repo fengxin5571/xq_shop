@@ -1,0 +1,20 @@
+<div class="w1160px mt15">
+<div id="guessyou" class="m">
+<div class="mt"><h2>猜你喜欢</h2><a class="extra" href="javascript:; ">换一批</a></div>
+<div class="mc">
+<div class="spacer" ><i></i></div>
+<ul id="guess_ul">
+<!--{foreach from=$get_guess_you_like item=goods name=like} -->
+<li class="fore{$smarty.foreach.like.iteration}"{if $smarty.foreach.like.iteration>6}style="display:none"{/if}>
+<div class="p-img"><a href="{$goods.goods_url}" target="_blank"><img src="{$goods.goods_thumb}" width="130" height="130" title="{$goods.goods_name}" class='sk_item_img err-product'/></a></div>
+<div class="p-info">
+<div class="p-name"><a href="{$goods.goods_url}" target="_blank" title="{$goods.goods_name}">{$goods.goods_name}</a></div>
+<div class="p-price">{$goods.shop_price}</div>
+</div>
+</li>
+<!-- {/foreach}-->
+<ul>
+</div>
+
+</div>
+</div>

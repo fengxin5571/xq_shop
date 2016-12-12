@@ -1,0 +1,58 @@
+<div class="w1160px mt15">
+<div class="home-special-buy">
+<h2>馨清 · 健康生活</h2>
+<div class="hs-content">
+<div class="has-col1">
+<h3>最新款</h3>
+<!--{foreach from=$new_goods item=goods key=key}-->
+{if $key<3}
+<a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank" class="{if $key eq 0}has-item{else}has-item-small{/if}">
+<div class="sub-tit">
+<div class="tit">{$goods.name|escape:html}</div>
+<div class="price"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></div>
+</div>
+<img src="{$goods.goods_img}" class="{if $key eq 0}gimg1{else}gimg2{/if}" class='err-product'/></a>
+{/if}
+<!--{/foreach}-->
+</div>
+
+<div class="has-col2">
+<h3>最精选</h3>
+<!--{foreach from=$best_goods item=goods key=key}-->
+{if $key<3}
+<a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank" class="has-item-small">
+<div class="sub-tit">
+<div class="tit">{$goods.name|escape:html}</div>
+<div class="price" style="width:100px"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></div>
+</div>
+<img src="{$goods.goods_img}" class="gimg2" class='err-product'/></a>
+{/if}
+<!--{/foreach}-->
+</div>
+
+<div class="has-col3">
+<h3>最畅销</h3>
+<!--{foreach from=$hot_goods item=goods key=key}-->
+{if $key<3}
+<a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank" class="{if $key eq 0}has-item{else}has-item-small{/if}">
+<div class="sub-tit">
+<div class="tit">{$goods.name|escape:html}</div>
+<div class="price"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></div>
+</div>
+<img src="{$goods.goods_img}" class="{if $key eq 0}gimg1{else}gimg2{/if}" class='err-product'/></a>
+{/if}
+<!--{/foreach}-->
+</div>
+<div class="hs-brands">
+<ul>
+<!--{foreach from=$brand_list item=brands key=key}-->
+{if $key<7}
+<li style=border-bottom: 1px solid #ededed;"><a  href ="{$brands.brand_goods_url}" class="item" title="{$brands.brand_name}"><img src="{if $brands.brand_logo}data/brandlogo/{$brands.brand_logo}{else} themes/default/images/robot/cirlogo.png{/if}" width="121" height='55'/></a></li>
+{/if}
+<!--{/foreach}-->
+</ul>
+</div>
+
+</div>
+</div>
+</div>

@@ -1,0 +1,3 @@
+<input type="text" size="8" name="captcha" class="itxt itxt02" />
+        <img src="captcha.php?is_login=1&{$rand}" alt="captcha" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?is_login=1&'+Math.random()" />
+        <span>看不清点击图片换一张</span>

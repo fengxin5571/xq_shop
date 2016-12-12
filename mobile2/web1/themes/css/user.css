@@ -1,0 +1,102 @@
+body { background:#f1f1f1 url("../img/banner/body.jpg") no-repeat top center;}
+header {
+    color: #fff;
+    padding-top:1.2rem;
+    height:5rem;
+    background-color: rgba(255, 87, 34, 0.9);
+    transition: all 0.5s ease 0s;
+
+}
+.user{
+    text-align: center;
+    height: 100%;
+    width: 20%;
+    float: left;
+    line-height: 2rem;
+}
+
+.userinfo{
+    height: 2rem;
+    float: left;
+    width: 40%;
+}
+.userinfo p:first-child{
+    font-size: .32rem;
+    padding-top: .65rem;
+}
+.userinfo p:last-child span{
+    margin-left: 1rem;
+}
+.right_icon{
+    font-size: .5rem;
+    float: left;
+    width: 35%;
+    line-height: 2rem;
+    text-align: right;
+}
+.right_icon a{color: #fff;}
+section{
+    background-color:#f1f1f1;
+    padding-top:.2rem;
+    display: -webkit-box;
+    width: 100%;
+    height:3.8rem;
+
+}
+section a{
+    -webkit-box-flex: 1;
+    text-align: center;
+    display: block;
+}
+
+section a i{
+    border-radius: 100%;
+    width:2rem;
+    background: #2fb8ce;
+    margin: .35rem auto .2rem auto;
+    display: block;
+    font-size: .35rem;
+    color: #fff;
+    height:2rem;
+    line-height:2rem;
+}
+
+aside ul{
+    font-size: .3rem;
+    line-height: .8rem;
+    color: #000;
+}
+aside ul li{
+    height:3rem;
+    line-height:2.8rem;
+    text-align: left;
+    width: 96%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 0 2%;
+}
+aside ul li  a {
+    font-size:.8rem;
+    color:#777;
+}
+
+.page-home aside ul li  i {
+    font-size:28px;
+}
+
+.page-home .ui-f-title a { font-size:.8rem; color: #666;}
+.page-home .ui-f-title i { color:#fff; font-size:22px; line-height:32px;}
+
+.user a  { width:80%; border-radius:50px; display:inline-block; margin-left:.1rem;}
+.user a img { width:100%; border-radius:50px;}
+header h1 { font-weight:normal; font-size:1rem; padding-bottom:.5rem; padding-top:.5rem;}
+header h2 { font-weight:normal; font-size:.7rem; color:#fff;  background-color: rgba(0, 0, 0, 0.5);
+    width:65%;
+
+    transition: all 0.5s ease 0s; border-radius:50px; padding:.2rem 0 .2rem .5rem ;
+}
+
+.page-home .ui-icon-tag-svip { color:#fff;}
+.page-home .ui-icon-comment { color:#fff; line-height:34px;}
+
+.ui-p-text { font-size:.9rem; padding-right:1rem;}

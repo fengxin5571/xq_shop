@@ -1,0 +1,24 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="userMenu">
+<a href="javascript:void()"class="big-title">订单中心</a>
+<a href="order_list.html"{if $action eq 'order_list'|| $action eq 'order_detail'}class="curs"{/if}> {$lang.label_order}</a>
+<a href="merge_order.html"{if $action eq 'merge_order_ui'}class="curs"{/if}> {$lang.merge_order}</a>
+<a href="user.php?act=track_packages"{if $action eq 'track_packages'}class="curs"{/if}> {$lang.label_track_packages}</a>
+<div style="padding-bottom: 15px;"></div>
+<a href="javascript:void()"class="big-title">关注中心</a>
+<a href="collection_list.html"{if $action eq 'collection_list'}class="curs"{/if}> {$lang.label_collection}</a>
+<a href="history_list.html"{if $action eq 'history_list'}class="curs"{/if}>我的足迹</a>
+<div style="padding-bottom: 15px;"></div>
+<a href="javascript:void()"class="big-title">客服服务</a>
+<a href="user.php?act=service_list"{if $action eq 'service_list'}class="curs"{/if}> 售后服务</a>
+<div style="padding-bottom: 15px;"></div>
+<a href="javascript:void()"class="big-title">设置</a>
+<a href="user_info.html"{if $action eq 'profile' || $action eq 'userinfo_headimg'}class="curs"{/if}> {$lang.label_profile}</a>
+<a href="safety_center.html" {if $action eq 'safetycenter'}class="curs"{/if}><span>账户安全</span></a>
+<a href="account_union.html" {if $action eq 'account_union'}class="curs"{/if}><span>账户绑定</span></a>
+<a href="address_list.html"{if $action eq 'address_list'}class="curs"{/if}> {$lang.label_address}</a>
+<!--<a href="user.php?act=account_log"{if $action eq 'account_log'}class="curs"{/if}> {$lang.label_user_surplus}</a> -->
+<div style="padding-bottom: 15px;"></div>
+<a href="javascript:void()"class="big-title">资产中心</a> 
+<a href="user.php?act=bonus"{if $action eq 'bonus'}class="curs"{/if}> {$lang.label_bonus}</a> 
+</div>

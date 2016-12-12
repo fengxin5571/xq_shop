@@ -1,0 +1,37 @@
+<div class='mg-left'>
+<div class="ui-scrollbar-wrap">
+<div class='mg-noticelist'>
+<div class="ui-scrollbar-main">
+<ul>
+<a href="user.php?act=message_list">
+<li class="mg-types {if $action eq 'message_list' and $order_info.order_id eq ''}mg-types-cur {/if}">
+<span class="mg-timg actimg"></span>
+<div class="mg-tcont">
+<div class="mg-ttitle"><div style="float: left;width: 80px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><a href='user.php?act=message_list'>系统消息</a></div></div>
+<div class="mg-illus"><div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 135px;float: left;">{if $message_count.message_count}<font>{$message_count.message_count}条消息</font>{else}<font>暂无消息</font>{/if}</div></div>
+</div>
+</a>
+</li>
+<a href="user.php?act=comment_list">
+<li class="mg-types {if $action eq 'comment_list'}mg-types-cur{/if}">
+<span class="mg-timg simg" ></span>
+<div class="mg-tcont">
+<div class="mg-ttitle"><div style="float: left;width: 80px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><a href="user.php?act=comment_list">{$lang.label_comment}</a></div></div>
+<div class="mg-illus"><div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 135px;float: left;">{if $message_count.comment_count}<font>{$message_count.comment_count}条消息</font>{else}<font>暂无消息</font>{/if}</div></div>
+</div>
+</a>
+</li>
+{if $order_info}
+<li class="mg-types mg-types-cur">
+<span class="mg-timg runimg" ></span>
+<div class="mg-tcont">
+<div class="mg-ttitle"><div style="float: left;width: 80px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><a href="user.php?act=message_list&order_id=1">系统通知</a></div></div>
+<div class="mg-illus"><div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 135px;float: left;">{if $message_count.order_message_count}<font>{$message_count.order_message_count}条消息</font>{else}<font>暂无消息</font>{/if}</div></div>
+</div>
+</li>
+{/if}
+</ul>
+</div>
+</div>
+</div>
+</div>

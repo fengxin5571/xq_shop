@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}商城</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+{insert_scripts files='focus.js'}
+</head>
+<body>
+  
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+
+<div class="main">
+    <!--1F-->
+    <div class="w1160px clearfix">
+      <!--菜单列表-->
+      <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+      
+      <!--菜单列表 END-->
+      <!--焦点图切换-->
+      <!-- #BeginLibraryItem "/library/index_ad.lbi" --><!-- #EndLibraryItem -->
+      <!--焦点图切换 END-->
+      <div class="home-news fr">
+
+      {if $user_info}
+        <div class="user-region clearfix">
+          <div class="user-head fl"><img src="../images/robot/avatar-80.png" width="60" height="60" alt=""></div>
+          <div class="unlogin fl">
+            <div class="unlogin-wel mb10">Hi,<font class="f4_b">{$user_info.username}</font>, {$lang.welcome_return}！</div>
+            <p><a href="user.php" class="login-btn" title="{$lang.user_center}">{$lang.user_center}</a><a href="user.php?act=logout" class="register-btn ml10" title="{$lang.user_logout}">{$lang.user_logout}</a></p>
+          </div>
+        </div>
+      {else}
+        <div class="user-region clearfix">
+          <div class="user-head fl"><img src="../images/robot/avatar-80.png" width="60" height="60" alt=""></div>
+          <div class="unlogin fl">
+            <div class="unlogin-wel mb10">Hi,您好！</div>
+            <p><a href="user.php" class="login-btn" title="{$lang.label_login}">{$lang.label_login}</a><a href="user.php?act=register" class="register-btn ml10" title="{$lang.label_regist}">{$lang.label_regist}</a></p>
+          </div>
+        </div>
+        {/if}
+        <!-- #BeginLibraryItem "/library/new_articles.lbi" --><!-- #EndLibraryItem -->
+
+      </div>
+    </div>
+    <!--1F END-->
+    <!--2F -->
+    <div class="w1160px">
+      <!--tab-->
+      <div class="tab mt20" _ztab="tab1">
+        <ul class="title clearfix">
+          <li class="zt-title zt-selected">推荐产品</li>
+          <li class="zt-title">热卖产品</li>
+        </ul>
+        <div class="cont">
+          <div class="zt-cont">
+            <div class="bannerbox">
+                <div id="banner">
+                    <ul>
+                      <li>
+                          <!--{foreach from=$best_goods item=goods key=key}-->
+                          {if $key neq 0 && $key%12 eq 0}</li><li>{/if}
+                          {if $key%12 eq 0}
+                          <div class="scroll-list mt20 clearfix">
+                          {/if}
+                          {if $key eq 6 || $key eq 18}</div><div class="line"></div><div class="scroll-list clearfix">{/if}
+                            <div class="scroll-li {if ($key+1)%6 eq 0 && $key neq 0}noborder{/if}">
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><img src="{$goods.goods_img}" width="140" height="140" alt=""></a>
+                              <h2><a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank">{$goods.short_style_name}</a></h2>
+                              <p>
+                                <!-- {if $goods.promote_price neq ""} -->
+                                {$goods.promote_price}
+                                <!-- {else}-->
+                                {$goods.shop_price}
+                                <!--{/if}-->
+                                <span><b>{$goods.sale_count}</b>人已购买</span>
+                              </p>
+                            </div>
+                             {if $key+1 eq 12 || $key+1 eq 24}</div>{/if}
+                           <!--{/foreach}-->
+                      </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+          <div class="zt-cont" style="display:none;">
+            <div class="bannerbox">
+                <div id="banner1">
+                    <ul>
+                       <li>
+                       <!--{foreach from=$hot_goods item=goods key=key}-->
+                          {if $key neq 0 && $key%12 eq 0}</li><li>{/if}
+                          {if $key%12 eq 0}
+                          <div class="scroll-list mt20 clearfix">
+                          {/if}
+                          {if $key eq 6 || $key eq 18}</div><div class="line"></div><div class="scroll-list clearfix">{/if}
+                            <div class="scroll-li {if ($key+1)%6 eq 0 && $key neq 0}noborder{/if}">
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><img src="{$goods.goods_img}" width="140" height="140" alt=""></a>
+                              <h2><a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank">{$goods.short_style_name}</a></h2>
+                              <p>
+                                <!-- {if $goods.promote_price neq ""} -->
+                                {$goods.promote_price}
+                                <!-- {else}-->
+                                {$goods.shop_price}
+                                <!--{/if}-->
+                                <span><b>{$goods.sale_count}</b>人已购买</span>
+                              </p>
+                            </div>
+                            {if $key+1 eq 12 || $key+1 eq 24}</div>{/if}
+                           <!--{/foreach}-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--tab END-->
+    </div>
+    <!--2F END-->
+    <!--3,4,5F-->
+    <div class="w1160px">
+      <!--3f-->
+      <div class="mol">
+        <div class="mol-hd"><span><a href="{$factory_url}" title="">更多产品>> </a></span></div>
+        <div class="mol-bd clearfix">
+          <div class="big fl">
+            <div class="big-tit" id="big-tit2"><strong>智慧工厂</strong><p>Wisdom factory</p></div>
+            <div class="big-img"><a href="{$factory_url}" title=""><img src="../images/robot/big1.jpg" width="201" height="410" alt=""></a></div>
+          </div>
+          <div class="img-list fl">
+            <ul>
+              <!--{foreach from=$factory_goods item=goods key=key}-->
+                  <li class="con"><a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><img style="box-shadow: 0px 0px 3px rgb(150, 150, 150);" src="{$goods.goods_img}" width="225" height="219" alt="{$goods.name|escape:html}"></a><div class="txt"><h3>{$goods.name|escape:html}</h3>
+                  <p> <!-- {if $goods.promote_price neq ""} -->
+                                {$goods.promote_price}
+                                <!-- {else}-->
+                                {$goods.shop_price}
+                                <!--{/if}-->
+                                   &nbsp;&nbsp;&nbsp;&nbsp;<span><a  href="{$goods.url}" title="在线订购">在线订购</a></span></p></div></li>
+              <!--{/foreach}-->
+            </ul>
+          </div>
+          <!--排行-->
+          <div class="rank fr">
+            <div class="rank-hd"><h3>热销商品</h3></div>
+            <div class="rank-bd">
+              <ul>
+                <!--{foreach from=$factory_hot_goods item=goods key=key}-->
+                <li>
+                  <div class="rank-thub fl"><a href="{$goods.url}" title="{$goods.name|escape:html}" tar{$goods.name|escape:html}get="_blank"><img src="{$goods.goods_img}" width="64" height="71" alt="{$goods.name|escape:html}"></a></div>
+                  <div class="rank-tit fr ml10">
+                    <h4><a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank">{$goods.short_style_name}</a></h4>
+                    <p><span>{$goods.shop_price}</span></p>
+                  </div>
+                  <div class="clr"></div>
+                </li>
+                <!--{/foreach}-->
+               
+              </ul>
+            </div>
+          </div>
+          <!--排行 END-->
+        </div>
+      </div>
+      <!--3f END-->
+      <div class="adv mt20">
+        {insert name='ads' id=1 num=1}
+      </div>
+      <!--4f-->
+      <div class="mol">
+        <div class="mol-hd"><span><a href="{$life_url}" title="">更多产品>> </a></span></div>
+        <div class="mol-bd clearfix">
+          <div class="big fl">
+            <div class="big-tit"><strong>智慧生活</strong><p>Intelligent life</p></div>
+            <div class="big-img"><a href="{$life_url}" title=""><img src="../images/robot/big.jpg" width="201" height="410" alt=""></a></div>
+          </div>
+          <div class="img-list fl">
+            <ul>
+              <!--{foreach from=$life_goods item=goods key=key}-->
+                  <li class="con"><a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><img style="box-shadow: 0px 0px 3px rgb(150, 150, 150);" src="{$goods.goods_img}" width="225" height="219" alt="{$goods.name|escape:html}"></a><div class="txt"><h3>{$goods.name|escape:html}</h3><p><!-- {if $goods.promote_price neq ""} -->
+                                {$goods.promote_price}
+                                <!-- {else}-->
+                                {$goods.shop_price}
+                                <!--{/if}-->
+                                   &nbsp;&nbsp;&nbsp;&nbsp; <span><a  href="{$goods.url}" title="在线订购">在线订购</a></span></p></div></li>
+              <!--{/foreach}-->
+            </ul>
+          </div>
+          <!--排行-->
+          <div class="rank fr">
+            <div class="rank-hd"><h3>热销商品</h3></div>
+            <div class="rank-bd">
+              <ul>
+                <!--{foreach from=$life_hot_goods item=goods key=key}-->
+                <li>
+                  <div class="rank-thub fl"><a href="{$goods.url}" title="{$goods.name|escape:html}" tar{$goods.name|escape:html}get="_blank"><img src="{$goods.goods_img}" width="64" height="71" alt="{$goods.name|escape:html}"></a></div>
+                  <div class="rank-tit fr ml10">
+                    <h4><a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank">{$goods.short_style_name}</a></h4>
+                    <p><span>{$goods.shop_price}</span></p>
+                  </div>
+                  <div class="clr"></div>
+                </li>
+                <!--{/foreach}-->
+              </ul>
+            </div>
+          </div>
+          <!--排行 END-->
+        </div>
+      </div>
+      <!--4f END-->
+      <div class="adv mt20">
+        {insert name='ads' id=2 num=1}
+      </div>
+
+
+      <!--5f-->
+      <div class="mol">
+        <div class="mol-hd"><span><a href="{$parts_url}" title="">更多产品>> </a></span></div>
+        <div class="mol-bd clearfix">
+          <div class="big fl">
+            <div class="big-tit" id="big-tit3"><strong style="margin-left:15px;">机器人零部件</strong><p>Robot parts</p></div>
+            <div class="big-img"><a href="{$parts_url}" title=""><img src="../images/robot/big2.jpg" width="201" height="410" alt=""></a></div>
+          </div>
+          <div class="img-list fl">
+            <ul>
+               <!--{foreach from=$parts_goods item=goods key=key}-->
+                  <li class="con"><a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><img style="box-shadow: 0px 0px 3px rgb(150, 150, 150);" src="{$goods.goods_img}" width="225" height="219" alt="{$goods.name|escape:html}"></a><div class="txt"><h3>{$goods.name|escape:html}</h3><p><!-- {if $goods.promote_price neq ""} -->
+                                {$goods.promote_price}
+                                <!-- {else}-->
+                                {$goods.shop_price}
+                                <!--{/if}-->
+                                   &nbsp;&nbsp;&nbsp;&nbsp; <span><a  href="{$goods.url}" title="在线订购">在线订购</a></span></p></div></li>
+              <!--{/foreach}-->
+            </ul>
+          </div>
+          <!--排行-->
+          <div class="rank fr">
+            <div class="rank-hd"><h3>热销商品</h3></div>
+            <div class="rank-bd">
+              <ul>
+               <!--{foreach from=$parts_hot_goods item=goods key=key}-->
+                <li>
+                  <div class="rank-thub fl"><a href="{$goods.url}" title="{$goods.name|escape:html}" tar{$goods.name|escape:html}get="_blank"><img src="{$goods.goods_img}" width="64" height="71" alt="{$goods.name|escape:html}"></a></div>
+                  <div class="rank-tit fr ml10">
+                    <h4><a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank">{$goods.short_style_name}</a></h4>
+                    <p><span>{$goods.shop_price}</span></p>
+                  </div>
+                  <div class="clr"></div>
+                </li>
+                <!--{/foreach}-->
+              </ul>
+            </div>
+          </div>
+          <!--排行 END-->
+        </div>
+      </div>
+      <!--5f END-->
+      <div class="adv mt20">
+          {insert name='ads' id=3 num=1}
+      </div>
+    </div>
+    <!--3,4,5F END-->
+    <!--友情链接-->
+    <!--{if  $txt_links }-->
+    <div class="w1160px">
+      <div class="friendlink mt50"><strong>友情链接：</strong>
+        <!--开始文字类型的友情链接{foreach from=$txt_links item=link}-->
+        <a href="{$link.url}" target="_blank" title="{$link.name}">{$link.name}</a>
+        <!--结束文字类型的友情链接{/foreach}-->
+      </div>
+    </div>
+    <!-- {/if} -->
+    <!--友情链接 END-->
+  </div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

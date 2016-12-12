@@ -1,0 +1,130 @@
+﻿<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<title>CIR40 4S售后服务中心_{$page_title}</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="./css/common.css" rel="stylesheet" type="text/css" />
+<link href="./css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="bgYellow">
+
+<div class="container">
+<!--top-->
+ <div class="top">
+    <div class="w1160px clearfix">
+      <div class="welcome fl">欢迎光临{$shop_name}</div>
+      <div class="topnav fr">
+       {insert_scripts files='transport.js,utils.js,json2.js'}
+       {insert name='member_info'}
+
+       
+      </div>
+    </div>
+  </div>
+<!--top end-->
+
+
+<!--header-->
+  <div class="s-header">
+    <div class="w930px clearfix">
+      <div class="l-title fl mt20 mb20">
+        <h1>机器人4S售后服务中心</h1>
+        <p>4S Center For Robot</p>
+      </div>
+      <a href="service.php"><div class="r-title fr mt40"></div></a>
+    </div>
+  </div>
+<!--header END-->
+
+<!--main-->
+  <div class="s-main">    
+    <div class="s-notice">
+      <div class="w930px"><marquee onMouseOut="this.start()" onMouseOver="this.stop()">
+          {insert name='ads' id=8 num=6}
+          </marquee> </div>
+    </div>
+    <div class="white-bg">
+      <div class="w930px">
+        <div class="hang clearfix">
+          <div class="big-btn fl">
+                <img src="images/other/rapir.png" alt="">
+          </div>
+          <ul class="itemlist fl mt10 ml50">
+            <li>~  更高效的生产能力：德国TBi焊枪高强度不锈钢体使得TBi焊枪</li>
+            <li>~  可靠的引弧技术：由于德国TBi焊枪特有的焊丝强迫接触设计</li>
+            <li>~  减少维护时间：德国TBi焊枪有吹扫气体通道，能吹走部分焊渣并冷却抢体</li>
+            <li>~  所有部件均采用德国先进技术使得德国TBi焊枪所有部件配合的天衣无缝</li>
+            <li>~  大量节省保护气体：德国TBi焊枪根据枪型和工艺的不同</li>
+            <li>~  德国TBi焊枪在出厂前都确保经过了多重的</li>
+          </ul>
+          <div class="small-btn mt20 fr">
+            <p>
+             <a href="service_repair.php?type=once">
+              <img src="images/other/dc-rapir.png" alt="单次保修">
+            </a></p>
+            <p class="mt20">
+              <a href="service_repair.php?type=vip">
+                <img src="images/other/vip-rapir.png" alt="">
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w930px">
+      <div class="hang mt30 clearfix">
+        <div class="big-btn fl"><img src="images/other/keep.png" alt=""></div>
+        <ul class="itemlist fl mt10 ml50" style="color:#fff;">
+          <li>l  精准的微动开关带来革命性的开关反应时间；</li>
+          <li>l  追求最高精准度、轻薄材料焊接工作的最佳工具；</li>
+          <li>l  功能可视化使得维修、维护更加方便、快；</li>
+          <li>l  套盖下的螺丝使得维修、维护更加方便、快捷；</li>
+          <li>l  使用适配法兰（塑料或铝制），CAT2适配于大多数机器人种类与操作系统。</li>
+          <li>l  丰富的配件使得CAT2能够适应各式各样的TCP需求。</li>
+        </ul>
+        <div class="small-btn mt20 fr">
+          <p>
+            <a href="service_keep.php?type=once">
+              <img src="images/other/dc-keep.png" alt="">
+            </a>
+          </p>
+          <p class="mt20">
+            <a href="service_keep.php?type=vip">
+              <img src="images/other/vip-keep.png" alt="">
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>  
+  </div>
+<!--main END-->
+<!--footer-->
+  <div class="s-footer mt30">
+    <div class="w930px">
+      <div class="s-footer-nav">
+        <!-- {foreach from=$cat item=cat name="cat_foreach"} -->
+        <!-- {if $cat.level} -->
+            <a href="service_cat.php?id={$cat.id}" title="">{$cat.name}</a>
+        <!-- {/if} -->    
+        <!--{/foreach}--> 
+      </div>
+      <div class="s-copyright fl mt20" style="font-size:14px;">
+        <p>客服电话：{$service_phone} 地址：{$shop_address}</p>
+        <p>{$copyright}  {$icp_number}</p>
+      </div>
+
+      <div class="bdsharebuttonbox fr mt20">
+        <a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+<!--footer END-->
+</div>
+</body>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"32"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+</html>

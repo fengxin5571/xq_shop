@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="" class="page-home">
+<head>
+    <meta charset="utf-8">
+    <title>{$page_title}触屏版-搜索</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="imagemode" content="force">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="{$description}">
+    <meta name="keywords" content="{$keywords}">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="touch-icon.png">
+
+    <link rel="stylesheet" type="text/css" href="{$ecs_css_path}">
+    <link rel="stylesheet" type="text/css" href="{$home_css_path}">
+    {insert_scripts files='./web1/themes/js/banner-he.js,./web1/themes/js/banner.js}
+
+</head>
+<body>
+
+
+<header id="ui-search-header">
+    <div class="ui-s-search clearfix ui-border-tb">
+        <div class="fl ui-s-box">
+            <form>
+                <input type="text" placeholder="商品名称" class="ui-border-tb">
+            </form>
+        </div>
+        <div class="fl" style="width:10%">
+            <i class="ui-icon-search" style="font-size:42px; line-height:32px; color:#999;"></i>
+        </div>
+    </div>
+    <div style="padding:.2rem;">
+        <ul class="ui-list-default">
+        <!--  {foreach from=$goods_data item=goods name=goods_list}-->
+           
+            <li><a href='goods.php?id={$goods.goods_id}'><span>{$goods.goods_name}</span></a></li>
+            <!-- {/foreach} -->
+        </ul>
+    </div>
+
+</header>
+
+
+<div class="" style="height:3.4rem; width:100%; overflow:hidden;"></div>
+<footer id="" class="ui-footer ui-border-t">
+    <ul class="clearfix">
+        <li>
+            <a href="index.html"><i class="ui-icon-home"></i><p>首页</p></a>
+        </li>
+        <li>
+            <a href="search.html" class="on"><i class="ui-icon-search" style="font-size:42px;"></i><p>搜索</p></a>
+        </li>
+
+        <li>
+            <a href="cart.html"><i class="ui-icon-cart"></i><p>购物车</p></a>
+        </li>
+        <li>
+            <a href="user.html"><i class="ui-icon-personal"></i><p>我的</p></a>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>

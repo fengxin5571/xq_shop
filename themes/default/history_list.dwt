@@ -1,0 +1,86 @@
+<!--用户中心浏览历史界面start -->
+<!-- {if $action eq 'history_list'} -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}商城</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+{insert_scripts files='focus.js'}
+</head>
+<body>
+  
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+<div class="" id="content-history">
+<div class="mg-cate w1160px clearfix">
+
+<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+</div>   
+<div class="w1160px clearfix hgoods">
+<div class="AreaL">
+                <div class="box">
+                 <div class="box_1" style="border:none">
+                  <div class="userCenterBox">
+
+                  	<!-- #BeginLibraryItem "/library/user_menu1.lbi" --><!-- #EndLibraryItem -->
+                  </div>
+                 </div>
+                </div>
+              </div>
+<div class="goods-content">
+<div class="p-list">
+<div class="goods-item">
+<div class="mt"><h2>我的足迹</h2><span onclick="clear_history()">删除</span></div>
+<div class="mc">
+<ul>
+<!--{foreach from=$user_history item=goods}-->
+<li >
+<div class="p-img"><a href="{$goods.url}" target="_blank" title="{$goods.goods_name}"><img src="{$goods.goods_thumb}" alt="{$goods.goods_name}" height="190"/></a></div>
+<div class="p-price"><i>{$goods.shop_price}</i></div>
+<div class="cover" style="display:none" name="delete-goods">
+<a href="{$goods.url}" target="_blank" title="{$goods.goods_name}">{$goods.goods_name}</a>
+</div>
+</li>
+<!--{/foreach}-->
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- {if $user_history} -->
+<div class="good-bottom">已到最后，只保存最近 1 个月的浏览记录</div>
+<!--{else}-->
+<div class="good-bottom">′(*>﹏<*)′ 当前分类暂无浏览记录</div>
+<!--{/if}-->
+</div>    
+</div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>
+<script type="text/javascript">
+function clear_history()
+{
+	Ajax.call('user.php', 'act=clear_history',clear_history_Response, 'GET', 'TEXT',1,1);
+}
+function clear_history_Response(){
+	var delete_goods =document.getElementsByName('delete-goods');
+	for(var i=0;i<delete_goods.length;i++)
+	{
+		delete_goods[i].style.display="block";
+		var span=document.createElement("span");
+		span.innerHTML="删除成功";
+		delete_goods[i].appendChild(span);
+	}
+}
+</script>
+<!--{/if} -->
+<!--用户中心浏览历史界面end -->

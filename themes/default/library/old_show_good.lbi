@@ -1,0 +1,210 @@
+<div class="w1160px">
+      <!--tab-->
+      <div class="tab mt5" _ztab="tab1">
+      <div class="pt_hd">
+      <h3>馨清 · 健康生活</h3>
+      <div class="pt_tags">
+        <ul class="title_hd clearfix">
+          <li class="zt-title zt-selected "><div>2016年新款</div></li>
+          <li class="zt-title "><div >品牌精选</div></li>
+          <li class="zt-title "><div >销量领先</div></li>
+          <li class="zt-title "><div >特价促销</div></li>
+        </ul>
+      </div>
+      </div>
+        <div class="cont">
+          <div class="zt-cont">
+            <div class="bannerbox">
+                <div id="banner">
+                    <ul>
+                      <li>
+                          <div class=" mt5 clearfix">
+                          <!--{foreach from=$new_goods item=goods key=key}-->
+                          {if $key<5}
+                            <div class="scroll-li {if ($key+1)%6 eq 0 && $key neq 0}noborder{/if}">
+                            <div class="p-img">
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><img src="{$goods.goods_img}" width="200" height="200" alt="" class='err-product' style="padding: 11px;"></a>
+                              {if $is_show_presell_icn}
+                              {if $goods.is_presell}
+                              <i class="zc_icon"></i>
+                              {/if}
+                              {/if}
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><div class="imageEffects"> </div></a>
+                            </div>
+                            <div class="p-info">
+                              <div class='p-name'>
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank" >{$goods.name}</a>
+                              </div>
+                              <div class="dotted"></div>
+                              <div class="p-price">
+                              <span class="shop_price"> <!-- {if $goods.promote_price neq ""} -->
+                                {$goods.promote_price}
+                                <!-- {else}-->
+                                {$goods.shop_price}
+                                <!--{/if}--></span>
+                              <span class="market_price">{$goods.market_price}</span>
+                              </div>
+                              <div class="add_cart"><a class="second_mallBuy" href="javascript:addToCart({$goods.id})"><span>购买</span></a></div>   
+                              </div>
+                            </div>
+                            {/if}
+                            <!--{/foreach}-->
+                            </div>
+                           
+                      </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+          <div class="zt-cont" style="display:none;">
+            <div class="bannerbox">
+                <div id="banner1">
+                    <ul>
+                       <li>
+                          <div class=" mt5 clearfix">
+                          <!--{foreach from=$best_goods item=goods key=key}-->
+                          {if $key<5}
+                            <div class="scroll-li {if ($key+1)%6 eq 0 && $key neq 0}noborder{/if}">
+                            <div class="p-img">
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><img src="{$goods.goods_img}" width="200" height="200" alt="" class='err-product' style="padding: 11px;"></a>
+                              {if $is_show_presell_icn}
+                              {if $goods.is_presell}
+                              <i class="zc_icon"></i>
+                              {/if}
+                              {/if}
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><div class="imageEffects"> </div></a>
+                            </div>
+                            <div class="p-info">
+                              <div class='p-name'>
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank" >{$goods.name}</a>
+                              </div>
+                              <div class="dotted"></div>
+                              <div class="p-price">
+                              <span class="shop_price"> <!-- {if $goods.promote_price neq ""} -->
+                                {$goods.promote_price}
+                                <!-- {else}-->
+                                {$goods.shop_price}
+                                <!--{/if}--></span>
+                              <span class="market_price">{$goods.market_price}</span>
+                              </div> 
+                              <div class="add_cart"><a class="second_mallBuy" href="javascript:addToCart({$goods.id})"><span>购买</span></a></div>   
+                              </div>
+                            </div>
+                            {/if}
+                           <!--{/foreach}-->
+                           </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+         
+          <div class="zt-cont" style="display:none;">
+            <div class="bannerbox">
+                <div id="banner3">
+                    <ul>
+                      <li>
+                          <div class=" mt5 clearfix">
+                         <!--{foreach from=$hot_goods item=goods key=key}-->
+                         {if $key<5}
+                            <div class="scroll-li {if ($key+1)%6 eq 0 && $key neq 0}noborder{/if}">
+                            <div class="p-img">
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><img src="{$goods.goods_img}" width="200" height="200" alt="" class='err-product' style="padding: 11px;"></a>
+                              {if $is_show_presell_icn}
+                              {if $goods.is_presell}
+                              <i class="zc_icon"></i>
+                              {/if}
+                              {/if}
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><div class="imageEffects"> </div></a>
+                            </div>
+                            <div class="p-info">
+                              <div class='p-name'>
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank" >{$goods.name}</a>
+                              </div>
+                              <div class="dotted"></div>
+                              <div class="p-price">
+                              <span class="shop_price"> <!-- {if $goods.promote_price neq ""} -->
+                                {$goods.promote_price}
+                                <!-- {else}-->
+                                {$goods.shop_price}
+                                <!--{/if}--></span>
+                              <span class="market_price">{$goods.market_price}</span>
+                              </div>   
+                              <div class="add_cart"><a class="second_mallBuy" href="javascript:addToCart({$goods.id})"><span>购买</span></a></div> 
+                              </div>
+                            </div>
+                            {/if}
+                           <!--{/foreach}-->
+                           </div>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+          
+          <div class="zt-cont" style="display:none;">
+            <div class="bannerbox">
+                <div id="banner4">
+                    <ul>
+                    <div class='coupon_hd'>
+                    <a href="{$factory_url}">
+                    <div class="coupon_entry">
+                    <i class="box_hd_icon"></i><h3 class="coupon_entry_tit">馨清秒杀</h3>
+                    <span class="coupon_entry_gap"></span>
+                    <p class="coupon_entry_txt coupon_entry_txt1">没抢到？</p>
+                    <p class="coupon_entry_txt coupon_entry_txt2">可以在活动结束前赶紧抢购</p>
+                    <div class="coupon_entry_btn">
+                    <div class="sk_cd_main" id="index_time">
+                    <div class="cd_item cd_hour"><span class="cd_item_txt">010</span></div>
+                    <div class="cd_split"><i class="cd_split_dot cd_split_top"></i><i class="cd_split_dot cd_split_bottom"></i></div>
+                    <div class="cd_item cd_minute"><span class="cd_item_txt">26</span></div>
+                    <div class="cd_split"><i class="cd_split_dot cd_split_top"></i><i class="cd_split_dot cd_split_bottom"></i></div>
+                    <div class="cd_item cd_second"><span class="cd_item_txt">05</span></div>
+                    </div>
+                    </div>
+                    <p class="coupon_entry_txt coupon_entry_txt2" style="width: 80px;margin: 0 auto;padding-top: 5px;">后结束抢购</p>
+                    <div class="coupon_entry_btn" style="border: 2px solid #fff;height:20px;width:120px;margin-left: 20px;">前往查看更多<i class="coupon_entry_btn_ico"></i></div>
+                    </div></a></div>
+                      <li>
+                          <div class=" mt5 clearfix">
+                          <!--{foreach from=$promotion_goods item=goods key=key}-->
+                          {assign var='promote_end_time' value=$goods.promote_end_time}
+                          {if $key<4}
+                            <div class="scroll-li {if ($key+1)%6 eq 0 && $key neq 0}noborder{/if}">
+                            <div class="p-img">
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><img src="{$goods.goods_img}" width="200" height="200" alt="" class='err-product' style="padding: 11px;"></a>
+                              {if $is_show_presell_icn}
+                              {if $goods.is_presell}
+                              <i class="zc_icon"></i>
+                              {/if}
+                              {/if}
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><div class="imageEffects"> </div></a>
+                            </div>
+                            <div class="p-info">
+                              <div class='p-name'>
+                              <a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank" >{$goods.name}</a>
+                              </div>
+                              <div class="dotted"></div>
+                              <div class="p-price">
+                              <span class="shop_price"> <!-- {if $goods.promote_price neq ""} -->
+                                {$goods.promote_price}
+                                <!-- {else}-->
+                                {$goods.shop_price}
+                                <!--{/if}--></span>
+                              <span class="market_price">{$goods.market_price}</span>
+                              </div> 
+                              <div class="add_cart"><a class="second_mallBuy" href="javascript:addToCart({$goods.id})"><span>购买</span></a></div>   
+                              </div>
+                            </div>
+                            {/if}
+                           <!--{/foreach}-->
+                           </div>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--tab END-->
+    </div>

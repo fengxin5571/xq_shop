@@ -1,0 +1,82 @@
+    
+    <!-- {if $package_goods_list} -->
+    <div class="w1160px mt20">
+      <div class="mg-dp">
+        <ul>
+          <!-- {foreach name=package_goods_list_1 from=$package_goods_list item=package_goods} --> 
+          <li id="czjb_btn_{$smarty.foreach.package_goods_list_1.iteration}" onClick='change_tab("czjb_btn_", "czlb_cont_", {$smarty.foreach.package_goods_list_1.iteration},{$smarty.foreach.package_goods_list_1.total},"on","")'  {if $smarty.foreach.package_goods_list_1.iteration eq 1}class="on"{/if}>{$package_goods.act_name}</li>
+          <!-- {/foreach} -->
+        </ul>
+
+        <!-- {foreach name=package_goods_list_2  from=$package_goods_list item=package_goods} --> 
+        <div class="mg-stabcon clearfix" id="czlb_cont_{$smarty.foreach.package_goods_list_2.iteration}" {if $smarty.foreach.package_goods_list_2.iteration neq 1}  style="display:none;" {/if}>
+          <div class="master fl">
+            <div class="mg-p-img">
+              <a href="{$package_goods.goods_main.url}" target="_blank"><img src="{$package_goods.goods_main.goods_thumb}"></a>
+            </div>
+            <div class="mg-p-price">
+              <label>价格：<b>{$package_goods.goods_main.rank_price}</b></label>
+            </div>
+          </div>
+          <div class="mg-s fl"></div>
+          <!--套餐-->
+          <div class="mg-ch-all fl clearfix">
+            <div class="mg-chall">
+
+              <!-- {foreach from=$package_goods.goods_list item=goods_list} -->
+              {if $goods_list.goods_id neq package_goods.goods_id}
+              <div class="master2">
+                <div class="mg-p-img">
+                  <a href="{$goods_list.url}" target="_blank"><img src="{$goods_list.goods_thumb}"></a>
+                </div>
+                <div class="mg-p-price2">
+                  <label>价格：<b>{$goods_list.rank_price}</b></label>
+                </div>
+              </div>
+              {/if}
+              <!-- {/foreach} --> 
+              
+            </div>
+          </div>
+          <!--套餐END-->
+          <div class="ch-right fl"></div>
+          <div class="mg-p-infos fl">
+            <div class="mg-tc-num">套装价：<b>{$package_goods.package_price}</b></div>
+            <div class="mg-tc-price">原&nbsp;&nbsp;价：<b>{$package_goods.subtotal}</b></div>
+            <div class="mg-tc-price2">为你节省：<b>{$package_goods.saving}</b></div>
+            <a href="javascript:addPackageToCart({$package_goods.act_id})" class="buy">购买优惠套餐</a>
+            <a href="javascript:addPackageToCart({$package_goods.act_id})" class="incart">加入购物车</a>
+          </div>
+        </div>
+      </div>
+      <!-- {/foreach} -->
+    </div>
+
+
+    <script>
+ function change_tab(btn_pre, cont_pre, cnum,num,css_on,css_off)
+{
+  var button;
+  var content;
+  for(i=1;i<=num;i++)
+  {
+    button  = document.getElementById(btn_pre+i);
+    content = document.getElementById(cont_pre+i);
+    if(i== cnum)
+    {
+    button.className = css_on;
+    content.style.display='';
+    }
+    else
+    {
+    button.className= css_off;
+    content.style.display='none';  
+    }
+    
+    
+  }
+}
+ </script>
+    <!-- {/if} -->
+
+
