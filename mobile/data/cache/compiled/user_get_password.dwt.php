@@ -26,7 +26,7 @@
 <input type="hidden" name="sms_code" value="<?php echo $this->_var['sms_code']; ?>" id="sms_code" />
 <input name="Submit" type="submit" value="<?php echo $this->_var['lang']['submit']; ?>" class="btn btn-info ect-btn-info ect-colorf ect-bg" />
 </div>
-<p class="ect-padding-lr ect-margin-tb text-right ect-margin-bottom0" style="clear:both"><a href="<?php echo url('user/get_password_question');?>" class="f6"><?php echo $this->_var['lang']['get_password_by_question']; ?></a>&nbsp;&nbsp;<a href="<?php echo url('user/get_password_email');?>" class="f6"><?php echo $this->_var['lang']['get_password_by_mail']; ?></a></p>
+<p class="ect-padding-lr ect-margin-tb text-right ect-margin-bottom0" style="clear:both">&nbsp;&nbsp;<a href="<?php echo url('user/get_password_email');?>" class="f6"><?php echo $this->_var['lang']['get_password_by_mail']; ?></a></p>
 </form>
 <script src="__PUBLIC__/js/sms.js" type="text/javascript"></script> 
 <?php endif; ?> 
@@ -59,7 +59,7 @@
     <input name="Submit" type="submit" value="<?php echo $this->_var['lang']['submit']; ?>" class="btn btn-info ect-btn-info ect-colorf ect-bg" />
   </div>
 </form>
-<p class="text-right ect-padding-lr"><a href="<?php echo url('user/get_password_question');?>"><?php echo $this->_var['lang']['get_password_by_question']; ?></a>&nbsp;&nbsp;<?php if ($this->_var['enabled_sms_signin'] == 1): ?><a href="<?php echo url('user/get_password_phone');?>"><?php echo $this->_var['lang']['get_password_by_mobile']; ?></a><?php endif; ?>
+<p class="text-right ect-padding-lr">&nbsp;&nbsp;<?php if ($this->_var['enabled_sms_signin'] == 1): ?><a href="<?php echo url('user/get_password_phone');?>"><?php echo $this->_var['lang']['get_password_by_mobile']; ?></a><?php endif; ?>
   </dd>
 </p>
 <?php endif; ?> 
