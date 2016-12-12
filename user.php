@@ -1,6 +1,6 @@
 <?php
 define('IN_ECS', true);
-
+/*用户类*/
 require (dirname(__FILE__) . '/includes/init.php');
 
 /* 载入语言文件 */
