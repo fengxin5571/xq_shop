@@ -1,4 +1,7 @@
 <?php
+/*
+ *  视频类
+ * */
 define('IN_ECS', true);
 
 require(dirname(__FILE__) . '/includes/init.php');
