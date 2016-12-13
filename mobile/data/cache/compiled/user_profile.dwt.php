@@ -33,6 +33,27 @@
           <input placeholder="<?php echo $this->_var['lang']['passwd_answer']; ?>" name="passwd_answer" type="text" value="<?php echo $this->_var['profile']['passwd_answer']; ?>" />
           </span></div>
       </li>
+      <?php elseif ($this->_var['field']['id'] == 5): ?>
+      <?php if ($this->_var['ihuyi_sms_mobile_bind']): ?>
+      <li>
+        <div class="input-text code"><b class="pull-left"><?php echo $this->_var['field']['reg_field_name']; ?>:</b><span>
+          <input name="extend_field<?php echo $this->_var['field']['id']; ?>" type="text" value="<?php echo $this->_var['field']['content']; ?>" placeholder="<?php echo $this->_var['field']['reg_field_name']; ?>" disabled>
+          <input name="extend_field<?php echo $this->_var['field']['id']; ?>" type="hidden" value="<?php echo $this->_var['field']['content']; ?>" />
+          </span>
+          <?php if ($this->_var['field']['content']): ?>
+          <input class="pull-right ect-bg __web-inspector-hide-shortcut__"   type="botton" value="重新绑定" style="width: 110px;border: none;text-align: center;">
+          <?php else: ?>
+          <input class="pull-right ect-bg __web-inspector-hide-shortcut__"   type="botton" value="绑定手机" style="width: 110px;border: none;text-align: center;">
+          <?php endif; ?>
+          </div>
+      </li>
+      <?php else: ?>
+      <li>
+        <div class="input-text"><b class="pull-left"><?php echo $this->_var['field']['reg_field_name']; ?>:</b><span>
+          <input name="extend_field<?php echo $this->_var['field']['id']; ?>" type="text" value="<?php echo $this->_var['field']['content']; ?>" placeholder="<?php echo $this->_var['field']['reg_field_name']; ?>">
+          </span></div>
+      </li>
+      <?php endif; ?>
       <?php else: ?>
       <li>
         <div class="input-text"><b class="pull-left"><?php echo $this->_var['field']['reg_field_name']; ?>:</b><span>

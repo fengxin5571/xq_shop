@@ -4,13 +4,13 @@
 <div id="pager">
   <div class="mg-page2 mt20 text-center clearfix">
       <?php echo $this->_var['lang']['pager_1']; ?><?php echo $this->_var['pager']['record_count']; ?><?php echo $this->_var['lang']['pager_2']; ?><?php echo $this->_var['lang']['pager_3']; ?><?php echo $this->_var['pager']['page_count']; ?><?php echo $this->_var['lang']['pager_4']; ?> <span> <a href="<?php echo $this->_var['pager']['page_first']; ?>"><?php echo $this->_var['lang']['page_first']; ?></a> <a href="<?php echo $this->_var['pager']['page_prev']; ?>"><?php echo $this->_var['lang']['page_prev']; ?></a> <a href="<?php echo $this->_var['pager']['page_next']; ?>"><?php echo $this->_var['lang']['page_next']; ?></a> <a href="<?php echo $this->_var['pager']['page_last']; ?>"><?php echo $this->_var['lang']['page_last']; ?></a> </span>
-        <?php $_from = $this->_var['pager']['search']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_33117600_1480915372');if (count($_from)):
-    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_33117600_1480915372']):
+        <?php $_from = $this->_var['pager']['search']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_55065900_1481617923');if (count($_from)):
+    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_55065900_1481617923']):
 ?>
           <?php if ($this->_var['key'] == 'keywords'): ?>
-              <input type="hidden" name="<?php echo $this->_var['key']; ?>" value="<?php echo urldecode($this->_var['item_0_33117600_1480915372']); ?>" />
+              <input type="hidden" name="<?php echo $this->_var['key']; ?>" value="<?php echo urldecode($this->_var['item_0_55065900_1481617923']); ?>" />
             <?php else: ?>
-              <input type="hidden" name="<?php echo $this->_var['key']; ?>" value="<?php echo $this->_var['item_0_33117600_1480915372']; ?>" />
+              <input type="hidden" name="<?php echo $this->_var['key']; ?>" value="<?php echo $this->_var['item_0_55065900_1481617923']; ?>" />
           <?php endif; ?>
         <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
         <select name="page" id="page" onchange="selectPage(this)">
@@ -29,13 +29,13 @@
           <li class="a1"><a href="<?php echo $this->_var['pager']['page_prev']; ?>">< <?php echo $this->_var['lang']['page_prev']; ?></a></li>
         <?php endif; ?>
         <?php if ($this->_var['pager']['page_count'] != 1): ?>
-          <?php $_from = $this->_var['pager']['page_number']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_33201600_1480915372');if (count($_from)):
-    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_33201600_1480915372']):
+          <?php $_from = $this->_var['pager']['page_number']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_55153700_1481617923');if (count($_from)):
+    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_55153700_1481617923']):
 ?>
             <?php if ($this->_var['pager']['page'] == $this->_var['key']): ?>
             <li><span><?php echo $this->_var['key']; ?></span></li>
             <?php else: ?>
-            <li><a href="<?php echo $this->_var['item_0_33201600_1480915372']; ?>"><?php echo $this->_var['key']; ?></a></li>
+            <li><a href="<?php echo $this->_var['item_0_55153700_1481617923']; ?>"><?php echo $this->_var['key']; ?></a></li>
             <?php endif; ?>
           <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
         <?php endif; ?>
@@ -45,13 +45,13 @@
         <?php endif; ?>  
 
         <?php if ($this->_var['pager']['page_kbd']): ?>
-          <?php $_from = $this->_var['pager']['search']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_33254400_1480915372');if (count($_from)):
-    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_33254400_1480915372']):
+          <?php $_from = $this->_var['pager']['search']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_55215200_1481617923');if (count($_from)):
+    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_55215200_1481617923']):
 ?>
             <?php if ($this->_var['key'] == 'keywords'): ?>
-                <input type="hidden" name="<?php echo $this->_var['key']; ?>" value="<?php echo urldecode($this->_var['item_0_33254400_1480915372']); ?>" />
+                <input type="hidden" name="<?php echo $this->_var['key']; ?>" value="<?php echo urldecode($this->_var['item_0_55215200_1481617923']); ?>" />
               <?php else: ?>
-                <input type="hidden" name="<?php echo $this->_var['key']; ?>" value="<?php echo $this->_var['item_0_33254400_1480915372']; ?>" />
+                <input type="hidden" name="<?php echo $this->_var['key']; ?>" value="<?php echo $this->_var['item_0_55215200_1481617923']; ?>" />
             <?php endif; ?>
           <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
           <li class="last">到第<input type="text" name="page" >页<button name="mg-btn" onclick="selectPage(this)">确定</button></li>
