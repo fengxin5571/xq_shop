@@ -235,18 +235,21 @@
                        </div>
                        <div class="safe-item">
                        <div class='fore1'><s class="icon-01"></s><strong>手机验证</strong></div>
+					   <!-- {if $_CFG['ihuyi_sms_mobile_bind']=='1'} -->
                        <div class="fore2"><span class="ftx-03">您验证的手机：<strong class="ftx-06">  {$user_info.mobile_phone}</strong>&nbsp;&nbsp;若已丢失或停用，请立即更换，<span style="color:#cc0000;">避免账户被盗</span></span></div>
                        <div class="fore3">
-                       <!-- {if $_CFG['ihuyi_sms_mobile_bind']=='1'} -->
                        <!-- {if $user_info.mobile_phone!=''} -->
 				       <a href="user.php?act=bindmobile" class="get_passbtn" >重新绑定</a>
 				       <!-- {else} -->
 				       <a href="user.php?act=bindmobile" class="get_passbtn">绑定手机</a>
 				       <!-- {/if} -->
-                       
-                       <!-- {/if}-->
                        </div>
-                       
+					   <!--{else}-->
+					   <div class="fore2"><span class="ftx-03">您验证的手机：<strong class="ftx-06">  {$user_info.mobile_phone}</strong>&nbsp;&nbsp;若已丢失或停用，请立即更换，<span style="color:#cc0000;">避免账户被盗</span></span></div>
+					   <div class="fore3">
+					    <a href="#" class="get_passbtn" >修改手机</a>
+					   </div>
+                       <!-- {/if}-->
                        </div>
                        
                        </div>

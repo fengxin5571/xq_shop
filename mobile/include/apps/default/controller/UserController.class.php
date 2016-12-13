@@ -213,6 +213,7 @@ class UserController extends CommonController {
         }
 
         $this->assign('title', L('profile'));
+        $this->assign("ihuyi_sms_mobile_bind",C("ihuyi_sms_mobile_bind"));
         $this->assign('extend_info_list', $extend_info_list);
         // 密码提示问题
         $this->assign('passwd_questions', L('passwd_questions'));
@@ -1850,6 +1851,8 @@ class UserController extends CommonController {
                 if (C('member_email_validate') && C('send_verify_email')) {
                     model('Users')->send_regiter_hash($_SESSION['user_id']);
                 }
+                
+                
                 $ucdata = empty(self::$user->ucdata) ? "" : self::$user->ucdata;
                 show_message(sprintf(L('register_success'), $username . $ucdata), array(
                     L('back_up_page'),

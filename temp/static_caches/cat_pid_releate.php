@@ -54,19 +54,6 @@ $data = array (
   ),
   4 => 
   array (
-    'cat_id' => '3',
-    'cat_name' => '功能',
-    'measure_unit' => '台',
-    'parent_id' => '1',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '4',
-    'sort_order' => '50',
-    'has_children' => '3',
-    'goods_num' => 0,
-  ),
-  5 => 
-  array (
     'cat_id' => '4',
     'cat_name' => '水质',
     'measure_unit' => '',
@@ -76,6 +63,19 @@ $data = array (
     'grade' => '0',
     'sort_order' => '50',
     'has_children' => '4',
+    'goods_num' => 0,
+  ),
+  5 => 
+  array (
+    'cat_id' => '80',
+    'cat_name' => '配件',
+    'measure_unit' => '',
+    'parent_id' => '1',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '15',
     'goods_num' => 0,
   ),
   6 => 
@@ -93,19 +93,6 @@ $data = array (
   ),
   7 => 
   array (
-    'cat_id' => '80',
-    'cat_name' => '配件',
-    'measure_unit' => '',
-    'parent_id' => '1',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '15',
-    'goods_num' => 0,
-  ),
-  8 => 
-  array (
     'cat_id' => '76',
     'cat_name' => '安装',
     'measure_unit' => '',
@@ -117,20 +104,20 @@ $data = array (
     'has_children' => '3',
     'goods_num' => 0,
   ),
-  9 => 
+  8 => 
   array (
-    'cat_id' => '64',
-    'cat_name' => '除水垢',
-    'measure_unit' => '',
-    'parent_id' => '3',
+    'cat_id' => '3',
+    'cat_name' => '功能',
+    'measure_unit' => '台',
+    'parent_id' => '1',
     'is_show' => '1',
     'show_in_nav' => '0',
-    'grade' => '0',
+    'grade' => '4',
     'sort_order' => '50',
-    'has_children' => '0',
+    'has_children' => '3',
     'goods_num' => 0,
   ),
-  10 => 
+  9 => 
   array (
     'cat_id' => '65',
     'cat_name' => '杀菌',
@@ -143,7 +130,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  11 => 
+  10 => 
   array (
     'cat_id' => '66',
     'cat_name' => '初级过滤',
@@ -156,33 +143,20 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
+  11 => 
+  array (
+    'cat_id' => '64',
+    'cat_name' => '除水垢',
+    'measure_unit' => '',
+    'parent_id' => '3',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
   12 => 
-  array (
-    'cat_id' => '69',
-    'cat_name' => '软水',
-    'measure_unit' => '',
-    'parent_id' => '4',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  13 => 
-  array (
-    'cat_id' => '70',
-    'cat_name' => '磁化水',
-    'measure_unit' => '',
-    'parent_id' => '4',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  14 => 
   array (
     'cat_id' => '67',
     'cat_name' => '纯净水',
@@ -195,10 +169,36 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  15 => 
+  13 => 
   array (
     'cat_id' => '68',
     'cat_name' => '矿物质水',
+    'measure_unit' => '',
+    'parent_id' => '4',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  14 => 
+  array (
+    'cat_id' => '69',
+    'cat_name' => '软水',
+    'measure_unit' => '',
+    'parent_id' => '4',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  15 => 
+  array (
+    'cat_id' => '70',
+    'cat_name' => '磁化水',
     'measure_unit' => '',
     'parent_id' => '4',
     'is_show' => '1',
@@ -236,32 +236,6 @@ $data = array (
   ),
   18 => 
   array (
-    'cat_id' => '58',
-    'cat_name' => '四级过滤',
-    'measure_unit' => '',
-    'parent_id' => '5',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  19 => 
-  array (
-    'cat_id' => '61',
-    'cat_name' => '七级过滤',
-    'measure_unit' => '',
-    'parent_id' => '5',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  20 => 
-  array (
     'cat_id' => '55',
     'cat_name' => '一级过滤',
     'measure_unit' => '',
@@ -273,7 +247,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 3,
   ),
-  21 => 
+  19 => 
   array (
     'cat_id' => '59',
     'cat_name' => '五级过滤',
@@ -286,7 +260,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  22 => 
+  20 => 
   array (
     'cat_id' => '56',
     'cat_name' => '二级过滤',
@@ -299,7 +273,20 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  23 => 
+  21 => 
+  array (
+    'cat_id' => '63',
+    'cat_name' => '九级过滤',
+    'measure_unit' => '',
+    'parent_id' => '5',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  22 => 
   array (
     'cat_id' => '60',
     'cat_name' => '六级过滤',
@@ -312,10 +299,23 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
+  23 => 
+  array (
+    'cat_id' => '58',
+    'cat_name' => '四级过滤',
+    'measure_unit' => '',
+    'parent_id' => '5',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
   24 => 
   array (
-    'cat_id' => '63',
-    'cat_name' => '九级过滤',
+    'cat_id' => '61',
+    'cat_name' => '七级过滤',
     'measure_unit' => '',
     'parent_id' => '5',
     'is_show' => '1',
@@ -353,19 +353,6 @@ $data = array (
   ),
   27 => 
   array (
-    'cat_id' => '74',
-    'cat_name' => '软水机',
-    'measure_unit' => '',
-    'parent_id' => '71',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  28 => 
-  array (
     'cat_id' => '75',
     'cat_name' => '前置过滤机',
     'measure_unit' => '',
@@ -377,7 +364,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  29 => 
+  28 => 
   array (
     'cat_id' => '72',
     'cat_name' => '超滤机',
@@ -390,7 +377,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  30 => 
+  29 => 
   array (
     'cat_id' => '73',
     'cat_name' => '反渗透（RO）机',
@@ -403,33 +390,20 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
+  30 => 
+  array (
+    'cat_id' => '74',
+    'cat_name' => '软水机',
+    'measure_unit' => '',
+    'parent_id' => '71',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
   31 => 
-  array (
-    'cat_id' => '77',
-    'cat_name' => '厨下机',
-    'measure_unit' => '',
-    'parent_id' => '76',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  32 => 
-  array (
-    'cat_id' => '79',
-    'cat_name' => '饮水机净水器',
-    'measure_unit' => '',
-    'parent_id' => '76',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  33 => 
   array (
     'cat_id' => '78',
     'cat_name' => '壁挂机',
@@ -442,111 +416,33 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
+  32 => 
+  array (
+    'cat_id' => '77',
+    'cat_name' => '厨下机',
+    'measure_unit' => '',
+    'parent_id' => '76',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  33 => 
+  array (
+    'cat_id' => '79',
+    'cat_name' => '饮水机净水器',
+    'measure_unit' => '',
+    'parent_id' => '76',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
   34 => 
-  array (
-    'cat_id' => '81',
-    'cat_name' => '套装滤芯',
-    'measure_unit' => '',
-    'parent_id' => '80',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  35 => 
-  array (
-    'cat_id' => '91',
-    'cat_name' => '水管快接',
-    'measure_unit' => '',
-    'parent_id' => '80',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  36 => 
-  array (
-    'cat_id' => '88',
-    'cat_name' => '电磁阀',
-    'measure_unit' => '',
-    'parent_id' => '80',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  37 => 
-  array (
-    'cat_id' => '85',
-    'cat_name' => '颗粒活性炭',
-    'measure_unit' => '',
-    'parent_id' => '80',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  38 => 
-  array (
-    'cat_id' => '95',
-    'cat_name' => '增压泵',
-    'measure_unit' => '',
-    'parent_id' => '80',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  39 => 
-  array (
-    'cat_id' => '82',
-    'cat_name' => 'PP棉-1微米',
-    'measure_unit' => '',
-    'parent_id' => '80',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  40 => 
-  array (
-    'cat_id' => '92',
-    'cat_name' => '尾水电磁阀',
-    'measure_unit' => '',
-    'parent_id' => '80',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  41 => 
-  array (
-    'cat_id' => '89',
-    'cat_name' => '控制板',
-    'measure_unit' => '',
-    'parent_id' => '80',
-    'is_show' => '1',
-    'show_in_nav' => '0',
-    'grade' => '0',
-    'sort_order' => '50',
-    'has_children' => '0',
-    'goods_num' => 0,
-  ),
-  42 => 
   array (
     'cat_id' => '86',
     'cat_name' => '烧结活性炭',
@@ -559,7 +455,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  43 => 
+  35 => 
   array (
     'cat_id' => '83',
     'cat_name' => 'PP棉-5微米',
@@ -572,7 +468,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  44 => 
+  36 => 
   array (
     'cat_id' => '93',
     'cat_name' => '阀门',
@@ -585,7 +481,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  45 => 
+  37 => 
   array (
     'cat_id' => '90',
     'cat_name' => '水管',
@@ -598,7 +494,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  46 => 
+  38 => 
   array (
     'cat_id' => '87',
     'cat_name' => '紫外线灯',
@@ -611,7 +507,7 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  47 => 
+  39 => 
   array (
     'cat_id' => '84',
     'cat_name' => '反渗透膜（RO膜）',
@@ -624,10 +520,114 @@ $data = array (
     'has_children' => '0',
     'goods_num' => 0,
   ),
-  48 => 
+  40 => 
   array (
     'cat_id' => '94',
     'cat_name' => '扳手',
+    'measure_unit' => '',
+    'parent_id' => '80',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  41 => 
+  array (
+    'cat_id' => '81',
+    'cat_name' => '套装滤芯',
+    'measure_unit' => '',
+    'parent_id' => '80',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  42 => 
+  array (
+    'cat_id' => '91',
+    'cat_name' => '水管快接',
+    'measure_unit' => '',
+    'parent_id' => '80',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  43 => 
+  array (
+    'cat_id' => '88',
+    'cat_name' => '电磁阀',
+    'measure_unit' => '',
+    'parent_id' => '80',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  44 => 
+  array (
+    'cat_id' => '85',
+    'cat_name' => '颗粒活性炭',
+    'measure_unit' => '',
+    'parent_id' => '80',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  45 => 
+  array (
+    'cat_id' => '95',
+    'cat_name' => '增压泵',
+    'measure_unit' => '',
+    'parent_id' => '80',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  46 => 
+  array (
+    'cat_id' => '82',
+    'cat_name' => 'PP棉-1微米',
+    'measure_unit' => '',
+    'parent_id' => '80',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  47 => 
+  array (
+    'cat_id' => '92',
+    'cat_name' => '尾水电磁阀',
+    'measure_unit' => '',
+    'parent_id' => '80',
+    'is_show' => '1',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  48 => 
+  array (
+    'cat_id' => '89',
+    'cat_name' => '控制板',
     'measure_unit' => '',
     'parent_id' => '80',
     'is_show' => '1',
