@@ -167,6 +167,19 @@ class UsersModel extends BaseModel {
             if (!empty($register_points)) {
                 model('ClipsBase')->log_account_change($_SESSION['user_id'], 0, 0, C('register_points'), C('register_points'), L('register_points'));
             }
+            //是否注册成功自动发送红包
+            $sql="SELECT type_id,type_name FROM ".$this->pre."bonus_type  WHERE send_type=0 AND is_auto_userbonus=1 AND send_start_date<='".time()."' AND send_end_date>=".time();
+            $bonus_type_ids=$this->query($sql);
+            if($bonus_type_ids){
+                foreach ($bonus_type_ids as $val){
+                    $sql = "INSERT INTO " . $this->pre ."user_bonus ".
+                        "(bonus_type_id, bonus_sn, user_id, used_time, order_id, emailed) " .
+                        "VALUES ('$val[type_id]', 0, '$_SESSION[user_id]', 0, 0, " .BONUS_MAIL_FAIL. ")";
+                    if($this->query($sql)){
+                        $_SESSION['bonus_by_user'].="$val[type_name] 一个！<br/>";
+                    }
+                }
+            }
             
             //定义other合法的变量数组
             $other_key_array = array('msn', 'qq', 'office_phone', 'home_phone', 'mobile_phone', 'parent_id');

@@ -29,6 +29,27 @@
           <input placeholder="{$lang.passwd_answer}" name="passwd_answer" type="text" value="{$profile.passwd_answer}" />
           </span></div>
       </li>
+      <!--{elseif $field.id eq 5}-->
+      <!--{if $ihuyi_sms_mobile_bind} -->
+      <li>
+        <div class="input-text code"><b class="pull-left">{$field.reg_field_name}:</b><span>
+          <input name="extend_field{$field.id}" type="text" value="{$field.content}" placeholder="{$field.reg_field_name}" disabled>
+          <input name="extend_field{$field.id}" type="hidden" value="{$field.content}" />
+          </span>
+          <!--{if $field.content} -->
+          <input class="pull-right ect-bg __web-inspector-hide-shortcut__"   type="botton" value="重新绑定" style="width: 110px;border: none;text-align: center;">
+          <!--{else}-->
+          <input class="pull-right ect-bg __web-inspector-hide-shortcut__"   type="botton" value="绑定手机" style="width: 110px;border: none;text-align: center;">
+          <!--{/if}-->
+          </div>
+      </li>
+      <!-- {else}-->
+      <li>
+        <div class="input-text"><b class="pull-left">{$field.reg_field_name}:</b><span>
+          <input name="extend_field{$field.id}" type="text" value="{$field.content}" placeholder="{$field.reg_field_name}">
+          </span></div>
+      </li>
+      <!--{/if}-->
       <!-- {else} -->
       <li>
         <div class="input-text"><b class="pull-left">{$field.reg_field_name}:</b><span>
