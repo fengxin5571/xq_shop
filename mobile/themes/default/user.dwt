@@ -1,6 +1,6 @@
 <!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
 <div class="user-info">
-  <div class="user-img pull-left"><i class="glyphicon glyphicon-user"></i></div>
+  <div class="user-img pull-left"><a href="{:url('user/showImg')}"><i class="glyphicon glyphicon-user"></i></a></div>
   <dl class="pull-left">
     <dt>
       <h4>{$info.username} | <a href="{:url('user/logout')}" class="ect-colorf">{$lang.label_logout}</a></h4>
@@ -23,15 +23,18 @@
     <li class="col-sm-3 col-xs-3"><i class="glyphicon glyphicon-map-marker"></i>
       <p class="text-center">{$lang.label_address}</p>
     </li>
-    </a> <a href="{:url('user/account_detail')}">
+    </a> 
+    <!--<a href="{:url('user/account_detail')}">
     <li class="col-sm-3 col-xs-3"><i class="glyphicon glyphicon-usd"></i>
       <p class="text-center">{$lang.label_user_surplus}</p>
     </li>
-    </a> <a href="{:url('user/profile')}">
+    </a>  -->
+    <a href="{:url('user/profile')}">
     <li class="col-sm-3 col-xs-3"><i class="fa fa-user"></i>
       <p class="text-center">{$lang.profile}</p>
     </li>
-    </a> <a href="{:url('user/edit_password')}">
+    </a> 
+    <a href="{:url('user/edit_password')}">
     <li class="col-sm-3 col-xs-3"><i class="fa fa-shield"></i>
       <p class="text-center">{$lang.edit_password}</p>
     </li>
@@ -39,16 +42,17 @@
     <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/u-kefu.png"></i>
       <p class="text-center">{$lang.user_service}</p>
     </li>
-    </a> <a href="{:url('user/share')}">
+    </a> 
+    <!--<a href="{:url('user/share')}">
     <li class="col-sm-3 col-xs-3"><i class="fa fa-share-alt"></i>
       <p class="text-center">{$lang.label_share}</p>
     </li>
-    </a>
-     <a href="{:url('user/tag_list')}">
+    </a> -->
+     <!--<a href="{:url('user/tag_list')}">
     <li class="col-sm-3 col-xs-3"><i class="glyphicon glyphicon-tags"></i>
       <p class="text-center">{$lang.label_tag}</p>
     </li>
-    </a>
+    </a> -->
     <a href="{:url('user/bonus')}">
     <li class="col-sm-3 col-xs-3"><i class="glyphicon glyphicon-gift"></i>
       <p class="text-center">{$lang.label_bonus}</p>

@@ -7,6 +7,27 @@
 <form name="formEdit" action="{:url('user/profile')}" method="post" onSubmit="return userEdit()">
   <section class="flow-consignee ect-bg-colorf">
     <ul>
+      <li class="ect-radio">
+        <div class="input-text"><b class="pull-left">{$lang.sex}：</b><span>
+          <input name="sex" type="radio"   value="0" id="sex-0" {if $profile.sex eq 0}checked="checked"{/if}>
+          <label for="sex-0">{$lang.secrecy}<i></i></label>
+          <input name="sex" type="radio"   value="1" id="sex-1" {if $profile.sex eq 1}checked="checked"{/if}>
+          <label for="sex-1">{$lang.male}<i></i></label>
+          <input name="sex" type="radio"   value="2" id="sex-2" {if $profile.sex eq 2}checked="checked"{/if}>
+          <label for="sex-2">{$lang.female}<i></i></label>
+          
+          </span></div>
+      </li>
+      <li>
+        <div class="input-text"><b class="pull-left">{$lang.birthday}：</b><span>
+          {html_select_date field_order=YMD prefix=birthday start_year=-60 end_year=+1 display_days=true month_format=%m day_value_format=%02d time=$profile.birthday}
+          </span></div>
+      </li>
+      <li>
+        <div class="input-text"><b class="pull-left">{$lang.real_name}：</b><span>
+          <input name="real_name" type="text" placeholder="{$lang.no_real_name}"  value="{$profile.real_name}">
+          </span></div>
+      </li>
       <li>
         <div class="input-text"><b class="pull-left">{$lang.email}：</b><span>
           <input name="email" type="text" placeholder="{$lang.no_emaill}"  value="{$profile.email}">

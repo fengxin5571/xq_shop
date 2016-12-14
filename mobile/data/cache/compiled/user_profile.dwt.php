@@ -9,6 +9,27 @@
 <form name="formEdit" action="<?php echo url('user/profile');?>" method="post" onSubmit="return userEdit()">
   <section class="flow-consignee ect-bg-colorf">
     <ul>
+      <li class="ect-radio">
+        <div class="input-text"><b class="pull-left"><?php echo $this->_var['lang']['sex']; ?>：</b><span>
+          <input name="sex" type="radio"   value="0" id="sex-0" <?php if ($this->_var['profile']['sex'] == 0): ?>checked="checked"<?php endif; ?>>
+          <label for="sex-0"><?php echo $this->_var['lang']['secrecy']; ?><i></i></label>
+          <input name="sex" type="radio"   value="1" id="sex-1" <?php if ($this->_var['profile']['sex'] == 1): ?>checked="checked"<?php endif; ?>>
+          <label for="sex-1"><?php echo $this->_var['lang']['male']; ?><i></i></label>
+          <input name="sex" type="radio"   value="2" id="sex-2" <?php if ($this->_var['profile']['sex'] == 2): ?>checked="checked"<?php endif; ?>>
+          <label for="sex-2"><?php echo $this->_var['lang']['female']; ?><i></i></label>
+          
+          </span></div>
+      </li>
+      <li>
+        <div class="input-text"><b class="pull-left"><?php echo $this->_var['lang']['birthday']; ?>：</b><span>
+          <?php echo $this->html_select_date(array('field_order'=>'YMD','prefix'=>'birthday','start_year'=>'-60','end_year'=>'+1','display_days'=>'true','month_format'=>'%m','day_value_format'=>'%02d','time'=>$this->_var['profile']['birthday'])); ?>
+          </span></div>
+      </li>
+      <li>
+        <div class="input-text"><b class="pull-left"><?php echo $this->_var['lang']['real_name']; ?>：</b><span>
+          <input name="real_name" type="text" placeholder="<?php echo $this->_var['lang']['no_real_name']; ?>"  value="<?php echo $this->_var['profile']['real_name']; ?>">
+          </span></div>
+      </li>
       <li>
         <div class="input-text"><b class="pull-left"><?php echo $this->_var['lang']['email']; ?>：</b><span>
           <input name="email" type="text" placeholder="<?php echo $this->_var['lang']['no_emaill']; ?>"  value="<?php echo $this->_var['profile']['email']; ?>">

@@ -55,6 +55,7 @@ class ecshop extends integrate
         $this->field_mobile = 'mobile_phone';
         $this->field_gender = 'sex';
         $this->field_bday = 'birthday';
+        $this->real_name  = 'real_name';
         $this->field_reg_date = 'reg_time';
         $this->field_passwd_question = 'passwd_question';
         $this->need_sync = false;

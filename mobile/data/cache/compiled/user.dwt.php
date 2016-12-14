@@ -1,6 +1,6 @@
 <?php echo $this->fetch('library/user_header.lbi'); ?>
 <div class="user-info">
-  <div class="user-img pull-left"><i class="glyphicon glyphicon-user"></i></div>
+  <div class="user-img pull-left"><a href="<?php echo url('user/showImg');?>"><i class="glyphicon glyphicon-user"></i></a></div>
   <dl class="pull-left">
     <dt>
       <h4><?php echo $this->_var['info']['username']; ?> | <a href="<?php echo url('user/logout');?>" class="ect-colorf"><?php echo $this->_var['lang']['label_logout']; ?></a></h4>
@@ -23,15 +23,18 @@
     <li class="col-sm-3 col-xs-3"><i class="glyphicon glyphicon-map-marker"></i>
       <p class="text-center"><?php echo $this->_var['lang']['label_address']; ?></p>
     </li>
-    </a> <a href="<?php echo url('user/account_detail');?>">
+    </a> 
+    <!--<a href="<?php echo url('user/account_detail');?>">
     <li class="col-sm-3 col-xs-3"><i class="glyphicon glyphicon-usd"></i>
       <p class="text-center"><?php echo $this->_var['lang']['label_user_surplus']; ?></p>
     </li>
-    </a> <a href="<?php echo url('user/profile');?>">
+    </a>  -->
+    <a href="<?php echo url('user/profile');?>">
     <li class="col-sm-3 col-xs-3"><i class="fa fa-user"></i>
       <p class="text-center"><?php echo $this->_var['lang']['profile']; ?></p>
     </li>
-    </a> <a href="<?php echo url('user/edit_password');?>">
+    </a> 
+    <a href="<?php echo url('user/edit_password');?>">
     <li class="col-sm-3 col-xs-3"><i class="fa fa-shield"></i>
       <p class="text-center"><?php echo $this->_var['lang']['edit_password']; ?></p>
     </li>
@@ -39,16 +42,17 @@
     <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/u-kefu.png"></i>
       <p class="text-center"><?php echo $this->_var['lang']['user_service']; ?></p>
     </li>
-    </a> <a href="<?php echo url('user/share');?>">
+    </a> 
+    <!--<a href="<?php echo url('user/share');?>">
     <li class="col-sm-3 col-xs-3"><i class="fa fa-share-alt"></i>
       <p class="text-center"><?php echo $this->_var['lang']['label_share']; ?></p>
     </li>
-    </a>
-     <a href="<?php echo url('user/tag_list');?>">
+    </a> -->
+     <!--<a href="<?php echo url('user/tag_list');?>">
     <li class="col-sm-3 col-xs-3"><i class="glyphicon glyphicon-tags"></i>
       <p class="text-center"><?php echo $this->_var['lang']['label_tag']; ?></p>
     </li>
-    </a>
+    </a> -->
     <a href="<?php echo url('user/bonus');?>">
     <li class="col-sm-3 col-xs-3"><i class="glyphicon glyphicon-gift"></i>
       <p class="text-center"><?php echo $this->_var['lang']['label_bonus']; ?></p>
