@@ -12,7 +12,9 @@
 	</li>
     <!--{/foreach}-->
   </ul>
+  <div class="deffbonus">
   <!-- #BeginLibraryItem "/library/page.lbi" --><!-- #EndLibraryItem --> 
+  </div>
   <!-- {/if} -->
   </div>
 

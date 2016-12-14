@@ -341,6 +341,7 @@ class UsersModel extends BaseModel {
         $sql = "SELECT user_name FROM " . $this->pre . "users WHERE user_id='" . $profile['user_id'] . "'";
         $res = $this->row($sql);
         $cfg['username'] = $res['user_name'];
+        $cfg['real_name']= $profile['real_name'];
         if (isset($profile['sex'])) {
             $cfg['gender'] = intval($profile['sex']);
         }
@@ -399,7 +400,7 @@ class UsersModel extends BaseModel {
         /* 会员帐号信息 */
         $info = array();
         $infos = array();
-        $sql = "SELECT user_name, birthday, sex, question, answer, rank_points, pay_points,user_money, user_rank," .
+        $sql = "SELECT user_name, birthday, sex, question, real_name, answer, rank_points, pay_points,user_money, user_rank," .
                 " msn, qq, office_phone, home_phone, mobile_phone, passwd_question, passwd_answer " .
                 "FROM " . $this->pre . "users WHERE user_id = '$user_id'";
         $infos = $this->row($sql);
@@ -448,7 +449,7 @@ class UsersModel extends BaseModel {
         $info['sex'] = isset($infos['sex']) ? $infos['sex'] : 0;
         $info['birthday'] = isset($infos['birthday']) ? $infos['birthday'] : '';
         $info['question'] = isset($infos['question']) ? htmlspecialchars($infos['question']) : '';
-
+        $info['real_name'] = isset($infos['real_name']) ? $infos['real_name'] : '';
         $info['user_money'] = price_format($info['user_money'], false);
         $info['pay_points'] = $info['pay_points'] . C('integral_name');
         $info['bonus'] = $bonus;
