@@ -49,6 +49,8 @@ class integrate
     public $field_gender = '';
     /* 会员生日 */
     public $field_bday = '';
+    /* 会员真实姓名*/
+    public $real_name  = '';
     /* 注册日期的字段名 */
     public $field_reg_date = '';
     /* 用户设置的问题 */
@@ -284,10 +286,11 @@ class integrate
         if ((! empty($cfg['bday'])) && $this->field_bday != 'NULL') {
             $values[] = $this->field_bday . "='" . $cfg['bday'] . "'";
         }
-        
+        if((! empty($cfg['real_name'])) && $this->real_name != 'NULL'){
+            $values[] = $this->real_name . "='" . $cfg['real_name'] . "'";
+        }
         if ($values) {
             $sql = "UPDATE " . $this->db->pre . $this->user_table . " SET " . implode(', ', $values) . " WHERE " . $this->field_name . "='" . $cfg['post_username'] . "' LIMIT 1";
-            
             $this->db->query($sql);
             
             if ($this->need_sync) {

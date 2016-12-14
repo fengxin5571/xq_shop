@@ -79,7 +79,8 @@ class UserController extends CommonController {
             $other['mobile_phone'] = $mobile_phone = I('post.extend_field5');
             $sel_question = I('post.sel_question');
             $passwd_answer = I('post.passwd_answer');
-
+            $real_anme=I('post.real_name');
+            $birthday = trim(I('post.birthdayYear')) . '-' . trim(I('post.birthdayMonth')) . '-' . trim(I('post.birthdayDay'));
             // 读出所有扩展字段的id
             $where['type'] = 0;
             $where['display'] = 1;
@@ -136,7 +137,7 @@ class UserController extends CommonController {
             if (!empty($mobile_phone) && !preg_match('/^[\d-\s]+$/', $mobile_phone)) {
                 show_message(L('passport_js.mobile_phone_invalid'));
             }
-
+            
             // 写入密码提示问题和答案
             if (!empty($passwd_answer) && !empty($sel_question)) {
                 $where_up['user_id'] = $this->user_id;
@@ -152,6 +153,8 @@ class UserController extends CommonController {
                 'user_id' => $this->user_id,
                 'email' => I('post.email'),
                 'sex' => I('post.sex', 0),
+                'real_name' =>$real_anme,
+                'birthday'  =>$birthday,
                 'other' => isset($other) ? $other : array()
             );
 

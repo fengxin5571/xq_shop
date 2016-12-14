@@ -14,7 +14,9 @@
 	</li>
     <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
   </ul>
+  <div class="deffbonus">
   <?php echo $this->fetch('library/page.lbi'); ?> 
+  </div>
   <?php endif; ?>
   </div>
 

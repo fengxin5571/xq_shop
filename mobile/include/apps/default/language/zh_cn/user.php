@@ -120,6 +120,7 @@ $_LANG['bonus_number'] = '红包序列号';
 $_LANG['old_password'] = '原密码';
 $_LANG['new_password'] = '新密码';
 $_LANG['confirm_password'] = '确认密码';
+$_LANG['real_name'] = "真实姓名";
 
 $_LANG['bonus_sn_exist'] = '此红包号码已经被占用了！';
 $_LANG['bonus_sn_not_exist'] = '此红包号码不存在！';
@@ -392,7 +393,7 @@ $_LANG['no_code'] = '请输入验证码';
 $_LANG['code'] = '验证码';
 $_LANG['no_password'] = '请输入登录密码';
 $_LANG['get_code'] = '获取验证码';
-
+$_LANG['no_real_name'] = '请输入真实姓名';
 /* 登录 注册 */
 $_LANG['mobile_login'] = '手机注册';
 $_LANG['emaill_login'] = '邮箱注册';
