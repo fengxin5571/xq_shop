@@ -52,7 +52,6 @@ class SmsController extends CommonController {
                 exit(json_encode(array('msg' => '获取验证码太过频繁，一分钟之内只能获取一次。')));
             }
         }
-        file_put_contents("f://error.txt", 2);
         $where['mobile_phone'] = $this->mobile;
         $user_id = $this->model->table('users')->field('user_id')->where($where)->getOne();
         if ($_GET['flag'] == 'register') {
@@ -64,6 +63,11 @@ class SmsController extends CommonController {
             //找回密码
             if (empty($user_id)) {
                 exit(json_encode(array('msg' => "手机号码不存在\n无法通过该号码找回密码")));
+            }
+        } elseif ($_GET['flag'] == 'bingmobile') {
+            //绑定手机
+            if (!empty($user_id)) {
+                exit(json_encode(array('msg' => '手机号码已存在，请更换手机号码')));
             }
         }
 

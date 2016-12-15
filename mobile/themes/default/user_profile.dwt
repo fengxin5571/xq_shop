@@ -58,9 +58,9 @@
           <input name="extend_field{$field.id}" type="hidden" value="{$field.content}" />
           </span>
           <!--{if $field.content} -->
-          <input class="pull-right ect-bg __web-inspector-hide-shortcut__"   type="botton" value="重新绑定" style="width: 110px;border: none;text-align: center;">
+          <input class="pull-right ect-bg __web-inspector-hide-shortcut__"   type="botton" value="重新绑定" style="width: 6em;border: none;text-align: center;" onclick="javasrcipt:location.href='{:url('user/bindmobile')}'">
           <!--{else}-->
-          <input class="pull-right ect-bg __web-inspector-hide-shortcut__"   type="botton" value="绑定手机" style="width: 110px;border: none;text-align: center;">
+          <input class="pull-right ect-bg __web-inspector-hide-shortcut__"   type="botton" value="绑定手机" style="width: 6em;border: none;text-align: center;">
           <!--{/if}-->
           </div>
       </li>

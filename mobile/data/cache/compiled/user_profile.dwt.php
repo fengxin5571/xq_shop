@@ -62,9 +62,9 @@
           <input name="extend_field<?php echo $this->_var['field']['id']; ?>" type="hidden" value="<?php echo $this->_var['field']['content']; ?>" />
           </span>
           <?php if ($this->_var['field']['content']): ?>
-          <input class="pull-right ect-bg __web-inspector-hide-shortcut__"   type="botton" value="重新绑定" style="width: 110px;border: none;text-align: center;">
+          <input class="pull-right ect-bg __web-inspector-hide-shortcut__"   type="botton" value="重新绑定" style="width: 6em;border: none;text-align: center;" onclick="javasrcipt:location.href='<?php echo url('user/bindmobile');?>'">
           <?php else: ?>
-          <input class="pull-right ect-bg __web-inspector-hide-shortcut__"   type="botton" value="绑定手机" style="width: 110px;border: none;text-align: center;">
+          <input class="pull-right ect-bg __web-inspector-hide-shortcut__"   type="botton" value="绑定手机" style="width: 6em;border: none;text-align: center;">
           <?php endif; ?>
           </div>
       </li>

@@ -62,7 +62,7 @@
             <li>
               <div class="input-text code"><b>{$lang.code}：</b><span>
                 <input placeholder="{$lang.no_code}" name="mobile_code" id="mobile_code" type="text" >
-                </span> <input class="pull-right ect-bg" id="zphone" name="sendsms" onClick="sendSms();" type="botton" value="{$lang.get_code}" style="width: 110px;height: 46px;border: none;text-align: center;"></div>
+                </span> <input class="pull-right ect-bg" id="zphone" name="sendsms" onClick="sendSms();" type="botton" value="{$lang.get_code}" style="width: 6em;border: none;text-align: center;"></div>
             </li>
           </ul>
         </div>

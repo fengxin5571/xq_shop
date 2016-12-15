@@ -81,7 +81,21 @@ function editPassword() {
 		return true;
 	}
 }
-
+/* 会员绑定手机 */
+function checkbindmobile(){
+	var status = true;
+	var mobile = $('#mobile_phone').val();
+	var mobile_code = $('#mobile_code').val();
+	if(mobile.length == ''){
+		alert('请填写手机号码');
+		return false;
+	}
+	if(mobile_code.length == ''){
+		alert('请填写手机验证码');
+		return false;
+	}
+	return status;
+}
 /*******************************************************************************
  * 对会员的留言输入作处理
  */

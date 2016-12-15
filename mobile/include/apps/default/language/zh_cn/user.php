@@ -507,6 +507,12 @@ $_LANG['please_received'] = '以下订单已发货，请注意查收';
 $_LANG['your_auction'] = '您竟拍到了<strong>%s</strong> ，现在去 <a href="auction.php?act=view&amp;id=%s"><span style="color:#06c;text-decoration:underline;">购买</span></a>';
 $_LANG['your_snatch'] = '您夺宝奇兵竟拍到了<strong>%s</strong> ，现在去 <a href="snatch.php?act=main&amp;id=%s"><span style="color:#06c;text-decoration:underline;">购买</span></a>';
 
+/*绑定手机*/
+$_LANG['bindmobile'] = '绑定手机';
+$_LANG['bindmobile_back'] = '重新绑定';
+$_LANG['bind_success'] = '绑定成功';
+$_LANG['bind_lose'] = '绑定失败';
+
 /* 我的标签 */
 $_LANG['no_tag'] = '暂时没有标签';
 $_LANG['confirm_drop_tag'] = '您确认要删除此标签吗？';
