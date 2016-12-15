@@ -223,7 +223,62 @@ class UserController extends CommonController {
         $this->assign('profile', $user_info);
         $this->display('user_profile.dwt');
     }
-
+    /**
+     * 绑定手机
+     */
+    public function bindmobile(){
+        if(IS_POST){
+            $mobile = isset($_POST['mobile']) ? in($_POST['mobile']) : '';
+            $mobile_code = isset($_POST['mobile_code']) ? in($_POST['mobile_code']) : '';
+            $sms_code = isset($_POST['sms_code']) ? in($_POST['sms_code']) : '';
+            
+            if (empty($mobile)) {
+                show_message(L('msg_mobile_blank'), L('bindmobile_back'), url('bindmobile'), 'error');
+            }
+            
+            if ($sms_code != $_SESSION['sms_code']) {
+                show_message(L('sms_code_error'), L('bindmobile_back'), url('bindmobile'), 'error');
+            }
+            
+            if ($mobile_code != $_SESSION['sms_mobile_code']) {
+                show_message(L('mobile_code_error'), L('bindmobile_back'), url('bindmobile'), 'error');
+            }
+            
+            // 验证手机号重复
+            $where['mobile_phone'] = $mobile;
+            $user_id = $this->model->table('users')
+            ->field('user_id')
+            ->where($where)
+            ->getOne();
+            if ($user_id) {
+                show_message(L('msg_mobile_exists'), L('bindmobile_back'), url('bindmobile'), 'error');
+            }
+            $where_up['user_id']=$this->user_id;
+            $data_up['mobile_phone']=$mobile;
+             if($this->model->table('users')
+            ->data($data_up)
+            ->where($where_up)
+            ->update()){
+                 show_message(L('bind_success'), array(
+                     L('back_up_page'),
+                     L('profile_lnk')
+                 ), array(
+                     $this->back_act,
+                     url('profile')
+                 ), 'info');
+             }else{
+                 show_message(L('bind_lose'), L('bindmobile_back'), url('bindmobile'), 'error',false);
+             }
+             
+            exit();
+            
+        }
+        // 随机code
+        $_SESSION['sms_code'] = $sms_code = md5(mt_rand(1000, 9999));
+        $this->assign('sms_code', $sms_code);
+        $this->assign('title', L('bindmobile'));
+        $this->display('user_bindmobile.dwt');
+    }
     /**
      * 资金管理
      */

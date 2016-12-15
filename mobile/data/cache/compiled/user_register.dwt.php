@@ -64,7 +64,7 @@
             <li>
               <div class="input-text code"><b><?php echo $this->_var['lang']['code']; ?>：</b><span>
                 <input placeholder="<?php echo $this->_var['lang']['no_code']; ?>" name="mobile_code" id="mobile_code" type="text" >
-                </span> <input class="pull-right ect-bg" id="zphone" name="sendsms" onClick="sendSms();" type="botton" value="<?php echo $this->_var['lang']['get_code']; ?>" style="width: 110px;height: 46px;border: none;text-align: center;"></div>
+                </span> <input class="pull-right ect-bg" id="zphone" name="sendsms" onClick="sendSms();" type="botton" value="<?php echo $this->_var['lang']['get_code']; ?>" style="width: 6em;border: none;text-align: center;"></div>
             </li>
           </ul>
         </div>
