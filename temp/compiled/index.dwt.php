@@ -74,6 +74,7 @@ echo $this->_echash . $k['name'] . '|' . serialize($k) . $this->_echash;
 
     
     <div class="w1160px clearfix">
+    <div class="menu_left fl">
       
       <?php echo $this->fetch('library/category_tree.lbi'); ?>
       <div class="left_img"><?php 
@@ -84,6 +85,7 @@ $k = array (
 );
 echo $this->_echash . $k['name'] . '|' . serialize($k) . $this->_echash;
 ?></div>
+    </div>
       
       
       <?php echo $this->fetch('library/index_ad.lbi'); ?>

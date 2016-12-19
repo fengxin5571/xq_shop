@@ -541,7 +541,7 @@ border: 1px solid transparent;border-radius: 4px;cursor: pointer;display: inline
 .bran_list { padding: 0 0.6em; }
 .bran_list ul li { margin: 0.8em 0; }
 .bran_list ul li p { position: relative; }
-.bran_list ul li img { width: 100%; height: auto; }
+.bran_list ul li img { width: 100%; height: 11em; }
 .bran_list ul li span { position: absolute; color: #fff; bottom: 0; font-size: 1.1em; z-index: 10; width: 100%; left: 0; text-align: right; padding: 0.6em; background: rgba(0,0,0,0.4) }
 .bran_list ul li .a-name { background: #FFF; padding: 0.6em; font-size: 1.2em; }
 /*========================

@@ -1,6 +1,6 @@
 <?php echo $this->fetch('library/page_header.lbi'); ?>
 <div class="con"> 
-  <header class="ect-header ect-margin-tb ect-margin-lr"> <a href="<?php echo url('category/top_all');?>" class="pull-left ect-icon ect-icon1 ect-icon-cate1"></a>
+  <header class="ect-header ect-margin-tb ect-margin-lr"> <a href="<?php echo url('category/top_all');?>" class="pull-left ect-icon ect-icon1 ect-icon-cate1" style="background: url('__TPL__/images/logo.png') no-repeat;background-size: 35px 35px;"></a>
     <div class="ect-header-div">
       <button class="btn btn-default ect-text-left ect-btn-search" onClick="javascript:openSearch();"><i class="fa fa-search"></i>&nbsp;<?php echo $this->_var['lang']['no_keywords']; ?></button>
     </div>
@@ -22,7 +22,7 @@ echo $this->_echash . $k['name'] . '|' . serialize($k) . $this->_echash;
 ?>
     </div>
   </div>
-  <div style="text-align: center;padding: 5px 0 18px;"><img src="__TPL__/images/logo.png" style="width:68%" /></div>
+  
   
   <nav class="container-fluid">
     <ul class="row ect-row-nav">
