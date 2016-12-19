@@ -26,7 +26,7 @@
  
 <?php if ($this->_var['brand']): ?>
 <li>
-  <p><a href="<?php echo $this->_var['brand']['url']; ?>"><img src="<?php echo $this->_var['brand']['brand_logo']; ?>"></a><span><?php echo $this->_var['brand']['brand_name']; ?></span></p>
+  <p><a href="<?php echo $this->_var['brand']['url']; ?>"><img src="<?php echo $this->_var['brand']['brand_logo']; ?>" ></a><span><?php echo $this->_var['brand']['brand_name']; ?></span></p>
 </li>
 <?php endif; ?> 
  

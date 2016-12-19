@@ -60,9 +60,11 @@ jQuery(function() {
 
     <!--1F-->
     <div class="w1160px clearfix">
+    <div class="menu_left fl">
       <!--菜单列表-->
       <!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
       <div class="left_img">{insert name='ads' id=15 num=1}</div>
+    </div>
       <!--菜单列表 END-->
       <!--焦点图切换-->
       <!-- #BeginLibraryItem "/library/index_ad.lbi" --><!-- #EndLibraryItem -->

@@ -356,8 +356,8 @@ dl.done{border-top-color: #0374D9;}
 .subitems dd{float: left;width: 620px;padding: 6px 0;border-top: 1px solid #eee;}
 .subitems dd a{float: left;padding: 0 8px;margin: 4px 0;line-height: 16px;height: 16px;border-left: 1px solid #e0e0e0;white-space: nowrap;}
 .subitems dl.fore1 dd{border-top: none;}
-
-.left_img{width: 204px;float: left;height: 350px;position: absolute;margin-top: 71px;}
+.menu_left{width: 204px;height: 397px;}
+.left_img{width: 204px;margin-top: 220px;}
     
 /*猜你喜欢*/
 #guessyou {height: 269px;margin-bottom: 10px;overflow: hidden;}    

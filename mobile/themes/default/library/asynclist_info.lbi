@@ -25,7 +25,7 @@
 <!-- 品牌 start--> 
 <!--{if $brand}-->
 <li>
-  <p><a href="{$brand.url}"><img src="{$brand.brand_logo}"></a><span>{$brand.brand_name}</span></p>
+  <p><a href="{$brand.url}"><img src="{$brand.brand_logo}" ></a><span>{$brand.brand_name}</span></p>
 </li>
 <!-- {/if}--> 
 <!-- 品牌end--> 

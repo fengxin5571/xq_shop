@@ -1,6 +1,6 @@
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
 <div class="con"> 
-  <header class="ect-header ect-margin-tb ect-margin-lr"> <a href="{:url('category/top_all')}" class="pull-left ect-icon ect-icon1 ect-icon-cate1"></a>
+  <header class="ect-header ect-margin-tb ect-margin-lr"> <a href="{:url('category/top_all')}" class="pull-left ect-icon ect-icon1 ect-icon-cate1" style="background: url('__TPL__/images/logo.png') no-repeat;background-size: 35px 35px;"></a>
     <div class="ect-header-div">
       <button class="btn btn-default ect-text-left ect-btn-search" onClick="javascript:openSearch();"><i class="fa fa-search"></i>&nbsp;{$lang.no_keywords}</button>
     </div>
@@ -15,7 +15,7 @@
       {insert name='ads' id=1 num=3}
     </div>
   </div>
-  <div style="text-align: center;padding: 5px 0 18px;"><img src="__TPL__/images/logo.png" style="width:68%" /></div>
+  
   <!--首页快速导航-->
   <nav class="container-fluid">
     <ul class="row ect-row-nav">
