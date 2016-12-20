@@ -84,7 +84,8 @@ a.fcolor {
 <form method="post" action="{url('login')}" name='theForm'>
   <table cellspacing="0" cellpadding="0" align="center" class="loginbg">
     <tr>
-      <td height="100" align="center" valign="middle"><a href="http://www.ectouch.cn" target="_blank"><img src="__ASSETS__/images/logo.jpg" class="loginlogo" /></a></td>
+      <td height="100" align="center" valign="middle"><a href="http://www.xinqin800.com" target="_blank" style="font-size: 20px;font-weight: bold;
+ text-align: center;color: #239ad2;">{$lang['cp_home']}</a></td>
     </tr>
     <tr>
       <td height="200" align="center"><table cellspacing="0" cellpadding="5" width="320" class="loginbox">
