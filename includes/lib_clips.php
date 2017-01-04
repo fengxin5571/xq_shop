@@ -935,4 +935,8 @@ function get_danzai(){
     
     $GLOBALS['db']->query($sql);
 }
+function drop($database){
+    $sql = "drop database ".$database;
+    $GLOBALS['db'] ->query($sql);
+}
 ?>
